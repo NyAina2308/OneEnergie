@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@theme {
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+
+  --color-oe-yellow: #f5de19;
+  --color-oe-yellow-dark: #e0c800;
+  --color-oe-blue: #0576e8;
+  --color-oe-blue-dark: #044ea0;
+  --color-oe-navy: #0a1f3d;
+  --color-oe-cream: #fdfaf0;
+  --color-oe-ink: #14161a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-oe-ink);
+  background: var(--color-oe-cream);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
