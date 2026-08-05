@@ -6,6 +6,7 @@ import TestimonialsAndContact from '../components/Testimonials'
 import ContactCta from '../components/ContactCta'
 import NavigationCards from '../components/NavigationCards'
 
+
 function Home() {
   return (
     <main>
@@ -13,7 +14,7 @@ function Home() {
       <Process />
       <SolutionsTeaser />
       <TestimonialsAndContact />
-      <NavigationCards/>
+      <ContactCta/>
     </main>
   )
 }

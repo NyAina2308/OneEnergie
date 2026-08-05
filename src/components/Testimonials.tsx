@@ -1,6 +1,20 @@
-import { useState } from 'react'
-import client1 from '../assets/photos/woman.jpg' // À remplacer par vos images
-import client2 from '../assets/photos/woman.jpg'
+import { useState } from 'react';
+import client1 from '../assets/photos/woman.jpg';
+import client2 from '../assets/photos/woman.jpg';
+import { motion, type Variants } from 'framer-motion';
+
+const fadeInVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (delay: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      delay: delay,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
 
 const TESTIMONIALS = [
   {
@@ -17,34 +31,32 @@ const TESTIMONIALS = [
     location: "Saint-Denis",
     image: client2,
   },
-  // Ajoutez d'autres avis ici...
-]
+];
 
 function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [fade, setFade] = useState(true)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
-  const handleSlideChange = (newIndex : number) => {
-    setFade(false)
+  const handleSlideChange = (newIndex: number) => {
+    setFade(false);
     setTimeout(() => {
-      setActiveIndex(newIndex)
-      setFade(true)
-    }, 200) // Durée de la transition de sortie
-  }
+      setActiveIndex(newIndex);
+      setFade(true);
+    }, 200);
+  };
 
   const handleNext = () => {
-    handleSlideChange((activeIndex + 1) % TESTIMONIALS.length)
-  }
+    handleSlideChange((activeIndex + 1) % TESTIMONIALS.length);
+  };
 
   const handlePrev = () => {
-    handleSlideChange((activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
-  }
+    handleSlideChange((activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
 
-  const activeTestimonial = TESTIMONIALS[activeIndex]
+  const activeTestimonial = TESTIMONIALS[activeIndex];
 
   return (
     <section className="bg-oe-navy py-24 relative overflow-hidden">
-      {/* Lignes d'habillage architectural */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-[20%] left-0 right-0 h-px bg-white/5"></div>
         <div className="absolute bottom-[20%] left-0 right-0 h-px bg-white/5"></div>
@@ -52,8 +64,10 @@ function Testimonials() {
 
       <div className="mx-auto max-w-7xl px-5 md:px-8 relative z-10">
         
-        {/* Présentation du titre retravaillée aux couleurs du Hero */}
-        <div className="text-center mb-16">
+        <motion.div 
+          custom={0.2} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
+          className="text-center mb-16"
+        >
           <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-oe-yellow uppercase mb-3 flex items-center justify-center gap-4">
             <span className="w-8 h-px bg-oe-yellow hidden sm:block"></span>
             Témoignages clients
@@ -62,10 +76,12 @@ function Testimonials() {
           <h2 className="font-display text-4xl md:text-5xl text-white uppercase tracking-wider font-light">
             Ils nous font <span className="text-oe-yellow font-normal italic">confiance</span>
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Carousel de témoignages */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+        <motion.div 
+          custom={0.4} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
+          className="flex flex-col md:flex-row items-center justify-center gap-6"
+        >
           
           {/* Bouton Précédent */}
           <button 
@@ -84,7 +100,7 @@ function Testimonials() {
             </div>
           </button>
 
-          {/* Carte Active avec Transition Smooth */}
+          {/* Carte Active */}
           <div 
             className={`bg-oe-cream flex flex-col md:flex-row w-full max-w-4xl shadow-2xl relative transition-all duration-300 ease-in-out transform ${
               fade ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-[0.99]'
@@ -117,7 +133,7 @@ function Testimonials() {
                   </p>
                 </div>
 
-                {/* Indicateurs de pagination */}
+                {/* Indicateurs */}
                 <div className="flex gap-1.5">
                   {TESTIMONIALS.map((_, idx) => (
                     <button 
@@ -151,10 +167,13 @@ function Testimonials() {
             </div>
           </button>
 
-        </div>
+        </motion.div>
 
         {/* Navigation Mobile */}
-        <div className="flex justify-center items-center gap-6 mt-8 lg:hidden">
+        <motion.div 
+          custom={0.5} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
+          className="flex justify-center items-center gap-6 mt-8 lg:hidden"
+        >
           <button 
             onClick={handlePrev} 
             className="text-white/70 hover:text-oe-yellow font-sans text-sm tracking-widest uppercase transition"
@@ -177,11 +196,11 @@ function Testimonials() {
           >
             Suivant →
           </button>
-        </div>
+        </motion.div>
 
       </div>
     </section>
-  )
+  );
 }
 
-export default Testimonials
+export default Testimonials;
