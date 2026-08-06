@@ -24,6 +24,7 @@ function Footer() {
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
                 <li><Link to="/" className="hover:text-oe-yellow">Accueil</Link></li>
                 <li><Link to="/nos-solutions" className="hover:text-oe-yellow">Nos solutions</Link></li>
+                <li><Link to="/nos-services" className="hover:text-oe-yellow">Nos services</Link></li>
                 <li><Link to="/guide-du-pigeon" className="hover:text-oe-yellow">Le Guide du Pigeon</Link></li>
                 <li><Link to="/equipe" className="hover:text-oe-yellow">L'équipe</Link></li>
                 <li><Link to="/contact" className="hover:text-oe-yellow">Contact &amp; Simulation</Link></li>

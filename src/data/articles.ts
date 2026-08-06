@@ -4,13 +4,13 @@ export type Article = {
   title: string
   excerpt: string
   readTime: string
-  sections: { heading: string; body: string[] }[]
+  sections: { heading: string; body: string[]; list?: string[]; icon?: string }[]
 }
 
 export const ARTICLES: Article[] = [
   {
     slug: 'comprendre-sa-facture-et-les-aides-a-la-reunion',
-    icon: '🧾',
+    icon: 'facture',
     title: 'Comprendre sa facture et les aides à La Réunion',
     excerpt:
       'Talon de consommation, kilowattheure, aides EDF : on démonte le jargon pour vous montrer ce qui compte vraiment.',
@@ -40,7 +40,7 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: 'comment-bien-comparer-deux-devis-solaires',
-    icon: '🔍',
+    icon: 'comparer',
     title: 'Comment bien comparer deux devis solaires',
     excerpt:
       'Deux devis, deux prix, deux promesses différentes. Voici les questions à poser avant de signer quoi que ce soit.',
@@ -64,6 +64,52 @@ export const ARTICLES: Article[] = [
         heading: 'Le bon réflexe',
         body: [
           "Mettez les deux devis côte à côte et comparez ligne par ligne : puissance installée, stockage proposé, garanties, délai d'intervention en cas de panne. Si un point reste flou, c'est le bon moment pour poser la question — pas après la signature.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'checklist-avant-apres-cyclone',
+    icon: 'cyclone',
+    title: 'La checklist avant / après un cyclone',
+    excerpt:
+      'Quatre réflexes simples pour protéger votre installation solaire avant l’alerte, et vérifier qu’elle va bien après.',
+    readTime: '3 min',
+    sections: [
+      {
+        heading: '1. Vérifier l’état des panneaux',
+        icon: 'panneaux',
+        body: [],
+        list: [
+          'Aucune fixation desserrée',
+          'Pas de fissure visible',
+          'Aucun objet coincé sous la structure',
+        ],
+      },
+      {
+        heading: '2. Sécuriser l’installation électrique',
+        icon: 'machine',
+        body: [],
+        list: [
+          'Couper l’onduleur en cas d’alerte rouge',
+          'Suivre les consignes de l’installateur',
+          'Ne jamais manipuler sous la pluie',
+        ],
+      },
+      {
+        heading: '3. Dégager les alentours',
+        icon: 'mascotte',
+        body: [],
+        list: ['Branches', 'Objets légers', 'Éléments instables à proximité'],
+      },
+      {
+        heading: '4. Après le passage du cyclone',
+        icon: 'soleil',
+        body: [],
+        list: [
+          'Inspection visuelle depuis le sol',
+          'Vérifier la production sur l’application',
+          'Contacter son installateur en cas d’anomalie',
         ],
       },
     ],

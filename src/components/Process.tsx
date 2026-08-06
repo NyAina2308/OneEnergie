@@ -1,3 +1,7 @@
+import { motion } from 'motion/react'
+import Reveal from './Reveal'
+import { staggerContainer, fadeUp, revealViewport } from '../lib/motion'
+
 const STEPS = [
   {
     number: '01',
@@ -23,18 +27,24 @@ function Process() {
   return (
     <section id="process" className="bg-oe-navy py-20 text-white md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="font-sans text-sm font-bold tracking-wide text-oe-yellow uppercase">
             Comment ça marche
           </span>
           <h2 className="font-display mt-3 text-3xl uppercase sm:text-4xl">
             Trois étapes, un seul interlocuteur
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
+        <motion.div
+          className="mt-14 grid gap-8 md:grid-cols-3"
+          initial="hidden"
+          whileInView="show"
+          viewport={revealViewport}
+          variants={staggerContainer}
+        >
           {STEPS.map((step, index) => (
-            <div key={step.number} className="relative">
+            <motion.div key={step.number} className="relative" variants={fadeUp}>
               <span className="font-display text-5xl text-white/15">
                 {step.number}
               </span>
@@ -49,9 +59,9 @@ function Process() {
                   →
                 </span>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

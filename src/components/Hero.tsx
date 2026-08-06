@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
 import Header from './Header'
+import CountUp from './CountUp'
 import mascotte from '../assets/brand/mascotte-1.png'
-import heroPhoto from '../assets/photos/hero-installation.jpg'
+import heroPhoto from '../assets/photos/famille-piscine.jpg'
 
 const STATS = [
-  { value: '85%', label: "d'économies sur la facture EDF" },
-  { value: '81%', label: 'financés par les aides EDF' },
-  { value: '20 ans', label: "de revente d'électricité garantie" },
+  { value: 85, suffix: '%', label: "d'économies sur la facture EDF" },
+  { value: 81, suffix: '%', label: 'financés par les aides EDF' },
+  { value: 20, suffix: ' ans', label: "de revente d'électricité garantie" },
 ]
+
+const easeOut = [0.16, 1, 0.3, 1] as const
 
 function Hero() {
   return (
@@ -18,7 +22,11 @@ function Hero() {
       <div className="pointer-events-none absolute top-1/3 -left-32 h-72 w-72 rounded-full bg-white/10 blur-2xl" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 md:grid-cols-2 md:px-8">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: easeOut }}
+        >
           <span className="inline-block rounded-full bg-oe-yellow px-4 py-1.5 font-sans text-sm font-bold text-oe-navy">
             Le solaire, entre nous.
           </span>
@@ -35,62 +43,88 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Link
-              to="/contact"
-              className="rounded-full bg-oe-yellow px-7 py-4 font-sans text-base font-bold text-oe-navy shadow-lg transition hover:scale-105"
-            >
-              Demander mon devis gratuit
-            </Link>
-            <Link
-              to="/nos-solutions"
-              className="rounded-full border-2 border-white/40 px-7 py-4 font-sans text-base font-bold text-white transition hover:border-white"
-            >
-              Découvrir nos solutions
-            </Link>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/contact"
+                className="block rounded-full bg-oe-yellow px-7 py-4 font-sans text-base font-bold text-oe-navy shadow-lg"
+              >
+                Demander mon devis gratuit
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/nos-solutions"
+                className="block rounded-full border-2 border-white/40 px-7 py-4 font-sans text-base font-bold text-white transition hover:border-white"
+              >
+                Découvrir nos solutions
+              </Link>
+            </motion.div>
           </div>
 
           <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-white/20 pt-6">
-            {STATS.map((stat) => (
-              <div key={stat.label}>
+            {STATS.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1, ease: easeOut }}
+              >
                 <dt className="font-display text-2xl text-oe-yellow sm:text-3xl">
-                  {stat.value}
+                  <CountUp value={stat.value} suffix={stat.suffix} />
                 </dt>
                 <dd className="mt-1 font-sans text-xs text-white/80 sm:text-sm">
                   {stat.label}
                 </dd>
-              </div>
+              </motion.div>
             ))}
           </dl>
-        </div>
+        </motion.div>
 
-        <div className="relative mx-auto w-full max-w-md md:max-w-none">
+        <motion.div
+          className="relative mx-auto w-full max-w-md md:max-w-none"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
+        >
           <div className="overflow-hidden rounded-[2.5rem] shadow-2xl ring-4 ring-white/10">
             <img
               src={heroPhoto}
-              alt="Une équipe installe des panneaux photovoltaïques sur une toiture, sous un grand ciel bleu"
+              alt="Un père et son fils profitent de leur piscine devant une maison réunionnaise équipée de panneaux solaires"
               className="h-80 w-full object-cover sm:h-[26rem] md:h-[30rem]"
             />
           </div>
 
-          <div className="absolute -bottom-8 -left-6 flex h-28 w-28 items-center justify-center rounded-full bg-oe-yellow shadow-xl sm:h-36 sm:w-36 md:-bottom-10 md:-left-10">
-            <img
+          <motion.div
+            className="absolute -bottom-8 -left-6 flex h-28 w-28 items-center justify-center rounded-full bg-oe-yellow shadow-xl sm:h-36 sm:w-36 md:-bottom-10 md:-left-10"
+            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.5, delay: 0.6, ease: easeOut }}
+          >
+            <motion.img
               src={mascotte}
               alt="Mascotte One Énergie, expert solaire souriant"
               className="w-24 sm:w-32"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
             />
-          </div>
+          </motion.div>
 
-          <div className="absolute -top-5 -right-4 rounded-2xl bg-white px-4 py-3 shadow-xl sm:-right-6">
+          <motion.div
+            className="absolute -top-5 -right-4 rounded-2xl bg-white px-4 py-3 shadow-xl sm:-right-6"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.75, ease: easeOut }}
+          >
             <p className="font-display text-xl text-oe-blue sm:text-2xl">
-              85%
+              <CountUp value={85} suffix="%" />
             </p>
             <p className="font-sans text-[11px] leading-tight font-semibold text-oe-navy/70">
               d'économies
               <br />
               en moyenne
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

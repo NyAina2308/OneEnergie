@@ -1,7 +1,10 @@
+import { motion } from 'motion/react'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import mascotte from '../assets/brand/mascotte-2.png'
+import Reveal from '../components/Reveal'
+import { staggerContainer, fadeUp, scaleIn, revealViewport } from '../lib/motion'
+import mascotte from '../assets/brand/mascotte-1.png'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 import installationToit from '../assets/photos/installation-toit.jpg'
 import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
@@ -37,10 +40,18 @@ function Team() {
 
         <section className="bg-white py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
-            <div className="grid gap-6 md:grid-cols-3">
+            <motion.div
+              className="grid gap-6 md:grid-cols-3"
+              initial="hidden"
+              whileInView="show"
+              viewport={revealViewport}
+              variants={staggerContainer}
+            >
               {ROLES.map((role) => (
-                <div
+                <motion.div
                   key={role.title}
+                  variants={fadeUp}
+                  whileHover={{ y: -6 }}
                   className="rounded-3xl bg-oe-cream p-8 ring-1 ring-oe-navy/5"
                 >
                   <h3 className="font-display text-xl text-oe-navy uppercase">
@@ -49,15 +60,15 @@ function Team() {
                   <p className="mt-3 font-sans text-sm text-oe-navy/80">
                     {role.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
         <section className="bg-oe-cream pb-20 md:pb-28">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
-            <div className="mx-auto max-w-2xl text-center">
+            <Reveal className="mx-auto max-w-2xl text-center">
               <span className="font-sans text-sm font-bold tracking-wide text-oe-blue uppercase">
                 Sur le terrain
               </span>
@@ -68,30 +79,46 @@ function Team() {
                 Pas de photos de banque d'images figées : des chantiers, des
                 harnais, des toits réunionnais.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="mt-14 grid gap-4 md:grid-cols-3">
+            <motion.div
+              className="mt-14 grid gap-4 md:grid-cols-3"
+              initial="hidden"
+              whileInView="show"
+              viewport={revealViewport}
+              variants={staggerContainer}
+            >
               {[
                 { src: installationToit, alt: 'Équipe installant des panneaux solaires sur un toit' },
                 { src: techniciensSecurite, alt: 'Techniciens équipés pour intervenir en sécurité' },
                 { src: entretienPanneaux, alt: 'Technicien assurant l’entretien des panneaux' },
               ].map((photo) => (
-                <div key={photo.src} className="overflow-hidden rounded-3xl shadow-sm">
+                <motion.div
+                  key={photo.src}
+                  variants={scaleIn}
+                  className="overflow-hidden rounded-3xl shadow-sm"
+                >
                   <img
                     src={photo.src}
                     alt={photo.alt}
                     loading="lazy"
                     className="h-64 w-full object-cover"
                   />
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
         <section className="bg-oe-yellow py-16 md:py-20">
-          <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-5 text-center md:flex-row md:text-left md:px-8">
-            <img src={mascotte} alt="Mascotte One Énergie" className="w-32 sm:w-40" />
+          <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-5 text-center md:flex-row md:text-left md:px-8">
+            <motion.img
+              src={mascotte}
+              alt="Mascotte One Énergie"
+              className="w-32 sm:w-40"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+            />
             <div>
               <p className="font-display text-xl text-oe-navy sm:text-2xl">
                 « Un expert à votre table, pas un inconnu sur votre toit. »
@@ -101,7 +128,7 @@ function Team() {
                 interlocuteur local, avant, pendant et après l'installation.
               </p>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <ContactCta />

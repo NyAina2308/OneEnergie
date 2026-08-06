@@ -1,3 +1,7 @@
+import { motion } from 'motion/react'
+import Reveal from './Reveal'
+import { staggerContainer, fadeUp, revealViewport } from '../lib/motion'
+
 const TESTIMONIALS = [
   {
     name: 'Mireille P.',
@@ -23,19 +27,27 @@ function Testimonials() {
   return (
     <section id="avis" className="bg-oe-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="font-sans text-sm font-bold tracking-wide text-oe-blue uppercase">
             Ils nous font confiance
           </span>
           <h2 className="font-display mt-3 text-3xl text-oe-navy uppercase sm:text-4xl">
             La Réunion, entre nous
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <motion.div
+          className="mt-14 grid gap-6 md:grid-cols-3"
+          initial="hidden"
+          whileInView="show"
+          viewport={revealViewport}
+          variants={staggerContainer}
+        >
           {TESTIMONIALS.map((testimonial) => (
-            <figure
+            <motion.figure
               key={testimonial.name}
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
               className="flex flex-col rounded-3xl bg-white p-8 shadow-sm ring-1 ring-oe-navy/5"
             >
               <span className="font-display text-4xl text-oe-yellow-dark">
@@ -50,9 +62,9 @@ function Testimonials() {
                   {testimonial.location}
                 </span>
               </figcaption>
-            </figure>
+            </motion.figure>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

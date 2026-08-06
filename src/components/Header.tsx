@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { AnimatePresence, motion } from 'motion/react'
 import logoBlue from '../assets/brand/logo-bleu.png'
 import logoWhite from '../assets/brand/logo-blanc.png'
 
 const NAV_LINKS = [
   { label: 'Accueil', to: '/' },
   { label: 'Nos solutions', to: '/nos-solutions' },
+  { label: 'Nos services', to: '/nos-services' },
   { label: 'Le Guide du Pigeon', to: '/guide-du-pigeon' },
   { label: "L'équipe", to: '/equipe' },
 ]
@@ -82,29 +84,37 @@ function Header({ overlay = false }: { overlay?: boolean }) {
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-oe-navy/10 bg-oe-cream px-5 py-4 lg:hidden">
-          <nav className="flex flex-col gap-4">
-            {NAV_LINKS.map((link) => (
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="overflow-hidden border-t border-oe-navy/10 bg-oe-cream lg:hidden"
+          >
+            <nav className="flex flex-col gap-4 px-5 py-4">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setOpen(false)}
+                  className="font-sans text-base font-semibold text-oe-navy"
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.to}
-                to={link.to}
+                to="/contact"
                 onClick={() => setOpen(false)}
-                className="font-sans text-base font-semibold text-oe-navy"
+                className="mt-2 rounded-full bg-oe-navy px-6 py-3 text-center font-sans text-sm font-bold text-oe-yellow"
               >
-                {link.label}
+                Contact &amp; Simulation
               </Link>
-            ))}
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-oe-navy px-6 py-3 text-center font-sans text-sm font-bold text-oe-yellow"
-            >
-              Contact &amp; Simulation
-            </Link>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
