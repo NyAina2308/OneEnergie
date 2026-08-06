@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import heroPhoto from '../assets/photos/hero-installation.jpg';
+import heroPhoto from '../assets/photos/solarroof1.jpg';
 import mascotte from '../assets/brand/mascotte-1.png';
 import { motion, type Variants } from 'framer-motion';
 

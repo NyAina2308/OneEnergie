@@ -7,6 +7,8 @@ import installationToit from '../assets/photos/installation-toit.jpg'
 import panneauxToiture from '../assets/photos/panneaux-toiture.jpg'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
+// Import de l'image de fond pour le PageHeader
+import solarguyBg from '../assets/photos/solarsolution.jpg' 
 
 // Variantes typées pour Framer Motion
 const fadeInUp: Variants = {
@@ -103,6 +105,7 @@ function Solutions() {
           eyebrow="Nos solutions solaire"
           title="L'offre vulgarisée par les bénéfices"
           description="Pas de kilowatts-crête ni de talon de consommation. Juste ce que le solaire change vraiment dans votre quotidien."
+          backgroundImage={solarguyBg} // Utilisation de la variable importée
         />
 
         {/* Pédagogie café-cuisine */}

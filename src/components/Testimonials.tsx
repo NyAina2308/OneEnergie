@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import client1 from '../assets/photos/woman.jpg';
-import client2 from '../assets/photos/woman.jpg';
+import client2 from '../assets/photos/woman2.jpg';
 import { motion, type Variants } from 'framer-motion';
 
 const fadeInVariants: Variants = {

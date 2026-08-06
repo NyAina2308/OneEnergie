@@ -1,8 +1,54 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
-import heroPhoto from '../assets/photos/hero-installation.jpg';
+import heroPhoto from '../assets/photos/solar1.jpg';
 import mascotte from '../assets/brand/mascotte-1.png';
 import { motion, type Variants } from 'framer-motion';
+
+// Composant d'animation de texte lettre par lettre
+export const ProgressiveText: React.FC<{ text: string; className?: string }> = ({ text, className }) => {
+  const letters = Array.from(text);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03, // Cadence fluide entre chaque lettre
+      },
+    },
+  };
+
+  const letterVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: 'spring', damping: 12, stiffness: 100 }
+    },
+  };
+
+  return (
+    <motion.span
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      style={{ display: 'inline-block' }}
+    >
+      {letters.map((letter, index) => (
+        <motion.span 
+          key={index} 
+          variants={letterVariants}
+          style={{ display: 'inline-block', whiteSpace: 'pre' }}
+        >
+          {letter}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
 
 const fadeInVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -20,7 +66,7 @@ const fadeInVariants: Variants = {
 const STATS = [
   { value: '85%', label: "d'économies sur la facture" },
   { value: '81%', label: 'financés par les aides EDF' },
-  { value: '20 ans', label: "de revente garantie" },
+  { value: '20 ans', label: 'de revente garantie' },
 ];
 
 function Hero() {
@@ -82,20 +128,18 @@ function Hero() {
             Le solaire, entre nous
           </motion.p>
 
-          <motion.h1 
-            custom={0.4} initial="hidden" animate="visible" variants={fadeInVariants}
-            className="font-display text-5xl leading-[1.05] text-white uppercase sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide drop-shadow-md"
-          >
-            Vivez l'énergie,<br />
-            <span className="text-oe-yellow font-normal">en mieux.</span>
-          </motion.h1>
+          {/* Titre Principal avec ProgressiveText */}
+          <h1 className="font-display text-5xl leading-[1.05] text-white uppercase sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide drop-shadow-md">
+            <ProgressiveText text="Vivez l'énergie," />
+            <br />
+            <ProgressiveText text="en mieux." className="text-oe-yellow font-normal" />
+          </h1>
 
-          <motion.p 
-            custom={0.5} initial="hidden" animate="visible" variants={fadeInVariants}
-            className="mt-8 max-w-lg font-sans text-base md:text-lg text-white/95 leading-relaxed tracking-wide drop-shadow"
-          >
-            On transforme votre taxe en liberté financière — avec un expert à votre table, pas un inconnu sur votre toit.
-          </motion.p>
+          {/* Sous-titre avec ProgressiveText */}
+          <div className="mt-8 max-w-lg font-sans text-base md:text-lg text-white/95 leading-relaxed tracking-wide drop-shadow">
+            <ProgressiveText text="On transforme votre taxe en liberté financière — " />
+            <ProgressiveText text="avec un expert à votre table, pas un inconnu sur votre toit." />
+          </div>
 
           {/* Call to action + Mascotte */}
           <motion.div 

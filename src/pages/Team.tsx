@@ -6,6 +6,7 @@ import mascotte from '../assets/brand/mascotte-2.png'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 import installationToit from '../assets/photos/installation-toit.jpg'
 import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
+import solar from '../assets/photos/solarteam.jpg'
 
 // Variantes typées pour Framer Motion
 const fadeInUp: Variants = {
@@ -54,6 +55,7 @@ function Team() {
           eyebrow="L'équipe One Énergie"
           title="Des visages, pas un numéro de dossier"
           description="On traite avec des gens. Voici les métiers qui vous accompagnent, du premier échange au suivi dans la durée."
+          backgroundImage={solar}
         />
 
         {/* Section Rôles & Métiers */}

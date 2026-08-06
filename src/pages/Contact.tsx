@@ -3,6 +3,7 @@ import { motion, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import { ARTICLES } from '../data/articles'
+import solar from '../assets/photos/solarcontact1.jpg'
 
 const APPAREILS = [
   'Climatisation',
@@ -49,6 +50,7 @@ export default function Contact() {
           eyebrow="Contact &amp; Simulation"
           title="Regardons ça ensemble"
           description="Un formulaire simple, centré sur vos appareils du quotidien — pas sur des kilowatts-crête."
+          backgroundImage={solar}
         />
 
         {/* Section Principale */}

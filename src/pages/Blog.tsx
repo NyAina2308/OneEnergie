@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
 import mascotte from '../assets/brand/mascotte-1.png'
 import { ARTICLES } from '../data/articles'
+import solar from '../assets/photos/solarpointing.jpg' 
 
 function ArticleSvgIcon() {
   return (
@@ -54,6 +55,7 @@ export default function Blog() {
           eyebrow="Le Blog du Pigeon"
           title="Décryptage et conseils anti-arnaques"
           description="Notre mascotte vulgarise le solaire pour vous : factures, devis, aides — sans jargon, sans langue de bois."
+          backgroundImage={solar}
         />
 
         <section className="border-t border-white/10 py-20 md:py-28">
