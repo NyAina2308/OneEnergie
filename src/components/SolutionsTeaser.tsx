@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import mascotte from '../assets/brand/mascotte-2.png';
+import solar from '../assets/photos/solarroof2.jpg'
 import { motion, type Variants } from 'framer-motion';
 
 const fadeInVariants: Variants = {
@@ -91,7 +92,7 @@ function SolutionsTeaser() {
         
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+            src={solar}
             alt="Intérieur design" 
             className="w-full h-full object-cover grayscale-[20%]"
           />
