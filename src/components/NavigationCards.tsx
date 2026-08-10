@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
-import solutionsBg from '../assets/photos/entretien-panneaux.jpg' // Remplacer par des images pertinentes
 import pigeonBg from '../assets/photos/entretien-panneaux.jpg'
-import equipeBg from '../assets/photos/entretien-panneaux.jpg'
 import contactBg from '../assets/photos/entretien-panneaux.jpg'
 
 const NAV_CARDS = [
