@@ -37,7 +37,7 @@ const containerStagger: Variants = {
 
 interface SolutionItem {
   category: 'Autonomie' | 'Sécurité';
-  icon: React.ReactNode;
+  icon: string;
   title: string;
   description: string;
 }
@@ -45,67 +45,42 @@ interface SolutionItem {
 const SOLUTIONS_COMBINED: SolutionItem[] = [
   {
     category: 'Autonomie',
-    icon: (
-      <svg className="h-6 w-6 text-oe-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M12 2v20m8-10H4m13.657-7.071L6.343 19.07m11.314 0L6.343 4.93" />
-      </svg>
-    ),
+    icon: iconSoleil,
     title: 'La clim, sans remords',
     description: 'Allumez la clim l’après-midi sans surveiller le compteur : votre production couvre le pic de consommation.',
   },
   {
     category: 'Autonomie',
-    icon: (
-      <svg className="h-6 w-6 text-oe-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M4 10h16v10H4V10zm4-4v2m4-4v4m4-2v2" />
-      </svg>
-    ),
+    icon: iconMascotteSolaire,
     title: 'Le cuiseur à riz de midi',
     description: 'Cuisinez aux heures de plein soleil et laissez vos panneaux financer la note, littéralement.',
   },
   {
     category: 'Autonomie',
-    icon: (
-      <svg className="h-6 w-6 text-oe-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M12 3v12m-4-4l4 4 4-4M6 21h12" />
-      </svg>
-    ),
+    icon: iconLaveLinge,
     title: "L'eau chaude à volonté",
     description: 'Chauffe-eau, machine à laver, frigo : dimensionnés sur vos appareils réels, pas sur une moyenne nationale.',
   },
   {
     category: 'Sécurité',
-    icon: (
-      <svg className="h-6 w-6 text-oe-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M12 4a8 8 0 00-4 15 4 4 0 01-4-4m16-1a8 8 0 00-11-9m11 9a4 4 0 014 4" />
-      </svg>
-    ),
+    icon: iconPanneaux,
     title: 'Résistance anti-cyclonique',
     description: 'Fixations et matériel certifiés pour tenir face aux vents de l’île, saison après saison.',
   },
   {
     category: 'Sécurité',
-    icon: (
-      <svg className="h-6 w-6 text-oe-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
+    icon: iconBadge,
     title: 'Système anti-coupure',
     description: 'Vos batteries prennent le relais lors d’une coupure réseau : le frigo et l’essentiel continuent de tourner.',
   },
   {
     category: 'Sécurité',
-    icon: (
-      <svg className="h-6 w-6 text-oe-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
+    icon: iconPouce,
     title: 'Garanties claires',
     description: 'Durée, couverture, conditions : expliquées noir sur blanc avant la signature, sans petites lignes.',
   },
 ]
 
-// Données dynamiques pour le bloc de gauche (Effet Drawer)
 const CATEGORY_INFO = {
   'Autonomie': {
     eyebrow: '2.1 — Autonomie quotidienne',
@@ -119,13 +94,13 @@ const CATEGORY_INFO = {
   }
 }
 
+
 function Solutions() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Détermine la catégorie courante en fonction de l'index actif
   const currentCategory = SOLUTIONS_COMBINED[activeIndex]?.category || 'Autonomie';
-  const activeInfo = CATEGORY_INFO[currentCategory];
+  const activeInfo = CATEGORY_INFO[currentCategory as keyof typeof CATEGORY_INFO];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -136,7 +111,6 @@ function Solutions() {
           }
         });
       },
-      // Restreint la zone de détection au centre strict de l'écran
       { rootMargin: '-40% 0px -40% 0px' }
     );
 
@@ -187,20 +161,21 @@ function Solutions() {
         {/* --- BLOC PRINCIPAL AVEC SCROLL SPY --- */}
         <section id="autonomie-securite" className="relative flex flex-col lg:flex-row border-t border-white/10 bg-oe-navy">
           
-          {/* CÔTÉ GAUCHE : Bloc fixe avec effet Drawer */}
+          {/* CÔTÉ GAUCHE : Bloc fixe avec effet Drawer Global */}
           <div className="w-full lg:w-5/12 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16 py-12 lg:py-0 z-20 border-r border-white/10 bg-oe-navy">
-            <div className="max-w-md relative min-h-[300px]">
+            {/* L'espace réservé (min-h) évite les sauts de layout quand le contenu change */}
+            <div className="max-w-md relative min-h-[400px]">
               
-              {/* Effet d'animation Drawer pour le texte principal */}
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentCategory} // Clef importante pour relancer l'animation
+                  key={currentCategory} // Déclenche l'animation au changement de catégorie
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                   className="absolute top-0 left-0 w-full"
                 >
+                  {/* Titres */}
                   <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
                     {activeInfo.eyebrow}
                   </span>
@@ -242,43 +217,11 @@ function Solutions() {
 
                 </motion.div>
               </AnimatePresence>
-
-              {/* Navigation de gauche groupée par catégorie */}
-              <div className="absolute top-[220px] left-0 hidden lg:flex flex-col gap-8 w-full mt-8">
-                {['Autonomie', 'Sécurité'].map((catName) => (
-                  <div key={catName} className="flex flex-col gap-3">
-                    <span className={`font-sans text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 ${currentCategory === catName ? 'text-white/50' : 'text-white/20'}`}>
-                      {catName}
-                    </span>
-                    {SOLUTIONS_COMBINED.map((item, idx) => {
-                      if (item.category !== catName) return null;
-                      const isActive = activeIndex === idx;
-                      return (
-                        <div
-                          key={idx}
-                          className={`flex items-center gap-3 transition-all duration-300 ease-out ${
-                            isActive ? 'opacity-100 translate-x-2' : 'opacity-30'
-                          }`}
-                        >
-                          <div className={`w-1 h-5 transition-colors duration-300 ${
-                            isActive ? 'bg-oe-yellow' : 'bg-transparent'
-                          }`}></div>
-                          <span className={`font-sans font-bold text-xs tracking-wider uppercase transition-colors duration-300 ${
-                            isActive ? 'text-oe-yellow' : 'text-white'
-                          }`}>
-                            {item.title}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
           {/* CÔTÉ DROIT : Cartes individuelles centrées */}
-          <div className="w-full lg:w-7/12 relative px-6 md:px-12 lg:px-16 py-16 lg:py-32 flex flex-col">
+          <div className="w-full lg:w-7/12 relative px-6 md:px-12 lg:px-16 py-16 lg:py-20 flex flex-col">
             {SOLUTIONS_COMBINED.map((item, index) => {
               const isActive = activeIndex === index;
 
@@ -287,11 +230,9 @@ function Solutions() {
                   key={index}
                   ref={(el) => { sectionRefs.current[index] = el; }}
                   data-index={index}
-                  // Le min-h-[60vh] force l'espacement pour que l'utilisateur scroll de carte en carte
-                  className="flex items-center justify-center min-h-[60vh] w-full"
+                  className="flex items-center justify-center min-h-[40vh] w-full"
                 >
                   <motion.div
-                    // Animation dynamique pilotée par l'état `isActive` plutôt que le Viewport
                     animate={{ 
                       opacity: isActive ? 1 : 0.15,
                       scale: isActive ? 1 : 0.9,
@@ -303,9 +244,11 @@ function Solutions() {
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-6">
-                      <div className={`flex h-12 w-12 items-center justify-center shadow-md transition-all duration-500 ${isActive ? 'bg-oe-yellow scale-110' : 'bg-white/20 grayscale'}`}>
-                        {item.icon}
-                      </div>
+                      <img
+                        src={item.icon}
+                        alt=""
+                        className={`h-16 w-16 object-contain transition-all duration-500 ${isActive ? 'scale-110 opacity-100' : 'opacity-50 grayscale'}`}
+                      />
                     </div>
 
                     <h3 className={`font-display text-xl md:text-2xl uppercase tracking-wide transition-colors duration-500 ${isActive ? 'text-oe-yellow' : 'text-white'}`}>
