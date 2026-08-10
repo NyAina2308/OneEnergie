@@ -8,6 +8,11 @@ import installationToit from '../assets/photos/installation-toit.jpg'
 import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
 import solar from '../assets/photos/solarteam.jpg'
 
+// Nouveaux imports à remplacer par vos vraies photos de l'équipe
+import conseillerPhoto from '../assets/photos/solarworker.jpg'
+import technicienPhoto from '../assets/photos/solarworker2.jpg'
+import savPhoto from '../assets/photos/solarworker1.jpg'
+
 // Variantes typées pour Framer Motion
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
@@ -33,16 +38,19 @@ const ROLES = [
     title: 'Conseiller solaire',
     description:
       'Le premier visage : il écoute vos habitudes avant de parler matériel. Aucun jargon, aucune pression.',
+    image: conseillerPhoto,
   },
   {
     title: 'Technicien installateur',
     description:
       'Formé et équipé, il pose votre centrale et vos batteries selon les normes anti-cycloniques de l’île.',
+    image: technicienPhoto,
   },
   {
     title: 'Référent SAV',
     description:
       'Joignable après la mise en service pour le suivi de production, l’entretien et vos questions du quotidien.',
+    image: savPhoto,
   },
 ]
 
@@ -72,14 +80,29 @@ function Team() {
                 <motion.div
                   key={role.title}
                   variants={fadeInUp}
-                  className="group flex flex-col border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl"
+                  className="group flex flex-col overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl"
                 >
-                  <h3 className="font-display text-xl uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-oe-yellow">
-                    {role.title}
-                  </h3>
-                  <p className="mt-4 font-sans text-sm font-light leading-relaxed text-white/70">
-                    {role.description}
-                  </p>
+                  {/* Conteneur Image avec overlay et effet de zoom */}
+                  <div className="relative h-56 w-full overflow-hidden border-b border-white/10">
+                    <img
+                      src={role.image}
+                      alt={role.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+                    />
+                    {/* Dégradé sombre pour fondre l'image dans le thème navy */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-oe-navy/90 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-50"></div>
+                  </div>
+                  
+                  {/* Conteneur Texte */}
+                  <div className="flex flex-1 flex-col p-8">
+                    <h3 className="font-display text-xl uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-oe-yellow">
+                      {role.title}
+                    </h3>
+                    <p className="mt-4 font-sans text-sm font-light leading-relaxed text-white/70">
+                      {role.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

@@ -7,7 +7,8 @@ import { motion, type Variants } from 'framer-motion';
 
 // Composant d'animation de texte lettre par lettre
 export const ProgressiveText: React.FC<{ text: string; className?: string }> = ({ text, className }) => {
-  const letters = Array.from(text);
+  // Séparation du texte en mots pour préserver leur intégrité lors du retour à la ligne
+  const words = text.split(' ');
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -37,14 +38,23 @@ export const ProgressiveText: React.FC<{ text: string; className?: string }> = (
       viewport={{ once: true }}
       style={{ display: 'inline-block' }}
     >
-      {letters.map((letter, index) => (
-        <motion.span 
-          key={index} 
-          variants={letterVariants}
-          style={{ display: 'inline-block', whiteSpace: 'pre' }}
-        >
-          {letter}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <React.Fragment key={wordIndex}>
+          {/* Chaque mot est un bloc indivisible */}
+          <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+            {Array.from(word).map((letter, letterIndex) => (
+              <motion.span 
+                key={`${wordIndex}-${letterIndex}`} 
+                variants={letterVariants}
+                style={{ display: 'inline-block' }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </span>
+          {/* Espace naturel inséré entre les mots pour autoriser le retour à la ligne */}
+          {wordIndex < words.length - 1 && ' '}
+        </React.Fragment>
       ))}
     </motion.span>
   );
