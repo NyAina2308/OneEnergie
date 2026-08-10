@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
-import { ARTICLES } from '../data/articles'
 import solar from '../assets/photos/solarcontact1.jpg'
 
 const APPAREILS = [

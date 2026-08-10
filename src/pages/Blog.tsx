@@ -1,30 +1,11 @@
 import { Link } from 'react-router-dom'
-import { motion,type Variants} from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
 import mascotte from '../assets/brand/mascotte-1.png'
 import { ARTICLES } from '../data/articles'
 import solar from '../assets/photos/solarpointing.jpg' 
-
-function ArticleSvgIcon() {
-  return (
-    <svg 
-      className="h-6 w-6 text-oe-navy" 
-      fill="none" 
-      stroke="currentColor" 
-      viewBox="0 0 24 24" 
-      aria-hidden="true"
-    >
-      <path 
-        strokeLinecap="square" 
-        strokeLinejoin="miter" 
-        strokeWidth={2} 
-        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
-      />
-    </svg>
-  )
-}
 
 // Variantes pour l'effet Stagger (apparition en cascade)
 const containerVariants = {
@@ -80,7 +61,7 @@ export default function Blog() {
               </p>
             </motion.div>
 
-            {/* Grille d'articles avec apparition Stagger Fade-In */}
+            {/* Grille d'articles */}
             <motion.div 
               variants={containerVariants}
               initial="hidden"
@@ -92,27 +73,40 @@ export default function Blog() {
                 <motion.div key={article.slug} variants={itemVariants}>
                   <Link
                     to={`/guide-du-pigeon/${article.slug}`}
-                    className="group flex h-full flex-col justify-between border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oe-yellow"
+                    className="group flex h-full flex-col justify-between overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oe-yellow"
                   >
-                    <article>
-                      <div className="flex h-12 w-12 items-center justify-center bg-oe-yellow shadow-md">
-                        <ArticleSvgIcon />
+                    <article className="flex flex-col">
+                      {/* Image plein largeur (sans padding autour) */}
+                      <div className="h-52 w-full overflow-hidden border-b border-white/10">
+                        <img 
+                          src={article.imageUrl} 
+                          alt={article.title} 
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        />
                       </div>
-                      <h2 className="font-display mt-6 text-xl uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-oe-yellow">
-                        {article.title}
-                      </h2>
-                      <p className="mt-3 font-sans text-sm leading-relaxed text-white/70">
-                        {article.excerpt}
-                      </p>
+                      
+                      {/* Contenu textuel avec padding */}
+                      <div className="p-8 pb-0">
+                        <h2 className="font-display text-xl uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-oe-yellow">
+                          {article.title}
+                        </h2>
+                        <p className="mt-3 font-sans text-sm leading-relaxed text-white/70">
+                          {article.excerpt}
+                        </p>
+                      </div>
                     </article>
 
-                    <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4">
-                      <span className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow transition-transform duration-300 group-hover:translate-x-1">
-                        Lire l'article · {article.readTime}
-                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </span>
+                    {/* Pied de carte avec padding */}
+                    <div className="p-8 pt-6">
+                      <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                        <span className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow transition-transform duration-300 group-hover:translate-x-1">
+                          Lire l'article · {article.readTime}
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>

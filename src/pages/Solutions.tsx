@@ -4,6 +4,12 @@ import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
 import mascotte from '../assets/brand/mascotte-1.png'
+import iconSoleil from '../assets/icons/icon-soleil-lunettes.svg'
+import iconMascotteSolaire from '../assets/icons/icon-mascotte-solaire.svg'
+import iconLaveLinge from '../assets/icons/icon-lave-linge.svg'
+import iconPanneaux from '../assets/icons/icon-panneaux-empiles.svg'
+import iconBadge from '../assets/icons/icon-badge-eclair.svg'
+import iconPouce from '../assets/icons/icon-pouce-leve.svg'
 import installationToit from '../assets/photos/installation-toit.jpg'
 import panneauxToiture from '../assets/photos/panneaux-toiture.jpg'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
@@ -152,7 +158,6 @@ function Solutions() {
           backgroundImage={solarguyBg} 
         />
 
-        {/* Pédagogie café-cuisine */}
         <section className="border-t border-white/10 py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <motion.div 
@@ -205,6 +210,36 @@ function Solutions() {
                   <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
                     {activeInfo.description}
                   </p>
+
+                  {/* Navigation dynamique (uniquement les liens du groupe courant) */}
+                  <div className="mt-12 hidden lg:flex flex-col gap-4 w-full">
+                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">
+                      {currentCategory}
+                    </span>
+                    
+                    {SOLUTIONS_COMBINED.map((item, idx) => {
+                      if (item.category !== currentCategory) return null;
+                      const isActive = activeIndex === idx;
+                      return (
+                        <div
+                          key={idx}
+                          className={`flex items-center gap-3 transition-all duration-300 ease-out ${
+                            isActive ? 'opacity-100 translate-x-2' : 'opacity-40'
+                          }`}
+                        >
+                          <div className={`w-1 h-5 transition-colors duration-300 ${
+                            isActive ? 'bg-oe-yellow' : 'bg-transparent'
+                          }`}></div>
+                          <span className={`font-sans font-bold text-xs tracking-wider uppercase transition-colors duration-300 ${
+                            isActive ? 'text-oe-yellow' : 'text-white'
+                          }`}>
+                            {item.title}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
                 </motion.div>
               </AnimatePresence>
 
