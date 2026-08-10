@@ -1,6 +1,6 @@
 export type Article = {
   slug: string
-  icon: string
+  imageUrl: string
   title: string
   excerpt: string
   readTime: string
@@ -10,7 +10,7 @@ export type Article = {
 export const ARTICLES: Article[] = [
   {
     slug: 'comprendre-sa-facture-et-les-aides-a-la-reunion',
-    icon: '🧾',
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxqA5wdanDwgqGXplI_aODrULdfItlclaFkA&s',
     title: 'Comprendre sa facture et les aides à La Réunion',
     excerpt:
       'Talon de consommation, kilowattheure, aides EDF : on démonte le jargon pour vous montrer ce qui compte vraiment.',
@@ -40,7 +40,7 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: 'comment-bien-comparer-deux-devis-solaires',
-    icon: '🔍',
+    imageUrl: 'https://www.datocms-assets.com/106226/1767978011-devis-panneau-solaire.png',
     title: 'Comment bien comparer deux devis solaires',
     excerpt:
       'Deux devis, deux prix, deux promesses différentes. Voici les questions à poser avant de signer quoi que ce soit.',

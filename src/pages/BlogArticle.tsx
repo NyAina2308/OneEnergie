@@ -26,7 +26,7 @@ function BlogArticle() {
         <section className="border-t border-white/10 py-16 md:py-24">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             
-            {/* Bouton retour avec flèche SVG */}
+            {/* Bouton retour */}
             <Link
               to="/guide-du-pigeon"
               className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow transition-colors duration-300 hover:text-white"
@@ -37,8 +37,17 @@ function BlogArticle() {
               Retour au guide
             </Link>
 
+            {/* Image principale de l'article */}
+            <div className="mt-8 h-64 w-full overflow-hidden border border-white/10 shadow-xl sm:h-80 md:h-96">
+              <img
+                src={article.imageUrl}
+                alt={article.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
             {/* Sections de l'article */}
-            <div className="mt-10 flex flex-col gap-12">
+            <div className="mt-12 flex flex-col gap-12">
               {article.sections.map((section) => (
                 <div key={section.heading} className="border-l-2 border-oe-yellow pl-6 md:pl-8">
                   <h2 className="font-display text-2xl uppercase tracking-wide text-white md:text-3xl">
