@@ -50,11 +50,11 @@ function Header({ overlay = false }: { overlay?: boolean }) {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `px-3.5 py-1.5 font-sans text-xs font-bold uppercase tracking-[0.15em] transition-all duration-200 ${
+                `px-3.5 py-1.5 rounded-3xl font-sans text-xs font-bold uppercase tracking-[0.15em] transition-all duration-200 ${
                   isActive
                     ? 'bg-oe-yellow text-oe-navy shadow-sm'
                     : solid
-                      ? 'text-oe-navy hover:bg-oe-navy/5 hover:text-oe-blue'
+                      ? 'text-oe-navy hover:bg-sky-600/5 hover:text-oe-blue'
                       : 'text-white/90 hover:bg-white/10 hover:text-oe-yellow'
                 }`
               }
@@ -68,9 +68,9 @@ function Header({ overlay = false }: { overlay?: boolean }) {
         <div className="hidden lg:block">
           <Link
             to="/contact"
-            className={`px-6 py-2.5 font-sans text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+            className={`px-6 py-2.5 font-sans rounded-3xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
               solid
-                ? 'bg-oe-navy text-oe-yellow hover:bg-oe-blue hover:text-white'
+                ? 'bg-sky-600 text-oe-yellow hover:bg-oe-blue hover:text-white'
                 : 'border border-oe-yellow text-oe-yellow hover:bg-oe-yellow hover:text-oe-navy'
             }`}
           >
@@ -86,17 +86,17 @@ function Header({ overlay = false }: { overlay?: boolean }) {
           onClick={() => setOpen((v) => !v)}
         >
           <span
-            className={`h-0.5 w-6 transition-all duration-300 ${solid ? 'bg-oe-navy' : 'bg-white'} ${
+            className={`h-0.5 w-6 transition-all duration-300 ${solid ? 'bg-sky-600' : 'bg-white'} ${
               open ? 'translate-y-2 rotate-45' : ''
             }`}
           />
           <span
-            className={`h-0.5 w-6 transition-all duration-300 ${solid ? 'bg-oe-navy' : 'bg-white'} ${
+            className={`h-0.5 w-6 transition-all duration-300 ${solid ? 'bg-sky-600' : 'bg-white'} ${
               open ? 'opacity-0' : ''
             }`}
           />
           <span
-            className={`h-0.5 w-6 transition-all duration-300 ${solid ? 'bg-oe-navy' : 'bg-white'} ${
+            className={`h-0.5 w-6 transition-all duration-300 ${solid ? 'bg-sky-600' : 'bg-white'} ${
               open ? '-translate-y-2 -rotate-45' : ''
             }`}
           />
@@ -108,7 +108,7 @@ function Header({ overlay = false }: { overlay?: boolean }) {
         <div
           className={`absolute inset-x-0 top-full border-t px-6 py-6 shadow-xl transition-all lg:hidden ${
             overlay && !scrolled
-              ? 'border-white/10 bg-oe-navy/95 backdrop-blur-md'
+              ? 'border-white/10 bg-sky-600/95 backdrop-blur-md'
               : 'border-oe-navy/10 bg-oe-cream'
           }`}
         >
@@ -124,7 +124,7 @@ function Header({ overlay = false }: { overlay?: boolean }) {
                       ? 'bg-oe-yellow text-oe-navy'
                       : overlay && !scrolled
                         ? 'text-white hover:bg-white/10'
-                        : 'text-oe-navy hover:bg-oe-navy/5'
+                        : 'text-oe-navy hover:bg-sky-600/5'
                   }`
                 }
               >

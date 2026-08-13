@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import client1 from '../assets/photos/woman.jpg';
 import client2 from '../assets/photos/woman2.jpg';
+import installation1 from '../assets/photos/solarrain.jpg';
 import { motion, type Variants } from 'framer-motion';
 
 const fadeInVariants: Variants = {
@@ -23,6 +24,7 @@ const TESTIMONIALS = [
     author: "Mireille P.",
     location: "Saint-Pierre",
     image: client1,
+    installationImage: installation1,
   },
   {
     id: 2,
@@ -30,6 +32,7 @@ const TESTIMONIALS = [
     author: "Jean-Marc T.",
     location: "Saint-Denis",
     image: client2,
+    installationImage: installation1,
   },
 ];
 
@@ -37,167 +40,152 @@ function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
-  const handleSlideChange = (newIndex: number) => {
-    setFade(false);
+  // Amélioration de l'effet Fade In / Fade Out
+  const handleSlideChange = useCallback((newIndex: number) => {
+    setFade(false); // Déclenche le fade out
     setTimeout(() => {
-      setActiveIndex(newIndex);
-      setFade(true);
-    }, 200);
-  };
+      setActiveIndex(newIndex); // Change les données quand l'opacité est à 0
+      setFade(true); // Déclenche le fade in
+    }, 400); // 400ms pour laisser le temps au fondu de se faire
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     handleSlideChange((activeIndex + 1) % TESTIMONIALS.length);
-  };
+  }, [activeIndex, handleSlideChange]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     handleSlideChange((activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  };
+  }, [activeIndex, handleSlideChange]);
+
+  // Défilement automatique toutes les 7 secondes (4s + 3s)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, [handleNext]);
 
   const activeTestimonial = TESTIMONIALS[activeIndex];
 
   return (
-    <section className="bg-oe-navy py-24 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-[20%] left-0 right-0 h-px bg-white/5"></div>
-        <div className="absolute bottom-[20%] left-0 right-0 h-px bg-white/5"></div>
-      </div>
-
+    <section className="bg-oe-navy py-24 relative overflow-hidden font-sans">
       <div className="mx-auto max-w-7xl px-5 md:px-8 relative z-10">
         
-        <motion.div 
-          custom={0.2} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
-          className="text-center mb-16"
-        >
-          <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-oe-yellow uppercase mb-3 flex items-center justify-center gap-4">
-            <span className="w-8 h-px bg-oe-yellow hidden sm:block"></span>
-            Témoignages clients
-            <span className="w-8 h-px bg-oe-yellow hidden sm:block"></span>
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl text-white uppercase tracking-wider font-light">
-            Ils nous font <span className="text-oe-yellow font-normal italic">confiance</span>
-          </h2>
-        </motion.div>
-
-        <motion.div 
-          custom={0.4} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
-          className="flex flex-col md:flex-row items-center justify-center gap-6"
-        >
+        <div className="flex flex-col lg:flex-row gap-10 lg:items-center">
           
-          {/* Bouton Précédent */}
-          <button 
-            onClick={handlePrev}
-            aria-label="Témoignage précédent"
-            className="hidden lg:block relative w-32 h-64 overflow-hidden group cursor-pointer focus:outline-none"
-          >
-            <div className="absolute inset-0 bg-oe-blue/80 mix-blend-multiply group-hover:bg-oe-navy/60 transition-colors z-10"></div>
-            <img 
-              src={TESTIMONIALS[(activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length].image} 
-              alt="Précédent" 
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-            <div className="relative z-20 h-full flex items-center justify-center text-white/60 group-hover:text-oe-yellow text-2xl transition-all group-hover:-translate-x-1">
-              ←
-            </div>
-          </button>
-
-          {/* Carte Active */}
-          <div 
-            className={`bg-oe-cream flex flex-col md:flex-row w-full max-w-4xl shadow-2xl relative transition-all duration-300 ease-in-out transform ${
-              fade ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-[0.99]'
+          {/* Côté Gauche : Bloc de Texte et Contrôles */}
+          <motion.div 
+            custom={0.2} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, margin: "-100px" }} 
+            variants={fadeInVariants}
+            className={`flex-1 p-8 md:p-12 bg-gradient-to-br from-oe-navy to-oe-blue-dark rounded-[60px_0_0_60px] shadow-2xl relative transition-opacity duration-500 ease-in-out ${
+              fade ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className="w-full md:w-5/12 relative min-h-[320px] overflow-hidden">
+            {/* Éléments décoratifs */}
+            <div className="absolute top-10 left-10 w-4 h-4 rounded-full bg-oe-yellow opacity-60"></div>
+            <div className="absolute bottom-10 right-10 w-3 h-3 rounded-full bg-oe-blue opacity-40"></div>
+            
+            <p className="text-sm tracking-[0.3em] text-oe-cream uppercase mb-4">
+              Témoignages clients
+            </p>
+            
+            <h2 className="text-4xl lg:text-5xl text-oe-cream uppercase tracking-wider font-light leading-snug mb-6">
+              <span className="font-extralight">ILS NOUS FONT</span> <span className="text-oe-yellow font-normal italic">CONFIANCE</span>
+            </h2>
+            
+            <span className="font-display text-7xl text-oe-yellow leading-none block mb-4 select-none opacity-80">“</span>
+            
+            <p className="text-lg lg:text-xl text-oe-cream leading-relaxed font-light mb-8 min-h-[120px]">
+              {activeTestimonial.quote}
+            </p>
+            
+            <div className="flex items-center gap-4 mb-10">
+              <h4 className="font-bold text-oe-cream text-sm uppercase tracking-widest">
+                {activeTestimonial.author}
+              </h4>
+              <p className="text-xs text-oe-cream/70 uppercase">
+                {activeTestimonial.location}
+              </p>
+            </div>
+
+            {/* Boutons de navigation & Puces */}
+            <div className="flex items-center gap-6">
+              <div className="flex gap-3">
+                <button 
+                  onClick={handlePrev}
+                  className="w-12 h-12 rounded-full border-2 border-oe-blue/30 flex items-center justify-center text-oe-blue transition-all hover:bg-oe-blue hover:text-white hover:border-oe-blue shadow-lg"
+                  aria-label="Témoignage précédent"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                
+                <button 
+                  onClick={handleNext}
+                  className="w-12 h-12 rounded-full border-2 border-oe-blue/30 flex items-center justify-center text-oe-blue transition-all hover:bg-oe-blue hover:text-white hover:border-oe-blue shadow-lg"
+                  aria-label="Témoignage suivant"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Puces de progression */}
+              <div className="flex gap-2">
+                {TESTIMONIALS.map((_, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => handleSlideChange(idx)}
+                    aria-label={`Aller au témoignage ${idx + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === activeIndex ? 'w-8 bg-oe-yellow' : 'w-2 bg-white/20 hover:bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Côté Droit : Paire d'Images (Désaxées et symétriques) */}
+          <motion.div 
+            custom={0.4} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, margin: "-100px" }} 
+            variants={fadeInVariants}
+            className={`flex-1 flex flex-col md:flex-row gap-6 relative pb-12 transition-opacity duration-500 ease-in-out ${
+              fade ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {/* Image 1 : Photo client (Alignée en haut, coins opposés) */}
+            <div className="flex-1 rounded-[60px_0_60px_0] overflow-hidden bg-oe-cream relative aspect-[2/3] shadow-xl">
               <img 
                 src={activeTestimonial.image} 
                 alt={activeTestimonial.author}
-                className="absolute inset-0 w-full h-full object-cover grayscale-[20%] transition-transform duration-700 hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-oe-navy/40 via-transparent to-transparent md:hidden"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-oe-navy/40 via-transparent to-transparent"></div>
             </div>
             
-            <div className="w-full md:w-7/12 p-8 md:p-14 flex flex-col justify-between">
-              <div>
-                <span className="font-display text-6xl text-oe-yellow leading-none block mb-2 select-none">“</span>
-                <p className="font-sans text-base md:text-lg text-oe-navy leading-relaxed font-light">
-                  {activeTestimonial.quote}
-                </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-oe-navy/10 flex items-center justify-between">
-                <div>
-                  <h4 className="font-sans font-bold text-oe-navy text-sm uppercase tracking-widest">
-                    {activeTestimonial.author}
-                  </h4>
-                  <p className="font-sans text-xs text-oe-navy/60 uppercase mt-0.5">
-                    {activeTestimonial.location}
-                  </p>
-                </div>
-
-                {/* Indicateurs */}
-                <div className="flex gap-1.5">
-                  {TESTIMONIALS.map((_, idx) => (
-                    <button 
-                      key={idx}
-                      onClick={() => handleSlideChange(idx)}
-                      aria-label={`Aller au témoignage ${idx + 1}`}
-                      className={`h-1.5 rounded-full transition-all ${
-                        idx === activeIndex ? 'w-6 bg-oe-blue' : 'w-1.5 bg-oe-navy/20 hover:bg-oe-navy/40'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bouton Suivant */}
-          <button 
-            onClick={handleNext}
-            aria-label="Témoignage suivant"
-            className="hidden lg:block relative w-32 h-64 overflow-hidden group cursor-pointer focus:outline-none"
-          >
-            <div className="absolute inset-0 bg-oe-blue/80 mix-blend-multiply group-hover:bg-oe-navy/60 transition-colors z-10"></div>
-            <img 
-              src={TESTIMONIALS[(activeIndex + 1) % TESTIMONIALS.length].image} 
-              alt="Suivant" 
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-            <div className="relative z-20 h-full flex items-center justify-center text-white/60 group-hover:text-oe-yellow text-2xl transition-all group-hover:translate-x-1">
-              →
-            </div>
-          </button>
-
-        </motion.div>
-
-        {/* Navigation Mobile */}
-        <motion.div 
-          custom={0.5} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
-          className="flex justify-center items-center gap-6 mt-8 lg:hidden"
-        >
-          <button 
-            onClick={handlePrev} 
-            className="text-white/70 hover:text-oe-yellow font-sans text-sm tracking-widest uppercase transition"
-          >
-            ← Précédent
-          </button>
-          <div className="flex gap-1.5">
-            {TESTIMONIALS.map((_, idx) => (
-              <span 
-                key={idx}
-                className={`h-1.5 rounded-full transition-all ${
-                  idx === activeIndex ? 'w-5 bg-oe-yellow' : 'w-1.5 bg-white/30'
-                }`}
+            {/* Image 2 : Installation solaire (Désaxée vers le bas, coins opposés inverses) */}
+            <div className="flex-1 rounded-[0_60px_0_60px] overflow-hidden bg-oe-cream relative aspect-[2/3] shadow-xl mt-4 md:mt-0 md:translate-y-12">
+              <img 
+                src={activeTestimonial.installationImage} 
+                alt="Installation solaire"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
-            ))}
-          </div>
-          <button 
-            onClick={handleNext} 
-            className="text-white/70 hover:text-oe-yellow font-sans text-sm tracking-widest uppercase transition"
-          >
-            Suivant →
-          </button>
-        </motion.div>
-
+              <div className="absolute inset-0 bg-gradient-to-t from-oe-navy/30 via-transparent to-transparent"></div>
+            </div>
+          </motion.div>
+          
+        </div>
+        
       </div>
     </section>
   );

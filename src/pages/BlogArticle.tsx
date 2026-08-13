@@ -23,7 +23,7 @@ function BlogArticle() {
           title={article.title}
         />
 
-        <section className="border-t border-white/10 py-16 md:py-24">
+        <section className="border-t border-white/10 py-16 md:py-24 ">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             
             {/* Bouton retour */}
@@ -38,7 +38,7 @@ function BlogArticle() {
             </Link>
 
             {/* Image principale de l'article */}
-            <div className="mt-8 h-64 w-full overflow-hidden border border-white/10 shadow-xl sm:h-80 md:h-96">
+            <div className="mt-8 h-64 w-full overflow-hidden border border-white/10 rounded-3xl shadow-xl sm:h-80 md:h-96">
               <img
                 src={article.imageUrl}
                 alt={article.title}
@@ -66,7 +66,7 @@ function BlogArticle() {
 
             {/* Recommandations en bas de page */}
             {otherArticles.length > 0 && (
-              <div className="mt-20 border border-white/10 bg-white/5 p-8 md:p-10">
+              <div className="mt-20 border rounded-3xl border-white/10 bg-white/5 p-8 md:p-10">
                 <h3 className="mb-6 flex items-center gap-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-oe-yellow">
                   <span className="h-px w-6 bg-oe-yellow"></span>
                   À lire aussi

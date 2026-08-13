@@ -83,43 +83,49 @@ const SOLUTIONS_COMBINED: SolutionItem[] = [
 
 const CATEGORY_INFO = {
   'Autonomie': {
-    eyebrow: '2.1 — Autonomie quotidienne',
+    eyebrow: '• Autonomie quotidienne',
     title: 'Gérez votre confort, faites baisser la facture',
     description: "On dimensionne votre installation sur vos usages réels, pas sur une moyenne : clim, cuisine, eau chaude, tout compte.",
   },
   'Sécurité': {
-    eyebrow: '2.2 — Sécurité & continuité',
+    eyebrow: '• Sécurité & continuité',
     title: 'Un système anti-coupure, prêt pour le cyclone',
     description: "Dormez tranquille : votre installation est pensée pour encaisser les aléas de l'île, pas seulement les beaux jours.",
   }
 }
 
-
 function Solutions() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const currentCategory = SOLUTIONS_COMBINED[activeIndex]?.category || 'Autonomie';
   const activeInfo = CATEGORY_INFO[currentCategory as keyof typeof CATEGORY_INFO];
 
+  // Logique de calcul du scroll vertical converti en défilement horizontal discret
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(Number(entry.target.getAttribute('data-index')));
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -40% 0px' }
-    );
+    const handleScroll = () => {
+      if (!containerRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      const totalScrollableHeight = rect.height - window.innerHeight
+      
+      if (totalScrollableHeight <= 0) return
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+      const currentScroll = -rect.top
+      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollableHeight))
 
-    return () => observer.disconnect();
-  }, []);
+      const stepIndex = Math.min(
+        SOLUTIONS_COMBINED.length - 1,
+        Math.floor(progress * SOLUTIONS_COMBINED.length)
+      )
+      
+      setActiveIndex(stepIndex)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initialisation au montage
+    
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">
@@ -139,7 +145,8 @@ function Solutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="flex flex-col items-center gap-8 border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10 md:flex-row md:text-left"
+              // Ajout de rounded-3xl pour s'aligner sur les courbes de la maquette
+              className="flex flex-col items-center gap-8 border border-white/10 bg-white/5 rounded-3xl p-8 text-center shadow-2xl sm:p-10 md:flex-row md:text-left"
             >
               <img
                 src={mascotte}
@@ -158,109 +165,118 @@ function Solutions() {
           </div>
         </section>
 
-        {/* --- BLOC PRINCIPAL AVEC SCROLL SPY --- */}
-        <section id="autonomie-securite" className="relative flex flex-col lg:flex-row border-t border-white/10 bg-oe-navy">
+        {/* --- BLOC PRINCIPAL : SCROLL VERTICAL -> DÉFILEMENT HORIZONTAL --- */}
+        <section ref={containerRef} id="autonomie-securite" className="relative h-[350vh] border-t border-white/10 bg-oe-navy">
           
-          {/* CÔTÉ GAUCHE : Bloc fixe avec effet Drawer Global */}
-          <div className="w-full lg:w-5/12 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16 py-12 lg:py-0 z-20 border-r border-white/10 bg-oe-navy">
-            {/* L'espace réservé (min-h) évite les sauts de layout quand le contenu change */}
-            <div className="max-w-md relative min-h-[400px]">
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentCategory} // Déclenche l'animation au changement de catégorie
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="absolute top-0 left-0 w-full"
-                >
-                  {/* Titres */}
-                  <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                    {activeInfo.eyebrow}
-                  </span>
-                  <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
-                    {activeInfo.title}
-                  </h2>
-                  <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
-                    {activeInfo.description}
-                  </p>
+          <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden bg-oe-navy z-10">
 
-                  {/* Navigation dynamique (uniquement les liens du groupe courant) */}
-                  <div className="mt-12 hidden lg:flex flex-col gap-4 w-full">
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">
-                      {currentCategory}
-                    </span>
-                    
-                    {SOLUTIONS_COMBINED.map((item, idx) => {
-                      if (item.category !== currentCategory) return null;
-                      const isActive = activeIndex === idx;
-                      return (
-                        <div
-                          key={idx}
-                          className={`flex items-center gap-3 transition-all duration-300 ease-out ${
-                            isActive ? 'opacity-100 translate-x-2' : 'opacity-40'
-                          }`}
-                        >
-                          <div className={`w-1 h-5 transition-colors duration-300 ${
-                            isActive ? 'bg-oe-yellow' : 'bg-transparent'
-                          }`}></div>
-                          <span className={`font-sans font-bold text-xs tracking-wider uppercase transition-colors duration-300 ${
-                            isActive ? 'text-oe-yellow' : 'text-white'
-                          }`}>
-                            {item.title}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
-          {/* CÔTÉ DROIT : Cartes individuelles centrées */}
-          <div className="w-full lg:w-7/12 relative px-6 md:px-12 lg:px-16 py-16 lg:py-20 flex flex-col">
-            {SOLUTIONS_COMBINED.map((item, index) => {
-              const isActive = activeIndex === index;
-
-              return (
-                <div
-                  key={index}
-                  ref={(el) => { sectionRefs.current[index] = el; }}
-                  data-index={index}
-                  className="flex items-center justify-center min-h-[40vh] w-full"
-                >
+            {/* HAUT : Bloc fixe (Titres et descriptions de la catégorie) */}
+            <div className="w-full h-[45vh] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-8 z-20 border-b border-white/10 bg-oe-navy">
+              <div className="max-w-4xl relative min-h-[180px] md:min-h-[160px] w-full mx-auto">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    animate={{ 
-                      opacity: isActive ? 1 : 0.15,
-                      scale: isActive ? 1 : 0.9,
-                      y: isActive ? 0 : 20
-                    }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                    className={`group w-full max-w-xl flex flex-col items-start border p-8 md:p-10 transition-all duration-500 ${
-                      isActive ? 'border-oe-yellow/50 bg-white/10 shadow-2xl' : 'border-white/5 bg-white/5'
-                    }`}
+                    key={currentCategory} 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -30 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute bottom-0 left-0 w-full"
                   >
-                    <div className="flex items-center justify-between w-full mb-6">
-                      <img
-                        src={item.icon}
-                        alt=""
-                        className={`h-16 w-16 object-contain transition-all duration-500 ${isActive ? 'scale-110 opacity-100' : 'opacity-50 grayscale'}`}
-                      />
-                    </div>
-
-                    <h3 className={`font-display text-xl md:text-2xl uppercase tracking-wide transition-colors duration-500 ${isActive ? 'text-oe-yellow' : 'text-white'}`}>
-                      {item.title}
-                    </h3>
-                    <p className={`mt-3 font-sans text-sm md:text-base leading-relaxed transition-colors duration-500 ${isActive ? 'text-white/90' : 'text-white/50'}`}>
-                      {item.description}
+                    <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow flex items-center gap-2">
+                      {activeInfo.eyebrow}
+                    </span>
+                    {/* Retrait du uppercase, ajout de font-bold pour coller au style des titres de l'image */}
+                    <h2 className="font-display mt-3 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+                      {activeInfo.title}
+                    </h2>
+                    <p className="mt-4 font-sans font-light leading-relaxed text-white/70 max-w-2xl text-sm md:text-base">
+                      {activeInfo.description}
                     </p>
+
+                    {/* Sous-navigation dynamique */}
+                    <div className="mt-8 hidden md:flex flex-row gap-6 w-full items-center">
+                      <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/50">
+                        {currentCategory}
+                      </span>
+                      <div className="flex gap-4">
+                        {SOLUTIONS_COMBINED.map((item, idx) => {
+                          if (item.category !== currentCategory) return null;
+                          const isActive = activeIndex === idx;
+                          return (
+                            <div
+                              key={idx}
+                              className={`flex items-center gap-2 transition-all duration-300 ease-out ${
+                                isActive ? 'opacity-100 translate-x-1' : 'opacity-40'
+                              }`}
+                            >
+                              <div className={`w-1 h-3 rounded-full transition-colors duration-300 ${
+                                isActive ? 'bg-oe-yellow' : 'bg-transparent border border-white/50'
+                              }`}></div>
+                              <span className={`font-sans font-bold text-[10px] tracking-wider uppercase transition-colors duration-300 ${
+                                isActive ? 'text-oe-yellow' : 'text-white'
+                              }`}>
+                                {item.title}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </motion.div>
-                </div>
-              );
-            })}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* BAS : Défilement Horizontal des cartes */}
+            <div className="w-full h-[55vh] relative flex items-center justify-center overflow-hidden bg-oe-navy">
+              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 -translate-y-1/2 pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#0066FF]/10 rounded-full blur-[100px] pointer-events-none" /> {/* Lueur bleutée rappelant les accents de la maquette */}
+
+              <div className="relative w-full max-w-md h-full flex items-center justify-center z-10">
+                {SOLUTIONS_COMBINED.map((item, index) => {
+                  const offset = index - activeIndex
+                  const isActive = offset === 0
+
+                  const translateX = `calc(${offset} * clamp(340px, 85vw, 480px))`
+                  const opacity = Math.abs(offset) > 1.5 ? 0 : isActive ? 1 : 0.3
+                  const scale = isActive ? 1 : 0.85
+
+                  return (
+                    <div
+                      key={index}
+                      className="absolute w-[85vw] max-w-[360px] md:max-w-md transition-all duration-500 ease-out transform"
+                      style={{
+                        transform: `translate3d(${translateX}, 0, 0) scale(${scale})`,
+                        opacity: opacity,
+                        zIndex: isActive ? 20 : 10 - Math.abs(offset),
+                        pointerEvents: isActive ? 'auto' : 'none',
+                      }}
+                    >
+                      {/* Remplacement des angles droits par rounded-[2rem] pour reproduire les cartes du design */}
+                      <div className={`group w-full flex flex-col items-start border rounded-[2rem] p-8 md:p-10 transition-all duration-500 ${
+                        isActive ? 'border-oe-yellow/30 bg-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)] backdrop-blur-md' : 'border-white/5 bg-white/5'
+                      }`}>
+                        <div className="flex items-center justify-between w-full mb-6">
+                          <img
+                            src={item.icon}
+                            alt=""
+                            className={`h-16 w-16 object-contain transition-all duration-500 ${isActive ? 'scale-110 opacity-100 drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]' : 'opacity-50 grayscale'}`}
+                          />
+                        </div>
+                        {/* Typographie de carte: Font-bold, sans l'uppercase systématique */}
+                        <h3 className={`font-display text-xl md:text-2xl font-bold tracking-wide transition-colors duration-500 ${isActive ? 'text-white' : 'text-white/70'}`}>
+                          {item.title}
+                        </h3>
+                        <p className={`mt-3 font-sans text-sm md:text-base leading-relaxed transition-colors duration-500 ${isActive ? 'text-white/90' : 'text-white/50'}`}>
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -275,9 +291,10 @@ function Solutions() {
               className="mx-auto max-w-2xl text-center"
             >
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                En image
+                • En image
               </span>
-              <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
+              {/* Ajustement du titre ici aussi (retrait du uppercase, ajout font-bold) */}
+              <h2 className="font-display mt-3 text-3xl font-bold text-white sm:text-4xl">
                 Des installations bien réelles
               </h2>
             </motion.div>
@@ -318,7 +335,8 @@ function Solutions() {
                 <motion.figure
                   key={photo.src}
                   variants={fadeInUp}
-                  className={`group relative overflow-hidden border border-white/10 bg-white/5 min-h-[250px] md:min-h-0 ${photo.className}`}
+                  // Ajout de rounded-3xl sur les images de la grille pour matcher le style "Bento" adouci de la maquette
+                  className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 min-h-[250px] md:min-h-0 ${photo.className}`}
                 >
                   <img
                     src={photo.src}

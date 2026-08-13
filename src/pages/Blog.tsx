@@ -48,7 +48,7 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="mb-14 flex flex-col items-center gap-6 border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm sm:flex-row sm:text-left"
+              className="mb-14 flex flex-col items-center gap-6 border border-white/10 bg-white/5 rounded-3xl p-8 text-center backdrop-blur-sm sm:flex-row sm:text-left"
             >
               <img 
                 src={mascotte} 
@@ -73,7 +73,7 @@ export default function Blog() {
                 <motion.div key={article.slug} variants={itemVariants}>
                   <Link
                     to={`/guide-du-pigeon/${article.slug}`}
-                    className="group flex h-full flex-col justify-between overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oe-yellow"
+                    className="group rounded-3xl flex h-full flex-col justify-between overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oe-yellow"
                   >
                     <article className="flex flex-col">
                       {/* Image plein largeur (sans padding autour) */}

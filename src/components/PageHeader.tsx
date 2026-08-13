@@ -28,7 +28,7 @@ function PageHeader({
 
       {/* Contenu principal - Z-index supérieur pour passer au-dessus de l'overlay */}
       <div className="relative z-10 mx-auto max-w-4xl px-5 text-center md:px-8">
-        <span className="inline-block bg-oe-yellow px-4 py-1.5 font-sans text-sm font-bold text-oe-navy shadow-sm">
+        <span className="inline-block bg-oe-yellow px-4 py-1.5 font-sans text-sm font-bold text-oe-navy shadow-sm border rounded-[2rem]">
           {eyebrow}
         </span>
         <h1 className="font-display mt-5 text-3xl leading-[1.1] text-white uppercase sm:text-4xl md:text-5xl drop-shadow-md">

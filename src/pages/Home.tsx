@@ -9,8 +9,8 @@ function Home() {
   return (
     <main>
       <Hero />
-      <Process />
       <SolutionsTeaser />
+      <Process />
       <TestimonialsAndContact />
       <ContactCta/>
     </main>
