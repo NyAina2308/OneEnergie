@@ -1,7 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
-import ContactCta from '../components/ContactCta'
+import ContactFoot from '../components/ContactFoot'
 import { ARTICLES, getArticleBySlug } from '../data/articles'
 
 function BlogArticle() {
@@ -91,7 +91,8 @@ function BlogArticle() {
           </div>
         </section>
 
-        <ContactCta />
+        <ContactFoot />
+
       </main>
     </div>
   )

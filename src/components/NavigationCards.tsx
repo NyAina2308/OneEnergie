@@ -22,7 +22,7 @@ function NavigationCards() {
   return (
     <section className="bg-oe-navy px-5 md:px-8 pb-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 rounded-3xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 ">
           
           {NAV_CARDS.map((card, index) => (
             <Link

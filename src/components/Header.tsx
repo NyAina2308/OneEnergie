@@ -29,7 +29,7 @@ function Header({ overlay = false }: { overlay?: boolean }) {
       className={`fixed inset-x-0 top-0 z-50 flex h-20 items-center transition-colors duration-300 ${
         solid
           ? 'border-b border-oe-navy/10 bg-oe-cream/95 shadow-md backdrop-blur'
-          : 'border-b border-white/10 bg-transparent'
+          : 'border-b border-white/10 bg-oe-navy'
       }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 md:px-8">
@@ -70,7 +70,7 @@ function Header({ overlay = false }: { overlay?: boolean }) {
             to="/contact"
             className={`px-6 py-2.5 font-sans rounded-3xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
               solid
-                ? 'bg-sky-600 text-oe-yellow hover:bg-oe-blue hover:text-white'
+                ? 'bg-oe-navy text-oe-yellow hover:bg-oe-yellow hover:text-oe-navy'
                 : 'border border-oe-yellow text-oe-yellow hover:bg-oe-yellow hover:text-oe-navy'
             }`}
           >

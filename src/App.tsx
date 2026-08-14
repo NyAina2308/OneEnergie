@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Solutions from './pages/Solutions'
@@ -20,7 +19,6 @@ function App() {
         <Route path="/equipe" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Footer />
     </>
   )
 }

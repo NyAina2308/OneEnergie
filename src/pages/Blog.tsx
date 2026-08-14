@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
-import ContactCta from '../components/ContactCta'
+import ContactFoot from '../components/ContactFoot'
 import mascotte from '../assets/brand/mascotte-1.png'
 import { ARTICLES } from '../data/articles'
 import solar from '../assets/photos/solarpointing.jpg' 
@@ -37,35 +37,21 @@ export default function Blog() {
           title="Décryptage et conseils anti-arnaques"
           description="Notre mascotte vulgarise le solaire pour vous : factures, devis, aides — sans jargon, sans langue de bois."
           backgroundImage={solar}
+          quoteImage={mascotte}
+          quoteHighlight="« On vulgarise pour libérer. »?"
+          quoteText="Ici, pas de champ PV ni de talon de consommation — juste ce qu'il faut savoir avant de signer."
+          quoteAuthor="— Pédagogie « café-cuisine »"
         />
 
-        <section className="border-t border-white/10 py-20 md:py-28">
+        <section className=" py-20 md:py-28">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             
             {/* Bannière Mascotte avec Fade-In */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="mb-14 flex flex-col items-center gap-6 border border-white/10 bg-white/5 rounded-3xl p-8 text-center backdrop-blur-sm sm:flex-row sm:text-left"
-            >
-              <img 
-                src={mascotte} 
-                alt="Mascotte One Énergie" 
-                className="w-28 shrink-0 drop-shadow-md sm:w-32" 
-              />
-              <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                <span className="text-oe-yellow">« On vulgarise pour libérer. »</span> Ici, pas de champ PV ni de
-                talon de consommation — juste ce qu'il faut savoir avant de signer.
-              </p>
-            </motion.div>
-
-            {/* Grille d'articles */}
-            <motion.div 
               variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
               viewport={{ once: true, margin: '-50px' }}
               className="grid gap-6 sm:grid-cols-2"
             >
@@ -116,7 +102,7 @@ export default function Blog() {
           </div>
         </section>
 
-        <ContactCta />
+        <ContactFoot />
       </main>
     </div>
   )
