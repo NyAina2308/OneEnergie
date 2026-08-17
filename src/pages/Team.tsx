@@ -156,7 +156,7 @@ function Team() {
                 { src: installationToit, alt: 'Équipe installant des panneaux solaires sur un toit' },
                 { src: techniciensSecurite, alt: 'Techniciens équipés pour intervenir en sécurité' },
                 { src: entretienPanneaux, alt: 'Technicien assurant l’entretien des panneaux' },
-              ].map((photo, index) => (
+              ].map((photo) => (
                 <motion.div
                   key={photo.src}
                   variants={fadeInUp}

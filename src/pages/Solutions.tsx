@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { motion, type Variants, useScroll, useMotionValueEvent } from 'framer-motion'
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
+import { useScroll, useMotionValueEvent } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactFoot from '../components/ContactFoot'
@@ -16,15 +15,6 @@ import panneauxToiture from '../assets/photos/panneaux-toiture.jpg'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
 import solarguyBg from '../assets/photos/solarsolution.jpg' 
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-}
 
 interface SolutionItem {
   category: 'Autonomie' | 'Sécurité';
@@ -386,6 +376,7 @@ function Solutions() {
           <div
             key={`col-project-${idx}`}
             onMouseEnter={() => setHoveredProjectIndex(idx)}
+            onClick={() => setHoveredProjectIndex(idx)}
             className="group relative flex-1 cursor-pointer border-r border-white/30 last:border-r-0 transition-colors duration-500 hover:bg-white/5"
           >
             {/* Contenu de la colonne (titre en bas) */}

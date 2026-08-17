@@ -207,7 +207,7 @@ export default function HomeMerged() {
                               Demander un devis
                             </Link>
                             <a
-                              href="tel:+330123456789"
+                              href="tel:+262262263940"
                               className="px-7 py-3.5 bg-white border border-gray-300 text-gray-900 font-bold rounded-lg flex items-center gap-2 transition-all hover:bg-gray-50 hover:border-gray-400 shadow-sm"
                             >
                               Nous appeler
@@ -239,7 +239,7 @@ export default function HomeMerged() {
   initial={{ opacity: 0, x: 50 }} 
   animate={{ opacity: 1, x: 0 }} 
   transition={{ duration: 1, ease: "easeOut" }}
-  className="w-full lg:w-1/2 min-h-[450px] relative flex justify-center lg:justify-end items-end mt-12 lg:mt-0 z-20 pointer-events-none pb-4"
+  className="w-full lg:w-1/2 lg:min-h-[450px] relative flex justify-center lg:justify-end items-center lg:items-end mt-10 lg:mt-0 z-20 pointer-events-none pb-0 lg:pb-4"
 >
   {/* Conteneur flex pour aligner les deux cartes côte à côte tout en bas */}
   <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center lg:justify-end">
@@ -375,12 +375,15 @@ export default function HomeMerged() {
           <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col h-full justify-between">
             {/* En-tête Solutions */}
             <motion.div className="max-w-xl pt-12 md:pt-20 relative z-20">
-               <motion.div 
-                 custom={0.2} 
-                 initial="hidden" 
-                 whileInView="visible" 
-                 viewport={{ once: true }} 
+               <motion.div
+                 custom={0.2}
+                 initial="hidden"
+                 whileInView="visible"
+                 viewport={{ once: true }}
                  variants={fadeInVariants}
+                 // Fond blanc de secours sur mobile : la forme SVG décorative ne couvre pas
+                 // toujours ce texte foncé à cet endroit selon la hauteur réelle de l'écran.
+                 className="bg-white/90 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none rounded-2xl -m-4 p-4 lg:m-0 lg:p-0 shadow-lg lg:shadow-none"
                >
                  <p className="text-sm tracking-wider text-oe-blue font-bold uppercase mb-2 flex items-center gap-3">
                    <span className="w-2 h-2 rounded-full bg-oe-yellow"></span>
@@ -393,12 +396,14 @@ export default function HomeMerged() {
             </motion.div>
 
             {/* Carrousel de cartes Solutions */}
-            <div className="flex-1 flex items-center justify-center gap-6 lg:gap-10 w-full my-auto">
+            {/* Mobile/tablette : défilement horizontal au doigt (les cartes ne rentrent pas côte à côte sous lg).
+                Desktop (lg+) : rangée centrée classique, comportement inchangé. */}
+            <div className="flex-1 flex items-center lg:justify-center gap-6 lg:gap-10 w-full my-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-px-6 px-6 -mx-6 lg:mx-0 lg:px-0">
                {/* (Insère ici le map() de tes cartes SOLUTIONS avec Mascotte 2...) */}
 
                {SOLUTIONS.map((solution, index) => {
             const isActive = activeIndex === index;
-            const isOffset = index % 2 !== 0; 
+            const isOffset = index % 2 !== 0;
             const isBottom = index % 2 === 0;
 
             return (
@@ -410,9 +415,10 @@ export default function HomeMerged() {
                 variants={fadeInVariants}
                 key={solution.title}
                 onMouseEnter={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(index)}
                 className={`
-                  relative w-full max-w-[320px] md:w-80 h-[42vh] min-h-[280px] max-h-[400px] cursor-pointer 
-                  transition-all duration-500 ease-out flex-shrink-0 group
+                  relative w-full max-w-[320px] md:w-80 h-[42vh] min-h-[280px] max-h-[400px] cursor-pointer
+                  transition-all duration-500 ease-out flex-shrink-0 snap-center group
                   ${isOffset ? 'lg:translate-y-6' : ''}
                   ${isActive ? 'scale-[1.05] z-30' : 'opacity-70 hover:opacity-100 z-10 scale-100'}
                 `}
@@ -505,7 +511,7 @@ export default function HomeMerged() {
 
              <Link
                        to="/nos-solutions"
-                       className="hidden sm:inline-block px-6 py-2.5 bg-oe-yellow text-oe-navy font-bold rounded-lg transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,222,0,0.2)]"
+                       className="inline-block px-4 py-2 text-xs sm:px-6 sm:py-2.5 sm:text-sm bg-oe-yellow text-oe-navy font-bold rounded-lg transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,222,0,0.2)]"
                      >
                        Tout voir
                      </Link>

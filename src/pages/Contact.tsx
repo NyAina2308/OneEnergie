@@ -19,25 +19,6 @@ const APPAREILS = [
   'Véhicule électrique',
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' },
-  },
-}
-
 const fadeInVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (delay: number = 0) => ({

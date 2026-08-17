@@ -130,7 +130,7 @@
                 Demander un devis
               </Link>
               <a
-                href="tel:+330123456789"
+                href="tel:+262262263940"
                 className="px-7 py-3.5 bg-white border border-gray-300 text-gray-900 font-bold rounded-lg flex items-center gap-2 transition-all hover:bg-gray-50 hover:border-gray-400 shadow-sm"
               >
                 Nous appeler
