@@ -95,6 +95,16 @@ export default function Contact() {
                     <form onSubmit={handleSubmit} className="mt-6 grid gap-5">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
+                          Prénom *
+                          <input
+                            required
+                            type="text"
+                            name="prenom"
+                            placeholder="Votre prénom"
+                            className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
+                          />
+                        </label>
+                        <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
                           Nom *
                           <input
                             required
@@ -104,6 +114,9 @@ export default function Contact() {
                             className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
                           />
                         </label>
+                      </div>
+
+                      <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
                           Téléphone *
                           <input
@@ -114,18 +127,17 @@ export default function Contact() {
                             className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
                           />
                         </label>
+                        <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
+                          Email *
+                          <input
+                            required
+                            type="email"
+                            name="email"
+                            placeholder="exemple@domaine.mu"
+                            className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
+                          />
+                        </label>
                       </div>
-
-                      <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                        Email *
-                        <input
-                          required
-                          type="email"
-                          name="email"
-                          placeholder="exemple@domaine.re"
-                          className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
-                        />
-                      </label>
 
                       <fieldset>
                         <legend className="font-sans text-xs font-bold uppercase tracking-wider text-white/80">
@@ -150,7 +162,7 @@ export default function Contact() {
                       </fieldset>
 
                       <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                        Montant moyen de votre facture EDF (mois)
+                        Montant moyen de votre facture d'électricité (mois)
                         <input
                           type="text"
                           name="facture"
@@ -200,8 +212,8 @@ export default function Contact() {
                   </p>
                 </div>
 
-                {/* Grille 2x2 d'informations de contact avec effet Stagger */}
-                <motion.div 
+                {/* Coordonnées */}
+                <motion.div
                   variants={containerVariants}
                   initial="hidden"
                   animate="visible"
@@ -215,7 +227,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Téléphone</p>
-                      <p className="font-display mt-1 text-lg text-white">02 62 26 39 40</p>
+                      <p className="font-display mt-1 text-lg text-white">+230 428 6063</p>
                     </div>
                   </motion.div>
 
@@ -227,7 +239,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Email</p>
-                      <p className="font-display mt-1 text-lg text-white">info@oneenergie.re</p>
+                      <p className="font-display mt-1 text-lg text-white">info@oneenergie.mu</p>
                     </div>
                   </motion.div>
 
@@ -239,7 +251,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Horaires</p>
-                      <p className="font-display mt-1 text-base text-white">Lun - Ven : 8h00 - 18h00</p>
+                      {/* TODO : horaires à confirmer par le client */}
+                      <p className="font-display mt-1 text-base text-white/50 italic">À confirmer</p>
                     </div>
                   </motion.div>
 
@@ -252,21 +265,21 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Zone d'intervention</p>
-                      <p className="font-display mt-1 text-base text-white">Toute La Réunion</p>
+                      <p className="font-display mt-1 text-base text-white">Toute l'Île Maurice</p>
                     </div>
                   </motion.div>
                 </motion.div>
 
                 {/* Carte interactive / Embed Map */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="relative h-64 w-full border border-white/10 bg-white/5 shadow-lg"
                 >
                   <iframe
-                    title="Carte La Réunion"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d476832.48206277255!2d55.25000000000001!3d-21.115!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x21782d49a75d5f2f%3A0xb35a09c253457193!2sLa%20R%C3%A9union!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+                    title="Carte Île Maurice"
+                    src="https://www.google.com/maps?q=%C3%8Ele%20Maurice&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(120%)' }}

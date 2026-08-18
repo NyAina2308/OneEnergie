@@ -9,24 +9,24 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
-    slug: 'comprendre-sa-facture-et-les-aides-a-la-reunion',
+    slug: 'comprendre-sa-facture-et-les-aides-a-maurice',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxqA5wdanDwgqGXplI_aODrULdfItlclaFkA&s',
-    title: 'Comprendre sa facture et les aides à La Réunion',
+    title: 'Comprendre sa facture et les aides à Maurice',
     excerpt:
-      'Talon de consommation, kilowattheure, aides EDF : on démonte le jargon pour vous montrer ce qui compte vraiment.',
+      'Talon de consommation, kilowattheure, aides locales : on démonte le jargon pour vous montrer ce qui compte vraiment.',
     readTime: '5 min',
     sections: [
       {
         heading: 'Ce que votre facture ne vous dit pas',
         body: [
-          "Une facture EDF liste des kilowattheures et des abonnements, mais elle ne dit jamais ce qui, chez vous, fait vraiment grimper la note : la clim de l'après-midi, le cuiseur à riz, le ballon d'eau chaude qui tourne en continu.",
+          "Une facture d'électricité liste des kilowattheures et des abonnements, mais elle ne dit jamais ce qui, chez vous, fait vraiment grimper la note : la clim de l'après-midi, le cuiseur à riz, le ballon d'eau chaude qui tourne en continu.",
           "On préfère partir de votre quotidien plutôt que de votre relevé : quels appareils, à quelles heures, pour quel usage.",
         ],
       },
       {
         heading: 'Les aides disponibles, sans en faire l’argument numéro un',
         body: [
-          "EDF peut financer une partie de votre installation et racheter votre surplus de production pendant 20 ans. Ces aides existent, elles sont réelles, mais elles ne remplacent pas un dimensionnement pensé pour votre usage.",
+          "Des aides locales peuvent financer une partie de votre installation et racheter votre surplus de production pendant 20 ans. Ces aides existent, elles sont réelles, mais elles ne remplacent pas un dimensionnement pensé pour votre usage.",
           "On vous présente ce qui est mobilisable pour votre situation avant de parler matériel — jamais l'inverse.",
         ],
       },

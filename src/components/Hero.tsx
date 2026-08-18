@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import heroPhoto from '../assets/photos/solar1.jpg';
-import mascotte from '../assets/brand/mascotte-1.png';
 import { motion, type Variants } from 'framer-motion';
 
 // Composant d'animation de texte lettre par lettre
@@ -75,7 +74,7 @@ const fadeInVariants: Variants = {
 
 const STATS = [
   { value: '85%', label: "d'économies sur la facture" },
-  { value: '81%', label: 'financés par les aides EDF' },
+  { value: '81%', label: 'financés par les aides locales' },
   { value: '20 ans', label: 'de revente garantie' },
 ];
 
@@ -87,7 +86,7 @@ function Hero() {
         <div className="absolute top-[65%] left-0 right-0 h-px bg-white/10"></div>
       </div>
 
-      <Header overlay />
+      <Header />
 
       {/* Barre latérale gauche (Éléments graphiques architecturaux) */}
       <aside className="hidden lg:flex w-24 h-full flex-col items-center justify-between py-24 border-r border-white/10 relative z-20 bg-oe-navy">
@@ -151,31 +150,21 @@ function Hero() {
             <ProgressiveText text="avec un expert à votre table, pas un inconnu sur votre toit." />
           </div>
 
-          {/* Call to action + Mascotte */}
-          <motion.div 
+          {/* Call to action */}
+          <motion.div
             custom={0.6} initial="hidden" animate="visible" variants={fadeInVariants}
-            className="mt-12 flex items-center gap-6 md:gap-8"
+            className="mt-12 flex flex-col items-start gap-2"
           >
-            <div className="flex flex-col items-start gap-2">
-              <p className="font-sans text-xs md:text-sm text-white/70 tracking-widest uppercase">
-                Posez-nous vos questions
-              </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-4 md:gap-6 font-sans text-sm md:text-base font-bold tracking-widest text-white uppercase group"
-              >
-                Demander un devis
-                <span className="w-12 h-px bg-white group-hover:bg-oe-yellow group-hover:w-20 transition-all duration-300"></span>
-              </Link>
-            </div>
-            <div className="relative flex-shrink-0">
-              <div className="absolute inset-0 bg-oe-yellow/20 rounded-full blur-md"></div>
-              <img 
-                src={mascotte} 
-                alt="Mascotte One Énergie" 
-                className="relative w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl" 
-              />
-            </div>
+            <p className="font-sans text-xs md:text-sm text-white/70 tracking-widest uppercase">
+              Posez-nous vos questions
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-4 md:gap-6 font-sans text-sm md:text-base font-bold tracking-widest text-white uppercase group"
+            >
+              Demander un devis
+              <span className="w-12 h-px bg-white group-hover:bg-oe-yellow group-hover:w-20 transition-all duration-300"></span>
+            </Link>
           </motion.div>
 
           {/* Statistiques */}

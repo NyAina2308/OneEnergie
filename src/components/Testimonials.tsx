@@ -19,16 +19,16 @@ const fadeInVariants: Variants = {
 const TESTIMONIALS = [
   {
     id: 1,
-    quote: "Enfin un installateur qui m'a expliqué les choses simplement. Ma facture EDF a été divisée par presque 5.",
+    quote: "Enfin un installateur qui m'a expliqué les choses simplement. Ma facture d'électricité a été divisée par presque 5.",
     author: "Mireille P.",
-    location: "Saint-Pierre",
+    location: "Quatre Bornes",
     image: client1,
   },
   {
     id: 2,
     quote: "Une équipe réactive et un travail soigné sur le toit. Le suivi de production sur l'application est un vrai plus.",
     author: "Jean-Marc T.",
-    location: "Saint-Denis",
+    location: "Curepipe",
     image: client2,
   },
 ];

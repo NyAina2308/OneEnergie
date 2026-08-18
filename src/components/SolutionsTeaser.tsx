@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import mascotte from '../assets/brand/mascotte-2.png';
 import solar from '../assets/photos/solarroof2.jpg'
 import { motion, type Variants } from 'framer-motion';
 
@@ -117,24 +116,6 @@ function SolutionsTeaser() {
                   }
                 `}
               >
-                <img 
-                  src={mascotte} 
-                  alt="" 
-                  aria-hidden="true"
-                  style={{
-                    filter: isActive 
-                      ? 'brightness(0) saturate(100%) invert(85%) sepia(50%) saturate(1000%) hue-rotate(350deg)' 
-                      : 'none'
-                  }}
-                  className={`
-                    absolute -right-2 -bottom-2 w-32 md:w-40 pointer-events-none transition-all duration-500 ease-out select-none
-                    ${isActive 
-                      ? 'opacity-40 scale-100 rotate-0 translate-y-0' 
-                      : 'opacity-0 scale-75 rotate-6 translate-y-6'
-                    }
-                  `}
-                />
-
                 <div className="relative z-10 flex flex-col h-full justify-between">
                   <div>
                     <span className={`font-display font-bold text-lg block mb-6 transition-colors duration-300 ${isActive ? 'text-oe-yellow' : 'text-white/50'}`}>

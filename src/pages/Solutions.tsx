@@ -3,9 +3,8 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import mascotte from '../assets/brand/mascotte-1.png'
 import iconSoleil from '../assets/icons/icon-soleil-lunettes.svg'
-import iconMascotteSolaire from '../assets/icons/icon-mascotte-solaire.svg'
+import iconCuiseurRiz from '../assets/icons/icon-cuiseur-riz.svg'
 import iconLaveLinge from '../assets/icons/icon-lave-linge.svg'
 import iconPanneaux from '../assets/icons/icon-panneaux-empiles.svg'
 import iconBadge from '../assets/icons/icon-badge-eclair.svg'
@@ -51,7 +50,7 @@ const SOLUTIONS_COMBINED: SolutionItem[] = [
   },
   {
     category: 'Autonomie',
-    icon: iconMascotteSolaire,
+    icon: iconCuiseurRiz,
     title: 'Le cuiseur à riz de midi',
     description: 'Cuisinez aux heures de plein soleil et laissez vos panneaux financer la note, littéralement.',
   },
@@ -133,27 +132,20 @@ function Solutions() {
         />
 
         <section className="border-t border-white/10 py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-5 md:px-8">
-            <motion.div 
+          <div className="mx-auto max-w-3xl px-5 md:px-8">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="flex flex-col items-center gap-8 border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10 md:flex-row md:text-left"
+              className="border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10"
             >
-              <img
-                src={mascotte}
-                alt="Mascotte One Énergie"
-                className="w-32 shrink-0 drop-shadow-md sm:w-40"
-              />
-              <div>
-                <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                  <span className="text-oe-yellow">« Tu veux faire cuire ton riz tranquillement pour 5 centimes ?</span> Laisse le soleil s'en occuper ! »
-                </p>
-                <p className="mt-4 font-sans text-sm font-bold uppercase tracking-widest text-white/50">
-                  — Pédagogie « café-cuisine »
-                </p>
-              </div>
+              <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
+                <span className="text-oe-yellow">« Tu veux faire cuire ton riz tranquillement pour 5 centimes ?</span> Laisse le soleil s'en occuper ! »
+              </p>
+              <p className="mt-4 font-sans text-sm font-bold uppercase tracking-widest text-white/50">
+                — Pédagogie « café-cuisine »
+              </p>
             </motion.div>
           </div>
         </section>
@@ -275,10 +267,10 @@ function Solutions() {
               className="mx-auto max-w-2xl text-center"
             >
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                En image
+                Nos solutions
               </span>
               <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
-                Des installations bien réelles
+                Une qualité de service premium
               </h2>
             </motion.div>
 

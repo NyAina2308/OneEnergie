@@ -2,7 +2,6 @@ import { motion, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import mascotte from '../assets/brand/mascotte-2.png'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 import installationToit from '../assets/photos/installation-toit.jpg'
 import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
@@ -127,7 +126,7 @@ function Team() {
               </h2>
               <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
                 Pas de photos de banque d'images figées : des chantiers, des
-                harnais, des toits réunionnais.
+                harnais, des toits mauriciens.
               </p>
             </motion.div>
 
@@ -160,30 +159,23 @@ function Team() {
           </div>
         </section>
 
-        {/* Section Mascotte */}
+        {/* Section Citation */}
         <section className="border-t border-white/10 py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-5 md:px-8">
+          <div className="mx-auto max-w-3xl px-5 md:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="flex flex-col items-center gap-8 border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10 md:flex-row md:text-left"
+              className="border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10"
             >
-              <img
-                src={mascotte}
-                alt="Mascotte One Énergie"
-                className="w-32 shrink-0 drop-shadow-md sm:w-40"
-              />
-              <div>
-                <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                  <span className="text-oe-yellow">« Un expert à votre table,</span> pas un inconnu sur votre toit. »
-                </p>
-                <p className="mt-4 font-sans text-sm font-light leading-relaxed text-white/70">
-                  Notre équipe grandit avec l'île. Vous rencontrerez toujours un
-                  interlocuteur local, avant, pendant et après l'installation.
-                </p>
-              </div>
+              <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
+                <span className="text-oe-yellow">« Un expert à votre table,</span> pas un inconnu sur votre toit. »
+              </p>
+              <p className="mt-4 font-sans text-sm font-light leading-relaxed text-white/70">
+                Notre équipe grandit avec l'île. Vous rencontrerez toujours un
+                interlocuteur local, avant, pendant et après l'installation.
+              </p>
             </motion.div>
           </div>
         </section>

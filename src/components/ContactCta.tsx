@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import mascotte from '../assets/brand/mascotte-1.png';
 import { motion, type Variants } from 'framer-motion';
 
 const fadeInVariants: Variants = {
@@ -31,26 +30,14 @@ function ContactCta() {
               à votre table ?
             </h2>
             <p className="mt-4 max-w-md font-sans text-sm font-light leading-relaxed text-white/80">
-              Racontez-nous vos habitudes — clim, cuiseur à riz, piscine — et
-              repartez avec une estimation claire, sans jargon ni engagement.
+              Partagez-nous votre routine — clim, piscine, cuisine — et
+              recevez une évaluation précise, sans jargon complexe et sans engagement.
             </p>
           </motion.div>
 
-          {/* Centre : Mascotte */}
-          <motion.div 
-            custom={0.4} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
-            className="flex shrink-0 justify-center"
-          >
-            <img
-              src={mascotte}
-              alt="Mascotte One Énergie"
-              className="w-36 sm:w-44 md:w-52 drop-shadow-2xl"
-            />
-          </motion.div>
-
           {/* Côté Droit : Bouton CTA sans arrondi */}
-          <motion.div 
-            custom={0.6} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
+          <motion.div
+            custom={0.4} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
             className="flex flex-1 justify-center md:justify-end"
           >
             <Link

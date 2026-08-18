@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import heroPhoto from '../assets/photos/solarroof1.jpg';
-import mascotte from '../assets/brand/mascotte-1.png';
 import { motion, type Variants } from 'framer-motion';
 
 const fadeInVariants: Variants = {
@@ -20,7 +19,7 @@ const STEPS = [
   {
     number: '01',
     title: 'Analyse',
-    description: 'On regarde comment vous vivez vraiment : clim, cuiseur à riz, facture EDF.',
+    description: 'On regarde comment vous vivez vraiment : clim, cuiseur à riz, facture d\'électricité.',
   },
   {
     number: '02',
@@ -74,7 +73,7 @@ function Process() {
                 <textPath href="#circlePath">One Energie - Design Solaire -</textPath>
               </text>
             </svg>
-            <img src={mascotte} alt="Mascotte One Énergie" className="w-14 h-14 object-contain opacity-90" />
+            <span className="font-display text-2xl text-oe-yellow">01</span>
           </div>
         </motion.div>
 

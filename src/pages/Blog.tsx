@@ -3,7 +3,6 @@ import { motion, type Variants } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import mascotte from '../assets/brand/mascotte-1.png'
 import { ARTICLES } from '../data/articles'
 import solar from '../assets/photos/solarpointing.jpg' 
 
@@ -33,28 +32,23 @@ export default function Blog() {
       <Header />
       <main>
         <PageHeader
-          eyebrow="Le Blog du Pigeon"
+          eyebrow="Décrypter et prévenir"
           title="Décryptage et conseils anti-arnaques"
-          description="Notre mascotte vulgarise le solaire pour vous : factures, devis, aides — sans jargon, sans langue de bois."
+          description="On vulgarise le solaire pour vous : factures, devis, aides — sans jargon, sans langue de bois."
           backgroundImage={solar}
         />
 
         <section className="border-t border-white/10 py-20 md:py-28">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             
-            {/* Bannière Mascotte avec Fade-In */}
-            <motion.div 
+            {/* Bannière d'intro avec Fade-In */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="mb-14 flex flex-col items-center gap-6 border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm sm:flex-row sm:text-left"
+              className="mb-14 border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm"
             >
-              <img 
-                src={mascotte} 
-                alt="Mascotte One Énergie" 
-                className="w-28 shrink-0 drop-shadow-md sm:w-32" 
-              />
               <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
                 <span className="text-oe-yellow">« On vulgarise pour libérer. »</span> Ici, pas de champ PV ni de
                 talon de consommation — juste ce qu'il faut savoir avant de signer.
@@ -72,7 +66,7 @@ export default function Blog() {
               {ARTICLES.map((article) => (
                 <motion.div key={article.slug} variants={itemVariants}>
                   <Link
-                    to={`/guide-du-pigeon/${article.slug}`}
+                    to={`/decrypter-et-prevenir/${article.slug}`}
                     className="group flex h-full flex-col justify-between overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-oe-yellow/50 hover:bg-white/10 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oe-yellow"
                   >
                     <article className="flex flex-col">

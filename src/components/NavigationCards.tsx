@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
-import pigeonBg from '../assets/photos/entretien-panneaux.jpg'
+import guideBg from '../assets/photos/entretien-panneaux.jpg'
 import contactBg from '../assets/photos/entretien-panneaux.jpg'
 
 const NAV_CARDS = [
-  { 
-    title: 'Le Guide du Pigeon', 
-    subtitle: 'Évitez les arnaques solaires', 
-    to: '/guide-du-pigeon', 
-    bg: pigeonBg 
+  {
+    title: 'Décrypter et prévenir',
+    subtitle: 'Évitez les arnaques solaires',
+    to: '/decrypter-et-prevenir',
+    bg: guideBg
   },
   { 
     title: 'Contact', 

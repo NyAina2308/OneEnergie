@@ -12,7 +12,7 @@ function Footer() {
             <img src={logo} alt="One Énergie" className="h-10 w-auto" />
             <p className="mt-4 max-w-xs font-sans text-sm">
               Le solaire, entre nous. Panneaux photovoltaïques et batteries de
-              stockage, dimensionnés pour votre usage réel à La Réunion.
+              stockage, dimensionnés pour votre usage réel à l'Île Maurice.
             </p>
           </div>
 
@@ -24,8 +24,7 @@ function Footer() {
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
                 <li><Link to="/" className="hover:text-oe-yellow">Accueil</Link></li>
                 <li><Link to="/nos-solutions" className="hover:text-oe-yellow">Nos solutions</Link></li>
-                <li><Link to="/guide-du-pigeon" className="hover:text-oe-yellow">Le Guide du Pigeon</Link></li>
-                <li><Link to="/equipe" className="hover:text-oe-yellow">L'équipe</Link></li>
+                <li><Link to="/decrypter-et-prevenir" className="hover:text-oe-yellow">Décrypter et prévenir</Link></li>
                 <li><Link to="/contact" className="hover:text-oe-yellow">Contact &amp; Simulation</Link></li>
               </ul>
             </div>
@@ -35,9 +34,9 @@ function Footer() {
                 Contact
               </h4>
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
-                <li>02 62 26 39 40</li>
-                <li>info@oneenergie.re</li>
-                <li>La Réunion</li>
+                <li>+230 428 6063</li>
+                <li>info@oneenergie.mu</li>
+                <li>Île Maurice</li>
               </ul>
             </div>
 

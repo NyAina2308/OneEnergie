@@ -9,7 +9,7 @@ function BlogArticle() {
   const article = slug ? getArticleBySlug(slug) : undefined
 
   if (!article) {
-    return <Navigate to="/guide-du-pigeon" replace />
+    return <Navigate to="/decrypter-et-prevenir" replace />
   }
 
   const otherArticles = ARTICLES.filter((a) => a.slug !== article.slug)
@@ -19,7 +19,7 @@ function BlogArticle() {
       <Header />
       <main>
         <PageHeader
-          eyebrow={`Le Blog du Pigeon · ${article.readTime} de lecture`}
+          eyebrow={`Décrypter et prévenir · ${article.readTime} de lecture`}
           title={article.title}
         />
 
@@ -28,7 +28,7 @@ function BlogArticle() {
             
             {/* Bouton retour */}
             <Link
-              to="/guide-du-pigeon"
+              to="/decrypter-et-prevenir"
               className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow transition-colors duration-300 hover:text-white"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ function BlogArticle() {
                   {otherArticles.map((a) => (
                     <Link
                       key={a.slug}
-                      to={`/guide-du-pigeon/${a.slug}`}
+                      to={`/decrypter-et-prevenir/${a.slug}`}
                       className="group flex items-center justify-between border-b border-white/5 pb-3 font-sans text-sm font-semibold text-white/90 transition-colors duration-300 last:border-b-0 last:pb-0 hover:text-oe-yellow"
                     >
                       <span>{a.title}</span>
