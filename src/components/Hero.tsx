@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 import heroPhoto from '../assets/photos/solar1.jpg';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion';
 
 // Composant d'animation de texte lettre par lettre
 export const ProgressiveText: React.FC<{ text: string; className?: string }> = ({ text, className }) => {
@@ -22,20 +22,52 @@ export const ProgressiveText: React.FC<{ text: string; className?: string }> = (
 
   const letterVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       transition: { type: 'spring', damping: 12, stiffness: 100 }
     },
   };
 
+  // On attend que la police web (Anton/Poppins) soit vraiment chargée avant de démarrer
+  // l'animation lettre par lettre. Sans ça, au tout premier chargement sur un hébergeur
+  // (police pas encore en cache navigateur), l'animation démarre avec la police de secours,
+  // puis la vraie police "swap" en plein milieu de l'animation : chaque lettre change de
+  // largeur pendant qu'elle est encore en train de bouger, ce qui donne un texte "bouleversé".
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let cancelled = false;
+    const start = () => {
+      if (!cancelled) controls.start('visible');
+    };
+
+    if (typeof document !== 'undefined' && 'fonts' in document) {
+      document.fonts.ready.then(start).catch(start);
+    } else {
+      start();
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isInView, controls]);
+
   return (
     <motion.span
+      // La clé force un remount complet quand le texte change (ex. changement de langue) :
+      // sans ça, whileInView + viewport.once ne se redéclenche pas pour les nouvelles lettres,
+      // qui restent alors bloquées à l'état "hidden" (opacity: 0) et le texte paraît tronqué.
+      key={text}
+      ref={ref}
       className={className}
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      animate={controls}
       style={{ display: 'inline-block' }}
     >
       {words.map((word, wordIndex) => (
