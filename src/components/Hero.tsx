@@ -59,10 +59,6 @@ export const ProgressiveText: React.FC<{ text: string; className?: string }> = (
 
   return (
     <motion.span
-      // La clé force un remount complet quand le texte change (ex. changement de langue) :
-      // sans ça, whileInView + viewport.once ne se redéclenche pas pour les nouvelles lettres,
-      // qui restent alors bloquées à l'état "hidden" (opacity: 0) et le texte paraît tronqué.
-      key={text}
       ref={ref}
       className={className}
       variants={containerVariants}
@@ -173,16 +169,20 @@ function Hero() {
           </motion.p>
 
           {/* Titre Principal avec ProgressiveText */}
+          {/* La clé force un remount complet du composant (et de ses hooks useInView/useAnimation)
+              quand le texte change, par ex. au changement de langue : sans ça, useInView "once"
+              reste bloqué sur son état déclenché une seule fois lors du montage initial et
+              l'animation ne se relance jamais pour le nouveau texte (rien ne s'affiche). */}
           <h1 className="font-display text-5xl leading-[1.05] text-white uppercase sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide drop-shadow-md">
-            <ProgressiveText text={t('hero.title1')} />
+            <ProgressiveText key={t('hero.title1')} text={t('hero.title1')} />
             <br />
-            <ProgressiveText text={t('hero.title2')} className="text-oe-yellow font-normal" />
+            <ProgressiveText key={t('hero.title2')} text={t('hero.title2')} className="text-oe-yellow font-normal" />
           </h1>
 
           {/* Sous-titre avec ProgressiveText */}
           <div className="mt-8 max-w-lg font-sans text-base md:text-lg text-white/95 leading-relaxed tracking-wide drop-shadow">
-            <ProgressiveText text={t('hero.subtitle1')} />
-            <ProgressiveText text={t('hero.subtitle2')} />
+            <ProgressiveText key={t('hero.subtitle1')} text={t('hero.subtitle1')} />
+            <ProgressiveText key={t('hero.subtitle2')} text={t('hero.subtitle2')} />
           </div>
 
           {/* Call to action */}
