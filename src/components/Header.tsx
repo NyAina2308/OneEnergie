@@ -37,8 +37,8 @@ function Header() {
   const NAV_LINKS = [
     { label: t('nav.home'), to: '/' },
     { label: t('nav.solutions'), to: '/nos-solutions' },
-    { label: t('nav.blog'), to: '/decrypter-et-prevenir' },
     { label: t('nav.warranty'), to: '/garantie-confiance' },
+    { label: t('nav.blog'), to: '/decrypter-et-prevenir' },
   ]
 
   const currentLang = LANGUAGES.find((l) => l.code === i18n.language) ?? LANGUAGES[0]
