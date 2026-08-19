@@ -1,4 +1,5 @@
 import { motion, type Variants } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
@@ -32,36 +33,35 @@ const containerStagger: Variants = {
   },
 }
 
-const ROLES = [
-  {
-    title: 'Conseiller solaire',
-    description:
-      'Le premier visage : il écoute vos habitudes avant de parler matériel. Aucun jargon, aucune pression.',
-    image: conseillerPhoto,
-  },
-  {
-    title: 'Technicien installateur',
-    description:
-      'Formé et équipé, il pose votre centrale et vos batteries selon les normes anti-cycloniques de l’île.',
-    image: technicienPhoto,
-  },
-  {
-    title: 'Référent SAV',
-    description:
-      'Joignable après la mise en service pour le suivi de production, l’entretien et vos questions du quotidien.',
-    image: savPhoto,
-  },
-]
-
 function Team() {
+  const { t } = useTranslation()
+
+  const ROLES = [
+    {
+      title: t('team.role1Title'),
+      description: t('team.role1Desc'),
+      image: conseillerPhoto,
+    },
+    {
+      title: t('team.role2Title'),
+      description: t('team.role2Desc'),
+      image: technicienPhoto,
+    },
+    {
+      title: t('team.role3Title'),
+      description: t('team.role3Desc'),
+      image: savPhoto,
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
       <main>
         <PageHeader
-          eyebrow="L'équipe One Énergie"
-          title="Des visages, pas un numéro de dossier"
-          description="On traite avec des gens. Voici les métiers qui vous accompagnent, du premier échange au suivi dans la durée."
+          eyebrow={t('team.pageEyebrow')}
+          title={t('team.pageTitle')}
+          description={t('team.pageDescription')}
           backgroundImage={solar}
         />
 
@@ -119,14 +119,13 @@ function Team() {
               className="mx-auto max-w-2xl text-center"
             >
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                Sur le terrain
+                {t('team.fieldEyebrow')}
               </span>
               <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
-                Nos équipes, en action
+                {t('team.fieldTitle')}
               </h2>
               <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
-                Pas de photos de banque d'images figées : des chantiers, des
-                harnais, des toits mauriciens.
+                {t('team.fieldDesc')}
               </p>
             </motion.div>
 
@@ -138,9 +137,9 @@ function Team() {
               className="mt-16 grid gap-6 md:grid-cols-3"
             >
               {[
-                { src: installationToit, alt: 'Équipe installant des panneaux solaires sur un toit' },
-                { src: techniciensSecurite, alt: 'Techniciens équipés pour intervenir en sécurité' },
-                { src: entretienPanneaux, alt: 'Technicien assurant l’entretien des panneaux' },
+                { src: installationToit, alt: t('team.fieldAlt1') },
+                { src: techniciensSecurite, alt: t('team.fieldAlt2') },
+                { src: entretienPanneaux, alt: t('team.fieldAlt3') },
               ].map((photo) => (
                 <motion.div
                   key={photo.src}
@@ -170,11 +169,10 @@ function Team() {
               className="border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10"
             >
               <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                <span className="text-oe-yellow">« Un expert à votre table,</span> pas un inconnu sur votre toit. »
+                <span className="text-oe-yellow">{t('team.quoteHighlight')}</span> {t('team.quoteRest')}
               </p>
               <p className="mt-4 font-sans text-sm font-light leading-relaxed text-white/70">
-                Notre équipe grandit avec l'île. Vous rencontrerez toujours un
-                interlocuteur local, avant, pendant et après l'installation.
+                {t('team.quoteDesc')}
               </p>
             </motion.div>
           </div>

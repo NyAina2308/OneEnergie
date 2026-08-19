@@ -3,8 +3,8 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Solutions from './pages/Solutions'
-import Blog from './pages/Blog'
-import BlogArticle from './pages/BlogArticle'
+import Guide from './pages/Guide'
+import GuideArticle from './pages/GuideArticle'
 import Team from './pages/Team'
 import Contact from './pages/Contact'
 import Garanties from './pages/Garanties'
@@ -16,8 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/nos-solutions" element={<Solutions />} />
-        <Route path="/decrypter-et-prevenir" element={<Blog />} />
-        <Route path="/decrypter-et-prevenir/:slug" element={<BlogArticle />} />
+        <Route path="/decrypter-et-prevenir" element={<Guide />} />
+        <Route path="/decrypter-et-prevenir/:slug" element={<GuideArticle />} />
         <Route path="/equipe" element={<Team />} />
         <Route path="/garantie-confiance" element={<Garanties />} />
         <Route path="/contact" element={<Contact />} />

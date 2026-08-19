@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 // Icônes simples, cohérentes avec le style du reste du site (trait carré/miter)
 const ICONS: Record<string, React.ReactNode> = {
@@ -35,11 +36,11 @@ const ICONS: Record<string, React.ReactNode> = {
 }
 
 const NODES = [
-  { key: 'soleil', label: 'Soleil' },
-  { key: 'panneaux', label: 'Panneaux' },
-  { key: 'onduleur', label: 'Onduleur' },
-  { key: 'batterie', label: 'Batterie' },
-  { key: 'maison', label: 'Maison' },
+  { key: 'soleil' },
+  { key: 'panneaux' },
+  { key: 'onduleur' },
+  { key: 'batterie' },
+  { key: 'maison' },
 ] as const
 
 // Durée d'un aller complet du flux (soleil → maison).
@@ -54,11 +55,13 @@ const TOTAL_CYCLE = DURATION + PAUSE
 const PULSE_DURATION = Math.min(0.35, TOTAL_CYCLE * 0.3)
 
 function EnergyFlow() {
+  const { t } = useTranslation()
+
   return (
     <section className="border-t border-white/10 bg-oe-navy py-16 md:py-20 overflow-hidden">
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <p className="mb-12 text-center font-sans text-[11px] font-bold uppercase tracking-[0.3em] text-white/50">
-          Le parcours de l'énergie
+          {t('energyFlow.heading')}
         </p>
 
         <div className="relative flex items-start justify-between">
@@ -163,7 +166,7 @@ function EnergyFlow() {
                   </motion.div>
                 </div>
                 <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/70 sm:text-xs">
-                  {node.label}
+                  {t(`energyFlow.${node.key}`)}
                 </span>
               </div>
             )

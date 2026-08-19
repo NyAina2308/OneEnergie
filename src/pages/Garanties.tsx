@@ -1,4 +1,5 @@
 import { motion, type Variants } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
@@ -28,73 +29,75 @@ const containerStagger: Variants = {
   },
 }
 
-const STATS = [
-  { value: '25 ans', label: 'Garantie de production des panneaux' },
-  { value: '20 ans', label: 'Garantie produit panneaux & structure' },
-  { value: '10 ans', label: 'Garantie sur les onduleurs' },
-  { value: '10 ans', label: 'Garantie décennale sur la pose' },
-]
-
-const COMPONENTS = [
-  {
-    title: 'Panneaux solaires',
-    subtitle: 'Modules monocristallins',
-    warranty: '20 ans',
-    warrantyLabel: 'garantie produit',
-    lifespan: '25 ans',
-    lifespanLabel: 'garantie production',
-    barWarranty: 80,
-    barLifespan: 100,
-  },
-  {
-    title: 'Onduleurs',
-    subtitle: 'Central ou micro-onduleurs',
-    warranty: '10 ans',
-    warrantyLabel: 'garantie',
-    lifespan: '15 ans',
-    lifespanLabel: 'durée de vie estimée',
-    barWarranty: 66,
-    barLifespan: 100,
-  },
-  {
-    title: 'Batterie de stockage',
-    subtitle: 'Lithium (LFP)',
-    warranty: '10 ans',
-    warrantyLabel: 'garantie',
-    lifespan: '6 000',
-    lifespanLabel: 'cycles estimés',
-    barWarranty: 70,
-    barLifespan: 100,
-  },
-  {
-    title: 'Structure & fixations',
-    subtitle: 'Rails et pose anti-cyclonique',
-    warranty: '10 ans',
-    warrantyLabel: 'garantie décennale',
-    lifespan: '25 ans',
-    lifespanLabel: 'durée de vie estimée',
-    barWarranty: 40,
-    barLifespan: 100,
-  },
-]
-
 function Garanties() {
+  const { t } = useTranslation()
+
+  const STATS = [
+    { value: t('garanties.stat1Value'), label: t('garanties.stat1Label') },
+    { value: t('garanties.stat2Value'), label: t('garanties.stat2Label') },
+    { value: t('garanties.stat3Value'), label: t('garanties.stat3Label') },
+    { value: t('garanties.stat4Value'), label: t('garanties.stat4Label') },
+  ]
+
+  const COMPONENTS = [
+    {
+      title: t('garanties.comp1Title'),
+      subtitle: t('garanties.comp1Subtitle'),
+      warranty: t('garanties.comp1Warranty'),
+      warrantyLabel: t('garanties.comp1WarrantyLabel'),
+      lifespan: t('garanties.comp1Lifespan'),
+      lifespanLabel: t('garanties.comp1LifespanLabel'),
+      barWarranty: 80,
+      barLifespan: 100,
+    },
+    {
+      title: t('garanties.comp2Title'),
+      subtitle: t('garanties.comp2Subtitle'),
+      warranty: t('garanties.comp2Warranty'),
+      warrantyLabel: t('garanties.comp2WarrantyLabel'),
+      lifespan: t('garanties.comp2Lifespan'),
+      lifespanLabel: t('garanties.comp2LifespanLabel'),
+      barWarranty: 66,
+      barLifespan: 100,
+    },
+    {
+      title: t('garanties.comp3Title'),
+      subtitle: t('garanties.comp3Subtitle'),
+      warranty: t('garanties.comp3Warranty'),
+      warrantyLabel: t('garanties.comp3WarrantyLabel'),
+      lifespan: t('garanties.comp3Lifespan'),
+      lifespanLabel: t('garanties.comp3LifespanLabel'),
+      barWarranty: 70,
+      barLifespan: 100,
+    },
+    {
+      title: t('garanties.comp4Title'),
+      subtitle: t('garanties.comp4Subtitle'),
+      warranty: t('garanties.comp4Warranty'),
+      warrantyLabel: t('garanties.comp4WarrantyLabel'),
+      lifespan: t('garanties.comp4Lifespan'),
+      lifespanLabel: t('garanties.comp4LifespanLabel'),
+      barWarranty: 40,
+      barLifespan: 100,
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
       <main>
         <PageHeader
-          eyebrow="Garantie & Confiance"
-          title="Tranquille, du premier jour au vingtième"
-          description="Chaque composant de votre installation est couvert. On vous montre quoi, combien de temps, et pourquoi."
+          eyebrow={t('nav.warranty')}
+          title={t('garanties.pageTitle')}
+          description={t('garanties.pageDescription')}
           backgroundImage={techniciensSecurite}
         />
 
         {/* Bandeau de chiffres clés */}
         <section className="border-t border-white/10 py-14 md:py-16">
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-5 md:grid-cols-4 md:px-8">
-            {STATS.map((stat) => (
-              <div key={stat.label}>
+            {STATS.map((stat, index) => (
+              <div key={index}>
                 <p className="font-display text-3xl text-oe-yellow sm:text-4xl">{stat.value}</p>
                 <p className="mt-2 font-sans text-sm leading-snug text-white/70">{stat.label}</p>
               </div>
@@ -113,10 +116,10 @@ function Garanties() {
               className="max-w-2xl"
             >
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                Le matériel
+                {t('garanties.materialEyebrow')}
               </span>
               <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
-                Chaque composant, couvert et durable
+                {t('garanties.materialTitle')}
               </h2>
             </motion.div>
 
@@ -127,9 +130,9 @@ function Garanties() {
               viewport={{ once: true, margin: '-50px' }}
               className="mt-12 grid gap-5 sm:grid-cols-2"
             >
-              {COMPONENTS.map((item) => (
+              {COMPONENTS.map((item, index) => (
                 <motion.div
-                  key={item.title}
+                  key={index}
                   variants={fadeInUp}
                   className="border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-oe-yellow/40 hover:bg-white/10"
                 >
@@ -157,11 +160,10 @@ function Garanties() {
                 <img src={iconBadge} alt="" className="h-14 w-14 shrink-0 object-contain" />
                 <div>
                   <h3 className="font-display text-lg uppercase tracking-wide text-white">
-                    Pose : garantie décennale
+                    {t('garanties.calloutTitle')}
                   </h3>
                   <p className="mt-1 font-sans text-sm leading-relaxed text-white/70">
-                    L'installation est couverte 10 ans par notre assurance décennale, posée par des
-                    techniciens formés et certifiés.
+                    {t('garanties.calloutDesc')}
                   </p>
                 </div>
               </motion.div>
@@ -180,15 +182,15 @@ function Garanties() {
               className="border border-white/10 bg-white/5 p-8 sm:p-10"
             >
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                Garantie vs durée de vie
+                {t('garanties.chartEyebrow')}
               </span>
               <p className="mt-2 font-sans text-sm text-white/50">
-                La barre pleine = garantie contractuelle. La barre claire = durée de vie estimée.
+                {t('garanties.chartDesc')}
               </p>
 
               <div className="mt-8 flex flex-col gap-6">
-                {COMPONENTS.map((item) => (
-                  <div key={item.title}>
+                {COMPONENTS.map((item, index) => (
+                  <div key={index}>
                     <div className="mb-2 flex items-center justify-between">
                       <span className="font-sans text-sm font-medium text-white">{item.title}</span>
                       <span className="font-sans text-xs text-white/50">

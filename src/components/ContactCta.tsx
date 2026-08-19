@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, type Variants } from 'framer-motion';
 
 const fadeInVariants: Variants = {
@@ -15,6 +16,8 @@ const fadeInVariants: Variants = {
 };
 
 function ContactCta() {
+  const { t } = useTranslation();
+
   return (
     <section className="border-t border-white/10 bg-oe-navy py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
@@ -26,12 +29,11 @@ function ContactCta() {
             className="flex-1 text-center md:text-left"
           >
             <h2 className="font-display text-2xl uppercase tracking-wide text-white sm:text-3xl lg:text-4xl">
-              On s'assoit <br className="hidden lg:block" />
-              à votre table ?
+              {t('contactCta.title1')} <br className="hidden lg:block" />
+              {t('contactCta.title2')}
             </h2>
             <p className="mt-4 max-w-md font-sans text-sm font-light leading-relaxed text-white/80">
-              Partagez-nous votre routine — clim, piscine, cuisine — et
-              recevez une évaluation précise, sans jargon complexe et sans engagement.
+              {t('contactCta.description')}
             </p>
           </motion.div>
 
@@ -44,7 +46,7 @@ function ContactCta() {
               to="/contact"
               className="inline-block border border-oe-yellow bg-oe-yellow px-8 py-4 font-sans text-xs font-bold uppercase tracking-widest text-oe-navy shadow-xl transition-all duration-300 hover:bg-transparent hover:text-oe-yellow"
             >
-              Je demande conseil à un expert
+              {t('contactCta.cta')}
             </Link>
           </motion.div>
 

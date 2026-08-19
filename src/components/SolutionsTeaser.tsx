@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import solar from '../assets/photos/solarroof2.jpg'
 import { motion, type Variants } from 'framer-motion';
 
@@ -16,29 +17,30 @@ const fadeInVariants: Variants = {
   }),
 };
 
-const SOLUTIONS = [
-  {
-    icon: '01',
-    title: 'Autonomie',
-    tagline: 'Allumez la clim',
-    description: 'Panneaux et batteries dimensionnés sur vos usages réels au quotidien.',
-  },
-  {
-    icon: '02',
-    title: 'Sécurité',
-    tagline: 'Saison cyclonique',
-    description: 'Matériel ultra-résistant et système anti-coupure automatique intégré.',
-  },
-  {
-    icon: '03',
-    title: 'Rentabilité',
-    tagline: "Aides de l'état",
-    description: 'Revente garantie sur 20 ans et optimisation de votre fiscalité.',
-  },
-];
-
 function SolutionsTeaser() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const SOLUTIONS = [
+    {
+      icon: '01',
+      title: t('solutionsTeaser.card1Title'),
+      tagline: t('solutionsTeaser.card1Tagline'),
+      description: t('solutionsTeaser.card1Desc'),
+    },
+    {
+      icon: '02',
+      title: t('solutionsTeaser.card2Title'),
+      tagline: t('solutionsTeaser.card2Tagline'),
+      description: t('solutionsTeaser.card2Desc'),
+    },
+    {
+      icon: '03',
+      title: t('solutionsTeaser.card3Title'),
+      tagline: t('solutionsTeaser.card3Tagline'),
+      description: t('solutionsTeaser.card3Desc'),
+    },
+  ];
 
   return (
     <section className="bg-oe-navy min-h-screen flex flex-col lg:flex-row relative overflow-hidden font-sans border-t border-white/10">
@@ -51,31 +53,31 @@ function SolutionsTeaser() {
             className="font-sans text-xs md:text-sm tracking-[0.3em] text-oe-yellow uppercase mb-6 flex items-center gap-4"
           >
             <span className="w-8 h-px bg-oe-yellow"></span>
-            Nos solutions
+            {t('solutionsTeaser.eyebrow')}
           </motion.p>
-          
-          <motion.h2 
+
+          <motion.h2
             custom={0.3} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}
             className="font-display text-4xl md:text-5xl text-white uppercase leading-[1.1] font-light tracking-wide"
           >
-            Un écosystème <br />
-            d'autonomie, <br />
-            <span className="font-normal text-oe-yellow">pas juste des panneaux</span>
+            {t('solutionsTeaser.title1')} <br />
+            {t('solutionsTeaser.title2')} <br />
+            <span className="font-normal text-oe-yellow">{t('solutionsTeaser.title3')}</span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             custom={0.4} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}
             className="mt-8 font-sans text-base text-white/80 leading-relaxed"
           >
-            One Énergie combine production, stockage et accompagnement humain pour que votre installation corresponde à ce que vous vivez vraiment.
+            {t('solutionsTeaser.description')}
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             custom={0.5} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariants}
             className="mt-16 flex items-center gap-8 border-t border-white/20 pt-8"
           >
             <Link to="/nos-solutions" className="text-xs md:text-sm font-bold tracking-widest text-white uppercase flex items-center gap-3 group hover:text-oe-yellow transition-colors">
-              Voir tout
+              {t('solutionsTeaser.viewAll')}
               <span className="w-8 h-px bg-white group-hover:bg-oe-yellow group-hover:w-12 transition-all duration-300"></span>
             </Link>
             <span className="w-px h-4 bg-white/20"></span>
@@ -92,7 +94,7 @@ function SolutionsTeaser() {
         <div className="absolute inset-0 z-0">
           <img 
             src={solar}
-            alt="Intérieur design" 
+            alt={t('solutionsTeaser.imgAlt')}
             className="w-full h-full object-cover grayscale-[20%]"
           />
         </div>

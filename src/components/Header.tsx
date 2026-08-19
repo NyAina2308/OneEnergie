@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import logoWhite from '../assets/brand/logo-blanc.png'
 
-const NAV_LINKS = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Nos solutions', to: '/nos-solutions' },
-  { label: 'Décrypter et prévenir', to: '/decrypter-et-prevenir' },
-  { label: 'Garantie & Confiance', to: '/garantie-confiance' },
+const LANGUAGES = [
+  { code: 'fr', label: 'Français' },
+  { code: 'en', label: 'English' },
 ]
 
 function Header() {
+  const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
+  const langMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -19,6 +21,31 @@ function Header() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Ferme la liste de langues au clic en dehors
+  useEffect(() => {
+    if (!langOpen) return
+    const onClickOutside = (e: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(e.target as Node)) {
+        setLangOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [langOpen])
+
+  const NAV_LINKS = [
+    { label: t('nav.home'), to: '/' },
+    { label: t('nav.solutions'), to: '/nos-solutions' },
+    { label: t('nav.blog'), to: '/decrypter-et-prevenir' },
+    { label: t('nav.warranty'), to: '/garantie-confiance' },
+  ]
+
+  const currentLang = LANGUAGES.find((l) => l.code === i18n.language) ?? LANGUAGES[0]
+  const selectLang = (code: string) => {
+    i18n.changeLanguage(code)
+    setLangOpen(false)
+  }
 
   return (
     <header
@@ -56,20 +83,66 @@ function Header() {
           ))}
         </nav>
 
-        {/* Bouton CTA Desktop */}
-        <div className="hidden lg:block">
+        {/* Bouton CTA + sélecteur de langue Desktop */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <div className="relative" ref={langMenuRef}>
+            <button
+              type="button"
+              onClick={() => setLangOpen((v) => !v)}
+              aria-haspopup="listbox"
+              aria-expanded={langOpen}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 font-sans text-xs font-bold uppercase tracking-widest text-white/70 transition-all duration-200 hover:text-oe-yellow"
+            >
+              {currentLang.code.toUpperCase()}
+              <svg
+                className={`h-3 w-3 transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`}
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {langOpen && (
+              <ul
+                role="listbox"
+                className="absolute right-0 top-full mt-2 w-36 border border-white/10 bg-oe-navy/95 py-1.5 shadow-xl backdrop-blur-md"
+              >
+                {LANGUAGES.map((lang) => (
+                  <li key={lang.code}>
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={lang.code === currentLang.code}
+                      onClick={() => selectLang(lang.code)}
+                      className={`flex w-full items-center justify-between px-4 py-2 text-left font-sans text-xs font-bold uppercase tracking-widest transition-colors ${
+                        lang.code === currentLang.code
+                          ? 'text-oe-yellow'
+                          : 'text-white/80 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {lang.label}
+                      {lang.code === currentLang.code && (
+                        <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <Link
             to="/contact"
             className="border border-oe-yellow px-6 py-2.5 font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow transition-all duration-300 hover:bg-oe-yellow hover:text-oe-navy"
           >
-            Contact &amp; Simulation
+            {t('nav.contactCta')}
           </Link>
         </div>
 
         {/* Bouton Hamburger Mobile */}
         <button
           type="button"
-          aria-label="Ouvrir le menu"
+          aria-label={t('nav.openMenu')}
           className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 focus:outline-none lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
@@ -111,12 +184,39 @@ function Header() {
                 {link.label}
               </NavLink>
             ))}
+
+            {/* Sélecteur de langue en liste, aussi sur mobile */}
+            <div className="mt-2 flex flex-col gap-1 border-t border-white/10 pt-3">
+              <span className="px-4 pb-1 font-sans text-[10px] font-bold uppercase tracking-widest text-white/40">
+                {t('nav.language')}
+              </span>
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  type="button"
+                  onClick={() => selectLang(lang.code)}
+                  className={`flex items-center justify-between px-4 py-2 text-left font-sans text-xs font-bold uppercase tracking-widest transition-all ${
+                    lang.code === currentLang.code
+                      ? 'text-oe-yellow'
+                      : 'text-white/70 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {lang.label}
+                  {lang.code === currentLang.code && (
+                    <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </button>
+              ))}
+            </div>
+
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
               className="mt-3 bg-oe-yellow px-6 py-3.5 text-center font-sans text-xs font-bold uppercase tracking-widest text-oe-navy"
             >
-              Contact &amp; Simulation
+              {t('nav.contactCta')}
             </Link>
           </nav>
         </div>

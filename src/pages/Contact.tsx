@@ -1,17 +1,9 @@
 import { useState, type FormEvent } from 'react'
 import { motion, type Variants } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import solar from '../assets/photos/solarcontact1.jpg'
-
-const APPAREILS = [
-  'Climatisation',
-  'Cuiseur à riz / cuisine',
-  'Chauffe-eau',
-  'Piscine',
-  'Frigo / congélateur',
-  'Véhicule électrique',
-]
 
 // Variantes pour les conteneurs et items en cascade (Stagger)
 const containerVariants = {
@@ -34,7 +26,17 @@ const itemVariants : Variants = {
 }
 
 export default function Contact() {
+  const { t } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
+
+  const APPAREILS = [
+    t('contact.device1'),
+    t('contact.device2'),
+    t('contact.device3'),
+    t('contact.device4'),
+    t('contact.device5'),
+    t('contact.device6'),
+  ]
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -46,9 +48,9 @@ export default function Contact() {
       <Header />
       <main>
         <PageHeader
-          eyebrow="Contact &amp; Simulation"
-          title="Regardons ça ensemble"
-          description="Un formulaire simple, centré sur vos appareils du quotidien — pas sur des kilowatts-crête."
+          eyebrow={t('nav.contactCta')}
+          title={t('contact.pageTitle')}
+          description={t('contact.pageDescription')}
           backgroundImage={solar}
         />
 
@@ -66,14 +68,14 @@ export default function Contact() {
               >
                 <div className="border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm sm:p-8">
                   <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                    Formulaire
+                    {t('contact.formLabel')}
                   </span>
                   <h2 className="font-display mt-2 text-2xl uppercase tracking-wide text-white sm:text-3xl">
-                    Demander une étude
+                    {t('contact.formTitle')}
                   </h2>
 
                   {submitted ? (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4 }}
@@ -85,32 +87,32 @@ export default function Contact() {
                         </svg>
                       </div>
                       <h3 className="font-display mt-6 text-xl uppercase text-white">
-                        Demande reçue !
+                        {t('contact.successTitle')}
                       </h3>
                       <p className="mt-2 font-sans text-sm font-light text-white/70">
-                        Votre demande est bien enregistrée. Un expert local vous recontacte sous 48h.
+                        {t('contact.successDesc')}
                       </p>
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="mt-6 grid gap-5">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                          Prénom *
+                          {t('contact.firstName')} *
                           <input
                             required
                             type="text"
                             name="prenom"
-                            placeholder="Votre prénom"
+                            placeholder={t('contact.firstNamePlaceholder')}
                             className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
                           />
                         </label>
                         <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                          Nom *
+                          {t('contact.lastName')} *
                           <input
                             required
                             type="text"
                             name="nom"
-                            placeholder="Votre nom"
+                            placeholder={t('contact.lastNamePlaceholder')}
                             className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
                           />
                         </label>
@@ -118,7 +120,7 @@ export default function Contact() {
 
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                          Téléphone *
+                          {t('contact.phone')} *
                           <input
                             required
                             type="tel"
@@ -128,7 +130,7 @@ export default function Contact() {
                           />
                         </label>
                         <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                          Email *
+                          {t('contact.email')} *
                           <input
                             required
                             type="email"
@@ -141,7 +143,7 @@ export default function Contact() {
 
                       <fieldset>
                         <legend className="font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                          Appareils énergivores chez vous
+                          {t('contact.devicesLegend')}
                         </legend>
                         <div className="mt-3 grid grid-cols-2 gap-2">
                           {APPAREILS.map((appareil) => (
@@ -162,21 +164,21 @@ export default function Contact() {
                       </fieldset>
 
                       <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                        Montant moyen de votre facture d'électricité (mois)
+                        {t('contact.billLabel')}
                         <input
                           type="text"
                           name="facture"
-                          placeholder="ex : 150 €"
+                          placeholder={t('contact.billPlaceholder')}
                           className="border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
                         />
                       </label>
 
                       <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
-                        Votre projet en quelques mots
+                        {t('contact.messageLabel')}
                         <textarea
                           name="message"
                           rows={3}
-                          placeholder="Panneaux, autonomie, batterie..."
+                          placeholder={t('contact.messagePlaceholder')}
                           className="resize-none border border-white/15 bg-white/5 px-4 py-3 font-sans text-sm font-normal text-white placeholder-white/30 outline-none transition focus:border-oe-yellow focus:bg-white/10 focus-visible:ring-1 focus-visible:ring-oe-yellow"
                         />
                       </label>
@@ -185,7 +187,7 @@ export default function Contact() {
                         type="submit"
                         className="mt-2 bg-oe-yellow py-4 font-sans text-sm font-bold uppercase tracking-widest text-oe-navy transition duration-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oe-yellow"
                       >
-                        Envoyer ma demande
+                        {t('contact.submit')}
                       </button>
                     </form>
                   )}
@@ -202,13 +204,13 @@ export default function Contact() {
                 {/* Texte d'introduction */}
                 <div>
                   <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                    Proximité &amp; Écoute
+                    {t('contact.introEyebrow')}
                   </span>
                   <h2 className="font-display mt-2 text-2xl uppercase tracking-wide text-white sm:text-3xl">
-                    On s'assoit à votre table
+                    {t('contact.introTitle')}
                   </h2>
                   <p className="mt-4 font-sans text-base font-light leading-relaxed text-white/70">
-                    Dites-nous ce qui consomme chez vous. Un expert local prend le temps d'analyser vos habitudes pour vous recontacter sous 48h — par téléphone ou de vive voix, sans jargon technique.
+                    {t('contact.introDesc')}
                   </p>
                 </div>
 
@@ -226,7 +228,7 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Téléphone</p>
+                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">{t('contact.phone')}</p>
                       <p className="font-display mt-1 text-lg text-white">+230 428 6063</p>
                     </div>
                   </motion.div>
@@ -238,7 +240,7 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Email</p>
+                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">{t('contact.email')}</p>
                       <p className="font-display mt-1 text-lg text-white">info@oneenergie.mu</p>
                     </div>
                   </motion.div>
@@ -250,9 +252,8 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Horaires</p>
-                      {/* TODO : horaires à confirmer par le client */}
-                      <p className="font-display mt-1 text-lg text-white">Lun - Ven : 08h00 - 18h00</p>
+                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">{t('contact.hours')}</p>
+                      <p className="font-display mt-1 text-lg text-white">{t('contact.hoursValue')}</p>
                     </div>
                   </motion.div>
 
@@ -264,8 +265,8 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Zone d'intervention</p>
-                      <p className="font-display mt-1 text-base text-white">Toute l'Île Maurice</p>
+                      <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">{t('contact.zone')}</p>
+                      <p className="font-display mt-1 text-base text-white">{t('contact.zoneValue')}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -278,7 +279,7 @@ export default function Contact() {
                   className="relative h-64 w-full border border-white/10 bg-white/5 shadow-lg"
                 >
                   <iframe
-                    title="Carte Île Maurice"
+                    title={t('contact.mapTitle')}
                     src="https://www.google.com/maps?q=%C3%8Ele%20Maurice&output=embed"
                     width="100%"
                     height="100%"

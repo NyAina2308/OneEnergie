@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
@@ -12,89 +13,116 @@ import iconPouce from '../assets/icons/icon-pouce-leve.svg'
 import solarguyBg from '../assets/photos/solarsolution.jpg'
 
 interface SolutionItem {
-  category: 'Autonomie' | 'Sécurité';
+  category: 'autonomie' | 'securite';
   icon: string;
   title: string;
   description: string;
 }
 
-const SOLUTIONS_COMBINED: SolutionItem[] = [
-  {
-    category: 'Autonomie',
-    icon: iconSoleil,
-    title: 'La clim, sans remords',
-    description: 'Allumez la clim l’après-midi sans surveiller le compteur : votre production couvre le pic de consommation.',
-  },
-  {
-    category: 'Autonomie',
-    icon: iconCuiseurRiz,
-    title: 'Le cuiseur à riz de midi',
-    description: 'Cuisinez aux heures de plein soleil et laissez vos panneaux financer la note, littéralement.',
-  },
-  {
-    category: 'Autonomie',
-    icon: iconLaveLinge,
-    title: "L'eau chaude à volonté",
-    description: 'Chauffe-eau, machine à laver, frigo : dimensionnés sur vos appareils réels, pas sur une moyenne nationale.',
-  },
-  {
-    category: 'Sécurité',
-    icon: iconPanneaux,
-    title: 'Résistance anti-cyclonique',
-    description: 'Fixations et matériel certifiés pour tenir face aux vents de l’île, saison après saison.',
-  },
-  {
-    category: 'Sécurité',
-    icon: iconBadge,
-    title: 'Système anti-coupure',
-    description: 'Vos batteries prennent le relais lors d’une coupure réseau : le frigo et l’essentiel continuent de tourner.',
-  },
-  {
-    category: 'Sécurité',
-    icon: iconPouce,
-    title: 'Garanties claires',
-    description: 'Durée, couverture, conditions : expliquées noir sur blanc avant la signature, sans petites lignes.',
-  },
-]
-
-const CATEGORY_INFO = {
-  'Autonomie': {
-    eyebrow: '2.1 — Autonomie quotidienne',
-    title: 'Gérez votre confort, faites baisser la facture',
-    description: "On dimensionne votre installation sur vos usages réels, pas sur une moyenne : clim, cuisine, eau chaude, tout compte.",
-  },
-  'Sécurité': {
-    eyebrow: '2.2 — Sécurité & continuité',
-    title: 'Un système anti-coupure, prêt pour le cyclone',
-    description: "Dormez tranquille : votre installation est pensée pour encaisser les aléas de l'île, pas seulement les beaux jours.",
-  }
-}
-
-
 function Solutions() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const currentCategory = SOLUTIONS_COMBINED[activeIndex]?.category || 'Autonomie';
+  const SOLUTIONS_COMBINED: SolutionItem[] = [
+    {
+      category: 'autonomie',
+      icon: iconSoleil,
+      title: t('solutions.card1Title'),
+      description: t('solutions.card1Desc'),
+    },
+    {
+      category: 'autonomie',
+      icon: iconCuiseurRiz,
+      title: t('solutions.card2Title'),
+      description: t('solutions.card2Desc'),
+    },
+    {
+      category: 'autonomie',
+      icon: iconLaveLinge,
+      title: t('solutions.card3Title'),
+      description: t('solutions.card3Desc'),
+    },
+    {
+      category: 'securite',
+      icon: iconPanneaux,
+      title: t('solutions.card4Title'),
+      description: t('solutions.card4Desc'),
+    },
+    {
+      category: 'securite',
+      icon: iconBadge,
+      title: t('solutions.card5Title'),
+      description: t('solutions.card5Desc'),
+    },
+    {
+      category: 'securite',
+      icon: iconPouce,
+      title: t('solutions.card6Title'),
+      description: t('solutions.card6Desc'),
+    },
+  ];
+
+  const CATEGORY_INFO = {
+    autonomie: {
+      label: t('solutions.categoryAutonomie'),
+      eyebrow: t('solutions.autonomieEyebrow'),
+      title: t('solutions.autonomieTitle'),
+      description: t('solutions.autonomieDesc'),
+    },
+    securite: {
+      label: t('solutions.categorySecurite'),
+      eyebrow: t('solutions.securiteEyebrow'),
+      title: t('solutions.securiteTitle'),
+      description: t('solutions.securiteDesc'),
+    },
+  };
+
+  const currentCategory = SOLUTIONS_COMBINED[activeIndex]?.category || 'autonomie';
   const activeInfo = CATEGORY_INFO[currentCategory as keyof typeof CATEGORY_INFO];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(Number(entry.target.getAttribute('data-index')));
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -40% 0px' }
-    );
+    // Calcul direct à partir de la position de scroll plutôt qu'un IntersectionObserver :
+    // en scroll rapide, une carte peut traverser toute la bande de détection entre deux
+    // vérifications du navigateur et ne jamais déclencher son événement d'entrée — elle
+    // est alors "sautée" (ex. le cuiseur à riz de midi, coincé entre deux autres cartes).
+    // En recalculant à chaque scroll quelle carte est la plus proche du centre de l'écran,
+    // aucune carte ne peut être manquée, quelle que soit la vitesse de défilement.
+    let ticking = false;
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    const updateActiveIndex = () => {
+      ticking = false;
+      const center = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
 
-    return () => observer.disconnect();
+      sectionRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+        const rect = ref.getBoundingClientRect();
+        const distance = Math.abs(rect.top + rect.height / 2 - center);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateActiveIndex);
+    };
+
+    updateActiveIndex();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
   return (
@@ -102,10 +130,10 @@ function Solutions() {
       <Header />
       <main>
         <PageHeader
-          eyebrow="Nos solutions solaire"
-          title="L'offre vulgarisée par les bénéfices"
-          description="Pas de kilowatts-crête ni de talon de consommation. Juste ce que le solaire change vraiment dans votre quotidien."
-          backgroundImage={solarguyBg} 
+          eyebrow={t('solutions.pageEyebrow')}
+          title={t('solutions.pageTitle')}
+          description={t('solutions.pageDescription')}
+          backgroundImage={solarguyBg}
         />
 
         <section className="border-t border-white/10 py-16 md:py-24">
@@ -118,10 +146,10 @@ function Solutions() {
               className="border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10"
             >
               <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                <span className="text-oe-yellow">« Tu veux faire cuire ton riz tranquillement pour 5 centimes ?</span> Laisse le soleil s'en occuper ! »
+                <span className="text-oe-yellow">{t('solutions.quoteHighlight')}</span> {t('solutions.quoteRest')}
               </p>
               <p className="mt-4 font-sans text-sm font-bold uppercase tracking-widest text-white/50">
-                — Pédagogie « café-cuisine »
+                {t('solutions.quoteAuthor')}
               </p>
             </motion.div>
           </div>
@@ -158,7 +186,7 @@ function Solutions() {
                   {/* Navigation dynamique (uniquement les liens du groupe courant) */}
                   <div className="mt-12 hidden lg:flex flex-col gap-4 w-full">
                     <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">
-                      {currentCategory}
+                      {activeInfo.label}
                     </span>
                     
                     {SOLUTIONS_COMBINED.map((item, idx) => {
@@ -244,10 +272,10 @@ function Solutions() {
               className="mx-auto max-w-2xl text-center"
             >
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                Nos solutions
+                {t('solutions.qualityEyebrow')}
               </span>
               <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
-                Une qualité de service premium
+                {t('solutions.qualityTitle')}
               </h2>
             </motion.div>
 
@@ -270,7 +298,7 @@ function Solutions() {
                 preload="metadata"
                 className="aspect-video w-full"
               >
-                Votre navigateur ne prend pas en charge la lecture vidéo.
+                {t('common.videoUnsupported')}
               </video>
             </motion.div>
           </div>

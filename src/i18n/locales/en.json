@@ -1,0 +1,278 @@
+{
+  "nav": {
+    "home": "Home",
+    "solutions": "Our solutions",
+    "blog": "Decode & Prevent",
+    "warranty": "Warranty & Trust",
+    "contactCta": "Contact & Simulation",
+    "openMenu": "Open menu",
+    "language": "Language"
+  },
+  "footer": {
+    "description": "Solar, between us. Photovoltaic panels and storage batteries, sized for your real usage in Mauritius.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "mauritius": "Mauritius",
+    "followUs": "Follow us",
+    "copyright": "© {{year}} One Énergie. All rights reserved.",
+    "tagline": "Solar, between us.",
+    "photoCredits": "Photo credits (Wikimedia Commons):"
+  },
+  "hero": {
+    "eyebrow": "Solar, between us",
+    "title1": "Live energy,",
+    "title2": "better.",
+    "subtitle1": "We turn your tax into financial freedom — ",
+    "subtitle2": "with an expert at your table, not a stranger on your roof.",
+    "question": "Ask us anything",
+    "cta": "Get a quote",
+    "stat1": "saved on your bill",
+    "stat2": "funded by local incentives",
+    "stat3Value": "up to 100% ",
+    "stat3": "energy independence"
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title1": "Three steps,",
+    "title2": "one expert.",
+    "tag1": "Analysis",
+    "tag2": "Custom-fit",
+    "tag3": "Local follow-up",
+    "step1Title": "Analysis",
+    "step1Desc": "We look at how you really live: AC, rice cooker, electricity bill.",
+    "step2Title": "Installation",
+    "step2Desc": "Panels and batteries sized for your home by our teams.",
+    "step3Title": "Follow-up",
+    "step3Desc": "An expert stays reachable day-to-day after commissioning.",
+    "cta": "Start my project",
+    "imgAlt1": "Photovoltaic installation detail",
+    "imgAlt2": "Photovoltaic installation overview"
+  },
+  "solutionsTeaser": {
+    "eyebrow": "Our solutions",
+    "title1": "An ecosystem",
+    "title2": "of independence,",
+    "title3": "not just panels",
+    "description": "One Énergie combines production, storage and human support so your installation matches how you actually live.",
+    "viewAll": "See all",
+    "imgAlt": "Interior design",
+    "card1Title": "Independence",
+    "card1Tagline": "Run the AC",
+    "card1Desc": "Panels and batteries sized for your real day-to-day usage.",
+    "card2Title": "Safety",
+    "card2Tagline": "Cyclone season",
+    "card2Desc": "Ultra-resistant equipment with an integrated automatic backup system.",
+    "card3Title": "Profitability",
+    "card3Tagline": "State incentives",
+    "card3Desc": "Guaranteed buyback over 20 years and optimised tax benefits."
+  },
+  "energyFlow": {
+    "heading": "The energy journey",
+    "soleil": "Sun",
+    "panneaux": "Panels",
+    "onduleur": "Inverter",
+    "batterie": "Battery",
+    "maison": "Home"
+  },
+  "contactCta": {
+    "title1": "Let's sit down",
+    "title2": "at your table?",
+    "description": "Tell us about your routine — AC, pool, cooking — and get a precise assessment, no complex jargon and no commitment.",
+    "cta": "I want expert advice"
+  },
+  "common": {
+    "videoUnsupported": "Your browser does not support video playback."
+  },
+  "solutions": {
+    "pageEyebrow": "Our solar solutions",
+    "pageTitle": "The offer, explained through its benefits",
+    "pageDescription": "No peak kilowatts, no baseline consumption. Just what solar really changes in your daily life.",
+    "quoteHighlight": "“Want to cook your rice in peace for 5 cents?",
+    "quoteRest": "Let the sun take care of it!”",
+    "quoteAuthor": "— The “coffee-and-cooking” way of explaining it",
+    "categoryAutonomie": "Independence",
+    "categorySecurite": "Safety",
+    "autonomieEyebrow": "2.1 — Everyday independence",
+    "autonomieTitle": "Manage your comfort, lower your bill",
+    "autonomieDesc": "We size your installation on your real usage, not an average: AC, cooking, hot water, it all counts.",
+    "securiteEyebrow": "2.2 — Safety & continuity",
+    "securiteTitle": "A backup system, ready for cyclone season",
+    "securiteDesc": "Sleep easy: your installation is designed to handle the island's ups and downs, not just the sunny days.",
+    "card1Title": "AC, no regrets",
+    "card1Desc": "Run the AC in the afternoon without watching the meter: your production covers the peak consumption.",
+    "card2Title": "The midday rice cooker",
+    "card2Desc": "Cook during peak sunlight hours and let your panels literally foot the bill.",
+    "card3Title": "Hot water on demand",
+    "card3Desc": "Water heater, washing machine, fridge: sized on your real appliances, not a national average.",
+    "card4Title": "Cyclone-proof resistance",
+    "card4Desc": "Certified fixings and equipment to withstand the island's winds, season after season.",
+    "card5Title": "Automatic backup system",
+    "card5Desc": "Your batteries take over during a grid outage: the fridge and the essentials keep running.",
+    "card6Title": "Clear warranties",
+    "card6Desc": "Duration, coverage, conditions: spelled out in plain terms before you sign, no fine print.",
+    "qualityEyebrow": "Our solutions",
+    "qualityTitle": "Premium service quality"
+  },
+  "team": {
+    "pageEyebrow": "The One Énergie team",
+    "pageTitle": "Faces, not a file number",
+    "pageDescription": "We deal with people. Here are the roles who support you, from the first conversation to long-term follow-up.",
+    "role1Title": "Solar advisor",
+    "role1Desc": "The first face you meet: they listen to your habits before talking equipment. No jargon, no pressure.",
+    "role2Title": "Installation technician",
+    "role2Desc": "Trained and equipped, they install your system and batteries to the island's cyclone-resistant standards.",
+    "role3Title": "Support contact",
+    "role3Desc": "Reachable after commissioning for production follow-up, maintenance and your everyday questions.",
+    "fieldEyebrow": "On the ground",
+    "fieldTitle": "Our teams, in action",
+    "fieldDesc": "No frozen stock photos: real job sites, real harnesses, real Mauritian roofs.",
+    "fieldAlt1": "Team installing solar panels on a roof",
+    "fieldAlt2": "Technicians equipped to work safely",
+    "fieldAlt3": "Technician servicing the panels",
+    "quoteHighlight": "“An expert at your table,",
+    "quoteRest": "not a stranger on your roof.”",
+    "quoteDesc": "Our team grows with the island. You'll always meet a local contact, before, during and after the installation."
+  },
+  "contact": {
+    "pageTitle": "Let's take a look together",
+    "pageDescription": "A simple form, focused on your everyday appliances — not peak kilowatts.",
+    "formLabel": "Form",
+    "formTitle": "Request an assessment",
+    "successTitle": "Request received!",
+    "successDesc": "Your request has been recorded. A local expert will contact you within 48h.",
+    "firstName": "First name",
+    "firstNamePlaceholder": "Your first name",
+    "lastName": "Last name",
+    "lastNamePlaceholder": "Your last name",
+    "phone": "Phone",
+    "email": "Email",
+    "devicesLegend": "Power-hungry appliances at home",
+    "device1": "Air conditioning",
+    "device2": "Rice cooker / cooking",
+    "device3": "Water heater",
+    "device4": "Swimming pool",
+    "device5": "Fridge / freezer",
+    "device6": "Electric vehicle",
+    "billLabel": "Average monthly electricity bill",
+    "billPlaceholder": "e.g. €150",
+    "messageLabel": "Your project, in a few words",
+    "messagePlaceholder": "Panels, independence, battery...",
+    "submit": "Send my request",
+    "introEyebrow": "Close by & Listening",
+    "introTitle": "Let's sit down at your table",
+    "introDesc": "Tell us what's using power at home. A local expert takes the time to analyse your habits and gets back to you within 48h — by phone or in person, no technical jargon.",
+    "hours": "Hours",
+    "hoursValue": "Mon - Fri: 8:00am - 6:00pm",
+    "zone": "Service area",
+    "zoneValue": "All of Mauritius",
+    "mapTitle": "Map of Mauritius"
+  },
+  "garanties": {
+    "pageTitle": "At ease, from day one to year twenty",
+    "pageDescription": "Every component of your installation is covered. We show you what, for how long, and why.",
+    "stat1Value": "25 years",
+    "stat1Label": "Panel production warranty",
+    "stat2Value": "20 years",
+    "stat2Label": "Panel & structure product warranty",
+    "stat3Value": "10 years",
+    "stat3Label": "Inverter warranty",
+    "stat4Value": "10 years",
+    "stat4Label": "Decennial warranty on installation",
+    "materialEyebrow": "The equipment",
+    "materialTitle": "Every component, covered and built to last",
+    "comp1Title": "Solar panels",
+    "comp1Subtitle": "Monocrystalline modules",
+    "comp1Warranty": "20 years",
+    "comp1WarrantyLabel": "product warranty",
+    "comp1Lifespan": "25 years",
+    "comp1LifespanLabel": "production warranty",
+    "comp2Title": "Inverters",
+    "comp2Subtitle": "Central or micro-inverters",
+    "comp2Warranty": "10 years",
+    "comp2WarrantyLabel": "warranty",
+    "comp2Lifespan": "15 years",
+    "comp2LifespanLabel": "estimated lifespan",
+    "comp3Title": "Storage battery",
+    "comp3Subtitle": "Lithium (LFP)",
+    "comp3Warranty": "10 years",
+    "comp3WarrantyLabel": "warranty",
+    "comp3Lifespan": "6,000",
+    "comp3LifespanLabel": "estimated cycles",
+    "comp4Title": "Structure & fixings",
+    "comp4Subtitle": "Rails and cyclone-rated installation",
+    "comp4Warranty": "10 years",
+    "comp4WarrantyLabel": "decennial warranty",
+    "comp4Lifespan": "25 years",
+    "comp4LifespanLabel": "estimated lifespan",
+    "calloutTitle": "Installation: decennial warranty",
+    "calloutDesc": "The installation is covered for 10 years by our decennial insurance, carried out by trained, certified technicians.",
+    "chartEyebrow": "Warranty vs. lifespan",
+    "chartDesc": "The solid bar = contractual warranty. The light bar = estimated lifespan."
+  },
+  "guide": {
+    "pageTitle": "Plain talk & scam-proofing advice",
+    "pageDescription": "We break solar down for you: bills, quotes, incentives — no jargon, no spin.",
+    "introHighlight": "“We simplify to set you free.”",
+    "introRest": "No PV arrays or baseline consumption here — just what you need to know before you sign.",
+    "readArticle": "Read the article",
+    "backToGuide": "Back to the guide",
+    "readAlso": "Also worth reading",
+    "readTimeSuffix": "read",
+    "articles": [
+      {
+        "title": "Understanding your bill and the incentives in Mauritius",
+        "excerpt": "Baseline consumption, kilowatt-hours, local incentives: we strip out the jargon to show you what actually matters.",
+        "readTime": "5 min",
+        "sections": [
+          {
+            "heading": "What your bill doesn't tell you",
+            "body": [
+              "An electricity bill lists kilowatt-hours and standing charges, but it never says what's actually driving your costs up: the afternoon AC, the rice cooker, the water heater running non-stop.",
+              "We'd rather start from your daily routine than your meter reading: which appliances, at what times, for what use."
+            ]
+          },
+          {
+            "heading": "The incentives available, without making them the headline",
+            "body": [
+              "Local incentives can fund part of your installation and buy back your surplus production for 20 years. These schemes are real, but they don't replace a system sized around your actual usage.",
+              "We walk you through what applies to your situation before ever talking about equipment — never the other way round."
+            ]
+          },
+          {
+            "heading": "A concrete example",
+            "body": [
+              "A household paying €150/month can, depending on its consumption profile, drop to around €22/month once equipped — an average of €30,000 saved over 20 years. Every household is different, which is exactly why we study yours specifically."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "How to properly compare two solar quotes",
+        "excerpt": "Two quotes, two prices, two different promises. Here are the questions to ask before signing anything.",
+        "readTime": "4 min",
+        "sections": [
+          {
+            "heading": "Price alone tells you nothing",
+            "body": [
+              "A cheaper quote can hide a system sized to your roof's surface area rather than your real consumption — you produce, but you don't consume what you produce.",
+              "Always ask: what basis was the power output calculated on?"
+            ]
+          },
+          {
+            "heading": "The questions to ask every time",
+            "body": [
+              "Is the equipment certified to withstand cyclone season? What's the actual length of the warranty, and what exactly does it cover? Who stays reachable after installation, and within what timeframe?",
+              "A serious installer answers these questions clearly, without deflecting to \"government incentives\" as the only argument."
+            ]
+          },
+          {
+            "heading": "The right reflex",
+            "body": [
+              "Put both quotes side by side and compare line by line: installed power, storage offered, warranties, response time in case of a fault. If a point stays unclear, that's the moment to ask — not after you've signed."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

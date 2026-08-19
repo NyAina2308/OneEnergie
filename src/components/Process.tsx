@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import heroPhoto from '../assets/photos/solarroof1.jpg';
 import { motion, type Variants } from 'framer-motion';
 
@@ -15,25 +16,15 @@ const fadeInVariants: Variants = {
   }),
 };
 
-const STEPS = [
-  {
-    number: '01',
-    title: 'Analyse',
-    description: 'On regarde comment vous vivez vraiment : clim, cuiseur à riz, facture d\'électricité.',
-  },
-  {
-    number: '02',
-    title: 'Installation',
-    description: 'Panneaux et batteries dimensionnés pour votre foyer par nos équipes.',
-  },
-  {
-    number: '03',
-    title: 'Suivi',
-    description: 'Un expert reste joignable après la mise en service au quotidien.',
-  },
-];
-
 function Process() {
+  const { t } = useTranslation();
+
+  const STEPS = [
+    { number: '01', title: t('process.step1Title'), description: t('process.step1Desc') },
+    { number: '02', title: t('process.step2Title'), description: t('process.step2Desc') },
+    { number: '03', title: t('process.step3Title'), description: t('process.step3Desc') },
+  ];
+
   return (
     <section id="process" className="relative bg-oe-navy py-16 md:py-24 overflow-hidden border-t border-white/10">
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -52,7 +43,7 @@ function Process() {
           <div className="absolute bottom-10 left-[10%] w-[35%] h-[75%] overflow-hidden border border-white/10 shadow-2xl z-10">
             <img 
               src={heroPhoto} 
-              alt="Installation photovoltaïque détail" 
+              alt={t('process.imgAlt1')}
               className="w-full h-full object-cover object-left grayscale-[30%] contrast-125"
             />
           </div>
@@ -60,7 +51,7 @@ function Process() {
           <div className="absolute top-10 left-[50%] w-[35%] h-[75%] overflow-hidden border border-white/10 shadow-2xl z-0">
             <img 
               src={heroPhoto} 
-              alt="Installation photovoltaïque vue d'ensemble" 
+              alt={t('process.imgAlt2')}
               className="w-full h-full object-cover object-center grayscale-[30%] contrast-125"
             />
             <div className="absolute top-0 left-0 w-12 h-1 bg-oe-yellow/80"></div>
@@ -83,25 +74,25 @@ function Process() {
             custom={0.3} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
             className="font-sans text-xs md:text-sm tracking-[0.2em] text-oe-yellow uppercase mb-4"
           >
-            Comment ça marche
+            {t('process.eyebrow')}
           </motion.p>
 
-          <motion.h2 
+          <motion.h2
             custom={0.4} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-white uppercase font-light tracking-wide leading-tight"
           >
-            Trois étapes, <br />un expert.
+            {t('process.title1')} <br />{t('process.title2')}
           </motion.h2>
 
-          <motion.div 
+          <motion.div
             custom={0.5} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInVariants}
             className="mt-8 flex flex-wrap items-center gap-3 text-xs text-white/50 tracking-widest uppercase"
           >
-            <span>Analyse</span>
+            <span>{t('process.tag1')}</span>
             <span className="w-px h-3 bg-white/30"></span>
-            <span>Sur-mesure</span>
+            <span>{t('process.tag2')}</span>
             <span className="w-px h-3 bg-white/30"></span>
-            <span>Suivi Local</span>
+            <span>{t('process.tag3')}</span>
           </motion.div>
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -131,7 +122,7 @@ function Process() {
               to="/contact"
               className="inline-flex items-center gap-4 font-sans text-sm font-bold tracking-widest text-white uppercase group"
             >
-              Démarrer mon projet
+              {t('process.cta')}
               <span className="w-12 h-px bg-white group-hover:bg-oe-yellow group-hover:w-16 transition-all duration-300"></span>
             </Link>
           </motion.div>

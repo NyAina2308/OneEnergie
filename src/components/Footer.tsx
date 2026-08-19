@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import logo from '../assets/brand/logo-light-blanc.png'
 
 const YEAR = new Date().getFullYear()
 
 function Footer() {
+  const { t } = useTranslation()
+
   return (
     <footer className="bg-oe-navy py-14 text-white/70">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 md:px-8">
@@ -11,38 +14,37 @@ function Footer() {
           <div>
             <img src={logo} alt="One Énergie" className="h-10 w-auto" />
             <p className="mt-4 max-w-xs font-sans text-sm">
-              Le solaire, entre nous. Panneaux photovoltaïques et batteries de
-              stockage, dimensionnés pour votre usage réel à l'Île Maurice.
+              {t('footer.description')}
             </p>
           </div>
 
           <div className="flex flex-wrap gap-10">
             <div>
               <h4 className="font-sans text-sm font-bold text-white uppercase">
-                Navigation
+                {t('footer.navigation')}
               </h4>
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
-                <li><Link to="/" className="hover:text-oe-yellow">Accueil</Link></li>
-                <li><Link to="/nos-solutions" className="hover:text-oe-yellow">Nos solutions</Link></li>
-                <li><Link to="/decrypter-et-prevenir" className="hover:text-oe-yellow">Décrypter et prévenir</Link></li>
-                <li><Link to="/contact" className="hover:text-oe-yellow">Contact &amp; Simulation</Link></li>
+                <li><Link to="/" className="hover:text-oe-yellow">{t('nav.home')}</Link></li>
+                <li><Link to="/nos-solutions" className="hover:text-oe-yellow">{t('nav.solutions')}</Link></li>
+                <li><Link to="/decrypter-et-prevenir" className="hover:text-oe-yellow">{t('nav.blog')}</Link></li>
+                <li><Link to="/contact" className="hover:text-oe-yellow">{t('nav.contactCta')}</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-sans text-sm font-bold text-white uppercase">
-                Contact
+                {t('footer.contact')}
               </h4>
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
                 <li>+230 428 6063</li>
                 <li>info@oneenergie.mu</li>
-                <li>Île Maurice</li>
+                <li>{t('footer.mauritius')}</li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-sans text-sm font-bold text-white uppercase">
-                Suivez-nous
+                {t('footer.followUs')}
               </h4>
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
                 <li><a href="#" className="hover:text-oe-yellow">Facebook</a></li>
@@ -54,12 +56,12 @@ function Footer() {
         </div>
 
         <div className="flex flex-col gap-2 border-t border-white/10 pt-6 font-sans text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>© {YEAR} One Énergie. Tous droits réservés.</p>
-          <p>Le solaire, entre nous.</p>
+          <p>{t('footer.copyright', { year: YEAR })}</p>
+          <p>{t('footer.tagline')}</p>
         </div>
 
         <p className="font-sans text-[11px] leading-relaxed text-white/40">
-          Crédits photos (Wikimedia Commons) :{' '}
+          {t('footer.photoCredits')} {' '}
           <a
             className="underline hover:text-white/60"
             href="https://commons.wikimedia.org/wiki/File:Three_men_installing_solar_panels_on_a_house.jpg"

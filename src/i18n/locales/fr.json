@@ -1,0 +1,278 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "solutions": "Nos solutions",
+    "blog": "Décrypter et prévenir",
+    "warranty": "Garantie & Confiance",
+    "contactCta": "Contact & Simulation",
+    "openMenu": "Ouvrir le menu",
+    "language": "Langue"
+  },
+  "footer": {
+    "description": "Le solaire, entre nous. Panneaux photovoltaïques et batteries de stockage, dimensionnés pour votre usage réel à l'Île Maurice.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "mauritius": "Île Maurice",
+    "followUs": "Suivez-nous",
+    "copyright": "© {{year}} One Énergie. Tous droits réservés.",
+    "tagline": "Le solaire, entre nous.",
+    "photoCredits": "Crédits photos (Wikimedia Commons) :"
+  },
+  "hero": {
+    "eyebrow": "Le solaire, entre nous",
+    "title1": "Vivez l'énergie,",
+    "title2": "en mieux.",
+    "subtitle1": "On transforme votre taxe en liberté financière — ",
+    "subtitle2": "avec un expert à votre table, pas un inconnu sur votre toit.",
+    "question": "Posez-nous vos questions",
+    "cta": "Demander un devis",
+    "stat1": "d'économies sur la facture",
+    "stat2": "financés par les aides locales",
+    "stat3Value": "jusqu'à 100 % ",
+    "stat3": "d'autonomie"
+  },
+  "process": {
+    "eyebrow": "Comment ça marche",
+    "title1": "Trois étapes,",
+    "title2": "un expert.",
+    "tag1": "Analyse",
+    "tag2": "Sur-mesure",
+    "tag3": "Suivi Local",
+    "step1Title": "Analyse",
+    "step1Desc": "On regarde comment vous vivez vraiment : clim, cuiseur à riz, facture d'électricité.",
+    "step2Title": "Installation",
+    "step2Desc": "Panneaux et batteries dimensionnés pour votre foyer par nos équipes.",
+    "step3Title": "Suivi",
+    "step3Desc": "Un expert reste joignable après la mise en service au quotidien.",
+    "cta": "Démarrer mon projet",
+    "imgAlt1": "Installation photovoltaïque détail",
+    "imgAlt2": "Installation photovoltaïque vue d'ensemble"
+  },
+  "solutionsTeaser": {
+    "eyebrow": "Nos solutions",
+    "title1": "Un écosystème",
+    "title2": "d'autonomie,",
+    "title3": "pas juste des panneaux",
+    "description": "One Énergie combine production, stockage et accompagnement humain pour que votre installation corresponde à ce que vous vivez vraiment.",
+    "viewAll": "Voir tout",
+    "imgAlt": "Intérieur design",
+    "card1Title": "Autonomie",
+    "card1Tagline": "Allumez la clim",
+    "card1Desc": "Panneaux et batteries dimensionnés sur vos usages réels au quotidien.",
+    "card2Title": "Sécurité",
+    "card2Tagline": "Saison cyclonique",
+    "card2Desc": "Matériel ultra-résistant et système anti-coupure automatique intégré.",
+    "card3Title": "Rentabilité",
+    "card3Tagline": "Aides de l'état",
+    "card3Desc": "Revente garantie sur 20 ans et optimisation de votre fiscalité."
+  },
+  "energyFlow": {
+    "heading": "Le parcours de l'énergie",
+    "soleil": "Soleil",
+    "panneaux": "Panneaux",
+    "onduleur": "Onduleur",
+    "batterie": "Batterie",
+    "maison": "Maison"
+  },
+  "contactCta": {
+    "title1": "On s'assoit",
+    "title2": "à votre table ?",
+    "description": "Partagez-nous votre routine — clim, piscine, cuisine — et recevez une évaluation précise, sans jargon complexe et sans engagement.",
+    "cta": "Je demande conseil à un expert"
+  },
+  "common": {
+    "videoUnsupported": "Votre navigateur ne prend pas en charge la lecture vidéo."
+  },
+  "solutions": {
+    "pageEyebrow": "Nos solutions solaire",
+    "pageTitle": "L'offre vulgarisée par les bénéfices",
+    "pageDescription": "Pas de kilowatts-crête ni de talon de consommation. Juste ce que le solaire change vraiment dans votre quotidien.",
+    "quoteHighlight": "« Tu veux faire cuire ton riz tranquillement pour 5 centimes ?",
+    "quoteRest": "Laisse le soleil s'en occuper ! »",
+    "quoteAuthor": "— Pédagogie « café-cuisine »",
+    "categoryAutonomie": "Autonomie",
+    "categorySecurite": "Sécurité",
+    "autonomieEyebrow": "2.1 — Autonomie quotidienne",
+    "autonomieTitle": "Gérez votre confort, faites baisser la facture",
+    "autonomieDesc": "On dimensionne votre installation sur vos usages réels, pas sur une moyenne : clim, cuisine, eau chaude, tout compte.",
+    "securiteEyebrow": "2.2 — Sécurité & continuité",
+    "securiteTitle": "Un système anti-coupure, prêt pour le cyclone",
+    "securiteDesc": "Dormez tranquille : votre installation est pensée pour encaisser les aléas de l'île, pas seulement les beaux jours.",
+    "card1Title": "La clim, sans remords",
+    "card1Desc": "Allumez la clim l’après-midi sans surveiller le compteur : votre production couvre le pic de consommation.",
+    "card2Title": "Le cuiseur à riz de midi",
+    "card2Desc": "Cuisinez aux heures de plein soleil et laissez vos panneaux financer la note, littéralement.",
+    "card3Title": "L'eau chaude à volonté",
+    "card3Desc": "Chauffe-eau, machine à laver, frigo : dimensionnés sur vos appareils réels, pas sur une moyenne nationale.",
+    "card4Title": "Résistance anti-cyclonique",
+    "card4Desc": "Fixations et matériel certifiés pour tenir face aux vents de l’île, saison après saison.",
+    "card5Title": "Système anti-coupure",
+    "card5Desc": "Vos batteries prennent le relais lors d’une coupure réseau : le frigo et l’essentiel continuent de tourner.",
+    "card6Title": "Garanties claires",
+    "card6Desc": "Durée, couverture, conditions : expliquées noir sur blanc avant la signature, sans petites lignes.",
+    "qualityEyebrow": "Nos solutions",
+    "qualityTitle": "Une qualité de service premium"
+  },
+  "team": {
+    "pageEyebrow": "L'équipe One Énergie",
+    "pageTitle": "Des visages, pas un numéro de dossier",
+    "pageDescription": "On traite avec des gens. Voici les métiers qui vous accompagnent, du premier échange au suivi dans la durée.",
+    "role1Title": "Conseiller solaire",
+    "role1Desc": "Le premier visage : il écoute vos habitudes avant de parler matériel. Aucun jargon, aucune pression.",
+    "role2Title": "Technicien installateur",
+    "role2Desc": "Formé et équipé, il pose votre centrale et vos batteries selon les normes anti-cycloniques de l’île.",
+    "role3Title": "Référent SAV",
+    "role3Desc": "Joignable après la mise en service pour le suivi de production, l’entretien et vos questions du quotidien.",
+    "fieldEyebrow": "Sur le terrain",
+    "fieldTitle": "Nos équipes, en action",
+    "fieldDesc": "Pas de photos de banque d'images figées : des chantiers, des harnais, des toits mauriciens.",
+    "fieldAlt1": "Équipe installant des panneaux solaires sur un toit",
+    "fieldAlt2": "Techniciens équipés pour intervenir en sécurité",
+    "fieldAlt3": "Technicien assurant l’entretien des panneaux",
+    "quoteHighlight": "« Un expert à votre table,",
+    "quoteRest": "pas un inconnu sur votre toit. »",
+    "quoteDesc": "Notre équipe grandit avec l'île. Vous rencontrerez toujours un interlocuteur local, avant, pendant et après l'installation."
+  },
+  "contact": {
+    "pageTitle": "Regardons ça ensemble",
+    "pageDescription": "Un formulaire simple, centré sur vos appareils du quotidien — pas sur des kilowatts-crête.",
+    "formLabel": "Formulaire",
+    "formTitle": "Demander une étude",
+    "successTitle": "Demande reçue !",
+    "successDesc": "Votre demande est bien enregistrée. Un expert local vous recontacte sous 48h.",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Votre prénom",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Votre nom",
+    "phone": "Téléphone",
+    "email": "Email",
+    "devicesLegend": "Appareils énergivores chez vous",
+    "device1": "Climatisation",
+    "device2": "Cuiseur à riz / cuisine",
+    "device3": "Chauffe-eau",
+    "device4": "Piscine",
+    "device5": "Frigo / congélateur",
+    "device6": "Véhicule électrique",
+    "billLabel": "Montant moyen de votre facture d'électricité (mois)",
+    "billPlaceholder": "ex : 150 €",
+    "messageLabel": "Votre projet en quelques mots",
+    "messagePlaceholder": "Panneaux, autonomie, batterie...",
+    "submit": "Envoyer ma demande",
+    "introEyebrow": "Proximité & Écoute",
+    "introTitle": "On s'assoit à votre table",
+    "introDesc": "Dites-nous ce qui consomme chez vous. Un expert local prend le temps d'analyser vos habitudes pour vous recontacter sous 48h — par téléphone ou de vive voix, sans jargon technique.",
+    "hours": "Horaires",
+    "hoursValue": "Lun - Ven : 08h00 - 18h00",
+    "zone": "Zone d'intervention",
+    "zoneValue": "Toute l'Île Maurice",
+    "mapTitle": "Carte Île Maurice"
+  },
+  "garanties": {
+    "pageTitle": "Tranquille, du premier jour au vingtième",
+    "pageDescription": "Chaque composant de votre installation est couvert. On vous montre quoi, combien de temps, et pourquoi.",
+    "stat1Value": "25 ans",
+    "stat1Label": "Garantie de production des panneaux",
+    "stat2Value": "20 ans",
+    "stat2Label": "Garantie produit panneaux & structure",
+    "stat3Value": "10 ans",
+    "stat3Label": "Garantie sur les onduleurs",
+    "stat4Value": "10 ans",
+    "stat4Label": "Garantie décennale sur la pose",
+    "materialEyebrow": "Le matériel",
+    "materialTitle": "Chaque composant, couvert et durable",
+    "comp1Title": "Panneaux solaires",
+    "comp1Subtitle": "Modules monocristallins",
+    "comp1Warranty": "20 ans",
+    "comp1WarrantyLabel": "garantie produit",
+    "comp1Lifespan": "25 ans",
+    "comp1LifespanLabel": "garantie production",
+    "comp2Title": "Onduleurs",
+    "comp2Subtitle": "Central ou micro-onduleurs",
+    "comp2Warranty": "10 ans",
+    "comp2WarrantyLabel": "garantie",
+    "comp2Lifespan": "15 ans",
+    "comp2LifespanLabel": "durée de vie estimée",
+    "comp3Title": "Batterie de stockage",
+    "comp3Subtitle": "Lithium (LFP)",
+    "comp3Warranty": "10 ans",
+    "comp3WarrantyLabel": "garantie",
+    "comp3Lifespan": "6 000",
+    "comp3LifespanLabel": "cycles estimés",
+    "comp4Title": "Structure & fixations",
+    "comp4Subtitle": "Rails et pose anti-cyclonique",
+    "comp4Warranty": "10 ans",
+    "comp4WarrantyLabel": "garantie décennale",
+    "comp4Lifespan": "25 ans",
+    "comp4LifespanLabel": "durée de vie estimée",
+    "calloutTitle": "Pose : garantie décennale",
+    "calloutDesc": "L'installation est couverte 10 ans par notre assurance décennale, posée par des techniciens formés et certifiés.",
+    "chartEyebrow": "Garantie vs durée de vie",
+    "chartDesc": "La barre pleine = garantie contractuelle. La barre claire = durée de vie estimée."
+  },
+  "guide": {
+    "pageTitle": "Décryptage et conseils anti-arnaques",
+    "pageDescription": "On vulgarise le solaire pour vous : factures, devis, aides — sans jargon, sans langue de bois.",
+    "introHighlight": "« On vulgarise pour libérer. »",
+    "introRest": "Ici, pas de champ PV ni de talon de consommation — juste ce qu'il faut savoir avant de signer.",
+    "readArticle": "Lire l'article",
+    "backToGuide": "Retour au guide",
+    "readAlso": "À lire aussi",
+    "readTimeSuffix": "de lecture",
+    "articles": [
+      {
+        "title": "Comprendre sa facture et les aides à Maurice",
+        "excerpt": "Talon de consommation, kilowattheure, aides locales : on démonte le jargon pour vous montrer ce qui compte vraiment.",
+        "readTime": "5 min",
+        "sections": [
+          {
+            "heading": "Ce que votre facture ne vous dit pas",
+            "body": [
+              "Une facture d'électricité liste des kilowattheures et des abonnements, mais elle ne dit jamais ce qui, chez vous, fait vraiment grimper la note : la clim de l'après-midi, le cuiseur à riz, le ballon d'eau chaude qui tourne en continu.",
+              "On préfère partir de votre quotidien plutôt que de votre relevé : quels appareils, à quelles heures, pour quel usage."
+            ]
+          },
+          {
+            "heading": "Les aides disponibles, sans en faire l’argument numéro un",
+            "body": [
+              "Des aides locales peuvent financer une partie de votre installation et racheter votre surplus de production pendant 20 ans. Ces aides existent, elles sont réelles, mais elles ne remplacent pas un dimensionnement pensé pour votre usage.",
+              "On vous présente ce qui est mobilisable pour votre situation avant de parler matériel — jamais l'inverse."
+            ]
+          },
+          {
+            "heading": "Un exemple concret",
+            "body": [
+              "Un foyer qui payait 150€/mois peut, selon son profil de consommation, redescendre autour de 22€/mois une fois équipé — soit en moyenne 30 000€ d'économies sur 20 ans. Chaque foyer est différent : c'est justement pour ça qu'on étudie le vôtre en particulier."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Comment bien comparer deux devis solaires",
+        "excerpt": "Deux devis, deux prix, deux promesses différentes. Voici les questions à poser avant de signer quoi que ce soit.",
+        "readTime": "4 min",
+        "sections": [
+          {
+            "heading": "Le prix seul ne veut rien dire",
+            "body": [
+              "Un devis moins cher peut cacher un dimensionnement calculé sur la surface de votre toit plutôt que sur votre consommation réelle — vous produisez, mais vous ne consommez pas ce que vous produisez.",
+              "Demandez toujours : sur quelle base la puissance a-t-elle été calculée ?"
+            ]
+          },
+          {
+            "heading": "Les questions à poser systématiquement",
+            "body": [
+              "La résistance du matériel est-elle certifiée pour la saison cyclonique ? Quelle est la durée réelle de la garantie, et que couvre-t-elle précisément ? Qui reste joignable après l'installation, et sous quel délai ?",
+              "Un installateur sérieux répond à ces questions clairement, sans détourner vers « les aides de l'État » comme unique argument."
+            ]
+          },
+          {
+            "heading": "Le bon réflexe",
+            "body": [
+              "Mettez les deux devis côte à côte et comparez ligne par ligne : puissance installée, stockage proposé, garanties, délai d'intervention en cas de panne. Si un point reste flou, c'est le bon moment pour poser la question — pas après la signature."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

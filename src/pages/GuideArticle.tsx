@@ -1,31 +1,34 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import { ARTICLES, getArticleBySlug } from '../data/articles'
+import { useArticles, useArticleBySlug } from '../data/articles'
 
-function BlogArticle() {
+function GuideArticle() {
+  const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
-  const article = slug ? getArticleBySlug(slug) : undefined
+  const article = useArticleBySlug(slug)
+  const articles = useArticles()
 
   if (!article) {
     return <Navigate to="/decrypter-et-prevenir" replace />
   }
 
-  const otherArticles = ARTICLES.filter((a) => a.slug !== article.slug)
+  const otherArticles = articles.filter((a) => a.slug !== article.slug)
 
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
       <main>
         <PageHeader
-          eyebrow={`Décrypter et prévenir · ${article.readTime} de lecture`}
+          eyebrow={`${t('nav.blog')} · ${article.readTime} ${t('guide.readTimeSuffix')}`}
           title={article.title}
         />
 
         <section className="border-t border-white/10 py-16 md:py-24">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
-            
+
             {/* Bouton retour */}
             <Link
               to="/decrypter-et-prevenir"
@@ -34,7 +37,7 @@ function BlogArticle() {
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Retour au guide
+              {t('guide.backToGuide')}
             </Link>
 
             {/* Image principale de l'article */}
@@ -69,7 +72,7 @@ function BlogArticle() {
               <div className="mt-20 border border-white/10 bg-white/5 p-8 md:p-10">
                 <h3 className="mb-6 flex items-center gap-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-oe-yellow">
                   <span className="h-px w-6 bg-oe-yellow"></span>
-                  À lire aussi
+                  {t('guide.readAlso')}
                 </h3>
                 <div className="flex flex-col gap-4">
                   {otherArticles.map((a) => (
@@ -97,4 +100,4 @@ function BlogArticle() {
   )
 }
 
-export default BlogArticle
+export default GuideArticle

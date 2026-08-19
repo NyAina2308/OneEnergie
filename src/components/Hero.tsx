@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Header from './Header';
 import heroPhoto from '../assets/photos/solar1.jpg';
 import { motion, type Variants } from 'framer-motion';
@@ -72,13 +73,15 @@ const fadeInVariants: Variants = {
   }),
 };
 
-const STATS = [
-  { value: '85%', label: "d'économies sur la facture" },
-  { value: '81%', label: 'financés par les aides locales' },
-  { value: "jusqu'à 100 % ", label: "d'autonomie" },
-];
-
 function Hero() {
+  const { t } = useTranslation();
+
+  const STATS = [
+    { value: '85%', label: t('hero.stat1') },
+    { value: '81%', label: t('hero.stat2') },
+    { value: t('hero.stat3Value'), label: t('hero.stat3') },
+  ];
+
   return (
     <section className="relative min-h-[90vh] w-full bg-oe-navy overflow-hidden flex">
       {/* Lignes de construction d'arrière-plan globales */}
@@ -134,20 +137,20 @@ function Hero() {
             className="font-sans text-xs md:text-sm tracking-[0.3em] text-oe-yellow uppercase mb-6 flex items-center gap-4"
           >
             <span className="w-8 h-px bg-oe-yellow hidden sm:block"></span>
-            Le solaire, entre nous
+            {t('hero.eyebrow')}
           </motion.p>
 
           {/* Titre Principal avec ProgressiveText */}
           <h1 className="font-display text-5xl leading-[1.05] text-white uppercase sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide drop-shadow-md">
-            <ProgressiveText text="Vivez l'énergie," />
+            <ProgressiveText text={t('hero.title1')} />
             <br />
-            <ProgressiveText text="en mieux." className="text-oe-yellow font-normal" />
+            <ProgressiveText text={t('hero.title2')} className="text-oe-yellow font-normal" />
           </h1>
 
           {/* Sous-titre avec ProgressiveText */}
           <div className="mt-8 max-w-lg font-sans text-base md:text-lg text-white/95 leading-relaxed tracking-wide drop-shadow">
-            <ProgressiveText text="On transforme votre taxe en liberté financière — " />
-            <ProgressiveText text="avec un expert à votre table, pas un inconnu sur votre toit." />
+            <ProgressiveText text={t('hero.subtitle1')} />
+            <ProgressiveText text={t('hero.subtitle2')} />
           </div>
 
           {/* Call to action */}
@@ -156,13 +159,13 @@ function Hero() {
             className="mt-12 flex flex-col items-start gap-2"
           >
             <p className="font-sans text-xs md:text-sm text-white/70 tracking-widest uppercase">
-              Posez-nous vos questions
+              {t('hero.question')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-4 md:gap-6 font-sans text-sm md:text-base font-bold tracking-widest text-white uppercase group"
             >
-              Demander un devis
+              {t('hero.cta')}
               <span className="w-12 h-px bg-white group-hover:bg-oe-yellow group-hover:w-20 transition-all duration-300"></span>
             </Link>
           </motion.div>

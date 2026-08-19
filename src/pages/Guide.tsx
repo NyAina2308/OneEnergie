@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import { ARTICLES } from '../data/articles'
-import solar from '../assets/photos/solarpointing.jpg' 
+import { useArticles } from '../data/articles'
+import solar from '../assets/photos/solarpointing.jpg'
 
 // Variantes pour l'effet Stagger (apparition en cascade)
 const containerVariants = {
@@ -26,21 +27,24 @@ const itemVariants: Variants = {
   },
 }
 
-export default function Blog() {
+export default function Guide() {
+  const { t } = useTranslation()
+  const articles = useArticles()
+
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
       <main>
         <PageHeader
-          eyebrow="Décrypter et prévenir"
-          title="Décryptage et conseils anti-arnaques"
-          description="On vulgarise le solaire pour vous : factures, devis, aides — sans jargon, sans langue de bois."
+          eyebrow={t('nav.blog')}
+          title={t('guide.pageTitle')}
+          description={t('guide.pageDescription')}
           backgroundImage={solar}
         />
 
         <section className="border-t border-white/10 py-20 md:py-28">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
-            
+
             {/* Bannière d'intro avec Fade-In */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -50,20 +54,19 @@ export default function Blog() {
               className="mb-14 border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm"
             >
               <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                <span className="text-oe-yellow">« On vulgarise pour libérer. »</span> Ici, pas de champ PV ni de
-                talon de consommation — juste ce qu'il faut savoir avant de signer.
+                <span className="text-oe-yellow">{t('guide.introHighlight')}</span> {t('guide.introRest')}
               </p>
             </motion.div>
 
             {/* Grille d'articles */}
-            <motion.div 
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-50px' }}
               className="grid gap-6 sm:grid-cols-2"
             >
-              {ARTICLES.map((article) => (
+              {articles.map((article) => (
                 <motion.div key={article.slug} variants={itemVariants}>
                   <Link
                     to={`/decrypter-et-prevenir/${article.slug}`}
@@ -72,14 +75,14 @@ export default function Blog() {
                     <article className="flex flex-col">
                       {/* Image plein largeur (sans padding autour) */}
                       <div className="h-52 w-full overflow-hidden border-b border-white/10">
-                        <img 
-                          src={article.imageUrl} 
-                          alt={article.title} 
+                        <img
+                          src={article.imageUrl}
+                          alt={article.title}
                           loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       {/* Contenu textuel avec padding */}
                       <div className="p-8 pb-0">
                         <h2 className="font-display text-xl uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-oe-yellow">
@@ -95,7 +98,7 @@ export default function Blog() {
                     <div className="p-8 pt-6">
                       <div className="flex items-center justify-between border-t border-white/10 pt-4">
                         <span className="flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow transition-transform duration-300 group-hover:translate-x-1">
-                          Lire l'article · {article.readTime}
+                          {t('guide.readArticle')} · {article.readTime}
                           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
