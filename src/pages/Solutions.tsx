@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, type Variants } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
@@ -9,30 +9,7 @@ import iconLaveLinge from '../assets/icons/icon-lave-linge.svg'
 import iconPanneaux from '../assets/icons/icon-panneaux-empiles.svg'
 import iconBadge from '../assets/icons/icon-badge-eclair.svg'
 import iconPouce from '../assets/icons/icon-pouce-leve.svg'
-import installationToit from '../assets/photos/installation-toit.jpg'
-import panneauxToiture from '../assets/photos/panneaux-toiture.jpg'
-import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
-import entretienPanneaux from '../assets/photos/entretien-panneaux.jpg'
-import solarguyBg from '../assets/photos/solarsolution.jpg' 
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-}
-
-const containerStagger: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-}
+import solarguyBg from '../assets/photos/solarsolution.jpg'
 
 interface SolutionItem {
   category: 'Autonomie' | 'Sécurité';
@@ -274,56 +251,27 @@ function Solutions() {
               </h2>
             </motion.div>
 
-            <motion.div 
-              variants={containerStagger}
-              initial="hidden"
-              whileInView="visible"
+            {/* Grille photo retirée en attendant les vrais visuels — bloc laissé vide pour le moment */}
+
+            {/* Vidéo de présentation, intégrée dans le même bloc "Une qualité de service premium" */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-4 md:auto-rows-[220px]"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mx-auto mt-16 max-w-3xl overflow-hidden border border-white/10 bg-black shadow-2xl"
             >
-              {[
-                { 
-                  src: panneauxToiture, 
-                  alt: 'Panneaux solaires posés sur une toiture, ciel dégagé', 
-                  caption: 'Panneaux haute performance', 
-                  className: 'md:col-span-2 md:row-span-2'
-                },
-                { 
-                  src: installationToit, 
-                  alt: 'Installation de panneaux photovoltaïques sur une toiture', 
-                  caption: 'Installation soignée', 
-                  className: 'md:col-span-2 md:row-span-1'
-                },
-                { 
-                  src: techniciensSecurite, 
-                  alt: 'Techniciens équipés pour une installation en sécurité', 
-                  caption: 'Équipes formées', 
-                  className: 'md:col-span-1 md:row-span-1'
-                },
-                { 
-                  src: entretienPanneaux, 
-                  alt: 'Technicien effectuant l’entretien de panneaux solaires', 
-                  caption: 'Suivi dans la durée', 
-                  className: 'md:col-span-1 md:row-span-1'
-                },
-              ].map((photo) => (
-                <motion.figure
-                  key={photo.src}
-                  variants={fadeInUp}
-                  className={`group relative overflow-hidden border border-white/10 bg-white/5 min-h-[250px] md:min-h-0 ${photo.className}`}
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-oe-navy/90 via-oe-navy/20 to-transparent" />
-                  <figcaption className="absolute bottom-6 left-6 font-sans text-sm font-bold uppercase tracking-wide text-white">
-                    {photo.caption}
-                  </figcaption>
-                </motion.figure>
-              ))}
+              <video
+                src="/one-energie-presentation.mp4"
+                controls
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="aspect-video w-full"
+              >
+                Votre navigateur ne prend pas en charge la lecture vidéo.
+              </video>
             </motion.div>
           </div>
         </section>

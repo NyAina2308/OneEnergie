@@ -252,7 +252,7 @@ export default function Contact() {
                     <div>
                       <p className="font-sans text-xs font-bold uppercase tracking-wider text-white/50">Horaires</p>
                       {/* TODO : horaires à confirmer par le client */}
-                      <p className="font-display mt-1 text-base text-white/50 italic">À confirmer</p>
+                      <p className="font-display mt-1 text-lg text-white">Lun - Ven : 08h00 - 18h00</p>
                     </div>
                   </motion.div>
 

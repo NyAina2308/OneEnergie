@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { label: 'Accueil', to: '/' },
   { label: 'Nos solutions', to: '/nos-solutions' },
   { label: 'Décrypter et prévenir', to: '/decrypter-et-prevenir' },
+  { label: 'Garantie & Confiance', to: '/garantie-confiance' },
 ]
 
 function Header() {

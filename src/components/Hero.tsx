@@ -75,7 +75,7 @@ const fadeInVariants: Variants = {
 const STATS = [
   { value: '85%', label: "d'économies sur la facture" },
   { value: '81%', label: 'financés par les aides locales' },
-  { value: '20 ans', label: 'de revente garantie' },
+  { value: "jusqu'à 100 % ", label: "d'autonomie" },
 ];
 
 function Hero() {

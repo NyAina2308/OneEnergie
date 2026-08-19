@@ -1,7 +1,7 @@
 import Hero from '../components/Hero'
 import SolutionsTeaser from '../components/SolutionsTeaser'
 import Process from '../components/Process'
-import TestimonialsAndContact from '../components/Testimonials'
+import EnergyFlow from '../components/EnergyFlow'
 import ContactCta from '../components/ContactCta'
 
 
@@ -11,7 +11,7 @@ function Home() {
       <Hero />
       <Process />
       <SolutionsTeaser />
-      <TestimonialsAndContact />
+      <EnergyFlow />
       <ContactCta/>
     </main>
   )

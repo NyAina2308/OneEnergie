@@ -7,6 +7,7 @@ import Blog from './pages/Blog'
 import BlogArticle from './pages/BlogArticle'
 import Team from './pages/Team'
 import Contact from './pages/Contact'
+import Garanties from './pages/Garanties'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/decrypter-et-prevenir" element={<Blog />} />
         <Route path="/decrypter-et-prevenir/:slug" element={<BlogArticle />} />
         <Route path="/equipe" element={<Team />} />
+        <Route path="/garantie-confiance" element={<Garanties />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
