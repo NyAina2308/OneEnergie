@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Variables d'environnement / secrets (aucune utilisée actuellement, mais on
+# évite qu'un futur .env parte par erreur dans un commit)
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
