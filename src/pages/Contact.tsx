@@ -4,7 +4,7 @@ import { motion, type Variants } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
-import SimulatorEstimate, { type SimulatorResult } from '../components/SimulatorEstimate'
+import type { SimulatorResult } from '../components/SimulatorEstimate'
 import solar from '../assets/photos/solarcontact1.jpg'
 
 // Variantes pour les conteneurs et items en cascade (Stagger)
@@ -87,14 +87,10 @@ export default function Contact() {
           backgroundImage={solar}
         />
 
-        {/* Simulateur d'estimation, en amont du formulaire complet */}
-        <section className="border-t border-white/10 py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-5 md:px-8">
-            <SimulatorEstimate onComplete={handleSimulatorComplete} />
-          </div>
-        </section>
-
         {/* Section Principale */}
+        {/* Le simulateur vit désormais uniquement sur l'accueil ; cette page ne fait plus
+            que réceptionner son résultat (state de navigation) pour pré-remplir le formulaire
+            ci-dessous — voir handleSimulatorComplete et le useEffect au-dessus. */}
         <section ref={formSectionRef} className="border-t border-white/10 py-16 md:py-24 scroll-mt-24">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-start">

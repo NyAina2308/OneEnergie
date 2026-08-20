@@ -272,10 +272,11 @@ function Solutions() {
               <video
                 src="/one-energie-presentation.mp4"
                 controls
+                autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
                 className="aspect-video w-full"
               >
                 {t('common.videoUnsupported')}
