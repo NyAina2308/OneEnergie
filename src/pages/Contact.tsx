@@ -1,4 +1,5 @@
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
@@ -28,6 +29,7 @@ const itemVariants : Variants = {
 
 export default function Contact() {
   const { t, i18n } = useTranslation()
+  const location = useLocation()
   const [submitted, setSubmitted] = useState(false)
   const formSectionRef = useRef<HTMLElement>(null)
   const billInputRef = useRef<HTMLInputElement>(null)
@@ -63,6 +65,16 @@ export default function Contact() {
     }
     formSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+
+  // Reprend le résultat du simulateur lancé depuis l'accueil (transmis via l'état de
+  // navigation) pour ne pas faire perdre sa réponse à l'utilisateur en changeant de page.
+  useEffect(() => {
+    const incomingResult = (location.state as { simulatorResult?: SimulatorResult } | null)?.simulatorResult
+    if (incomingResult) {
+      handleSimulatorComplete(incomingResult)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">

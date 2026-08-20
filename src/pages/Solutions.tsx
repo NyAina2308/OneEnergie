@@ -1,18 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
-import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
 import DahSolarRange from '../components/DahSolarRange'
 import RealtimeTracking from '../components/RealtimeTracking'
-import iconSoleil from '../assets/icons/icon-soleil-lunettes.svg'
-import iconCuiseurRiz from '../assets/icons/icon-cuiseur-riz.svg'
-import iconLaveLinge from '../assets/icons/icon-lave-linge.svg'
 import iconPanneaux from '../assets/icons/icon-panneaux-empiles.svg'
 import iconBadge from '../assets/icons/icon-badge-eclair.svg'
 import iconPouce from '../assets/icons/icon-pouce-leve.svg'
-import solarguyBg from '../assets/photos/solarsolution.jpg'
+import autonomiePhoto from '../assets/photos/koera.png'
 
 interface SolutionItem {
   category: 'autonomie' | 'securite';
@@ -26,25 +22,9 @@ function Solutions() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Sécurité reste la seule catégorie pilotée par le scroll-spy : Autonomie est désormais
+  // un bloc d'intro statique (photo + message), sans cartes ni navigation défilante.
   const SOLUTIONS_COMBINED: SolutionItem[] = [
-    {
-      category: 'autonomie',
-      icon: iconSoleil,
-      title: t('solutions.card1Title'),
-      description: t('solutions.card1Desc'),
-    },
-    {
-      category: 'autonomie',
-      icon: iconCuiseurRiz,
-      title: t('solutions.card2Title'),
-      description: t('solutions.card2Desc'),
-    },
-    {
-      category: 'autonomie',
-      icon: iconLaveLinge,
-      title: t('solutions.card3Title'),
-      description: t('solutions.card3Desc'),
-    },
     {
       category: 'securite',
       icon: iconPanneaux,
@@ -65,23 +45,12 @@ function Solutions() {
     },
   ];
 
-  const CATEGORY_INFO = {
-    autonomie: {
-      label: t('solutions.categoryAutonomie'),
-      eyebrow: t('solutions.autonomieEyebrow'),
-      title: t('solutions.autonomieTitle'),
-      description: t('solutions.autonomieDesc'),
-    },
-    securite: {
-      label: t('solutions.categorySecurite'),
-      eyebrow: t('solutions.securiteEyebrow'),
-      title: t('solutions.securiteTitle'),
-      description: t('solutions.securiteDesc'),
-    },
+  const SECURITE_INFO = {
+    label: t('solutions.categorySecurite'),
+    eyebrow: t('solutions.securiteEyebrow'),
+    title: t('solutions.securiteTitle'),
+    description: t('solutions.securiteDesc'),
   };
-
-  const currentCategory = SOLUTIONS_COMBINED[activeIndex]?.category || 'autonomie';
-  const activeInfo = CATEGORY_INFO[currentCategory as keyof typeof CATEGORY_INFO];
 
   useEffect(() => {
     // Calcul direct à partir de la position de scroll plutôt qu'un IntersectionObserver :
@@ -131,37 +100,52 @@ function Solutions() {
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
       <main>
-        <PageHeader
-          eyebrow={t('solutions.pageEyebrow')}
-          title={t('solutions.pageTitle')}
-          description={t('solutions.pageDescription')}
-          backgroundImage={solarguyBg}
-        />
-
-        <section className="border-t border-white/10 py-16 md:py-24">
-          <div className="mx-auto max-w-3xl px-5 md:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="border border-white/10 bg-white/5 p-8 text-center shadow-2xl sm:p-10"
-            >
-              <p className="font-display text-lg font-medium leading-relaxed text-white sm:text-xl">
-                <span className="text-oe-yellow">{t('solutions.quoteHighlight')}</span> {t('solutions.quoteRest')}
-              </p>
-              <p className="mt-4 font-sans text-sm font-bold uppercase tracking-widest text-white/50">
-                {t('solutions.quoteAuthor')}
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Le matériel installé : gamme DAH Solar */}
         <DahSolarRange />
 
         {/* Suivi de production en temps réel */}
         <RealtimeTracking />
+
+        {/* Autonomie : bloc d'intro statique (message + photo), sans scroll-spy ni cartes */}
+        <section className="relative flex flex-col border-t border-white/10 bg-oe-navy lg:flex-row">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="flex w-full flex-col justify-center border-r border-white/10 px-6 py-16 md:px-12 lg:w-5/12 lg:px-16 lg:py-24"
+          >
+            <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
+              {t('solutions.autonomieEyebrow')}
+            </span>
+            <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
+              {t('solutions.autonomieTitle')}
+            </h2>
+            <p className="mt-6 border-l-2 border-oe-yellow bg-white/5 py-3 pl-4 font-sans text-sm font-semibold leading-relaxed text-white">
+              {t('solutions.autonomieLead')}
+            </p>
+            <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
+              {t('solutions.autonomieDesc')}
+            </p>
+          </motion.div>
+
+          {/* Photo : mains en cœur devant un coucher de soleil, symbole de l'ambition du bloc */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+            className="relative min-h-[320px] w-full overflow-hidden lg:w-7/12"
+          >
+            <img
+              src={autonomiePhoto}
+              alt={t('solutions.autonomiePhotoAlt')}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            {/* Fondu gauche : fond entièrement le bord de la photo dans le panneau de texte */}
+            <div className="absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-oe-navy from-0% via-oe-navy/50 via-35% to-transparent to-75% lg:block" />
+          </motion.div>
+        </section>
 
         {/* --- BLOC PRINCIPAL AVEC SCROLL SPY --- */}
         <section id="autonomie-securite" className="relative flex flex-col lg:flex-row border-t border-white/10 bg-oe-navy">
@@ -170,58 +154,46 @@ function Solutions() {
           <div className="w-full lg:w-5/12 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16 py-12 lg:py-0 z-20 border-r border-white/10 bg-oe-navy">
             {/* L'espace réservé (min-h) évite les sauts de layout quand le contenu change */}
             <div className="max-w-md relative min-h-[400px]">
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentCategory} // Déclenche l'animation au changement de catégorie
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="absolute top-0 left-0 w-full"
-                >
-                  {/* Titres */}
-                  <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
-                    {activeInfo.eyebrow}
+              <div className="absolute top-0 left-0 w-full">
+                {/* Titres */}
+                <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
+                  {SECURITE_INFO.eyebrow}
+                </span>
+                <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
+                  {SECURITE_INFO.title}
+                </h2>
+                <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
+                  {SECURITE_INFO.description}
+                </p>
+
+                {/* Navigation dynamique vers chaque carte de la colonne de droite */}
+                <div className="mt-12 hidden lg:flex flex-col gap-4 w-full">
+                  <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">
+                    {SECURITE_INFO.label}
                   </span>
-                  <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
-                    {activeInfo.title}
-                  </h2>
-                  <p className="mt-4 font-sans font-light leading-relaxed text-white/70">
-                    {activeInfo.description}
-                  </p>
 
-                  {/* Navigation dynamique (uniquement les liens du groupe courant) */}
-                  <div className="mt-12 hidden lg:flex flex-col gap-4 w-full">
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">
-                      {activeInfo.label}
-                    </span>
-                    
-                    {SOLUTIONS_COMBINED.map((item, idx) => {
-                      if (item.category !== currentCategory) return null;
-                      const isActive = activeIndex === idx;
-                      return (
-                        <div
-                          key={idx}
-                          className={`flex items-center gap-3 transition-all duration-300 ease-out ${
-                            isActive ? 'opacity-100 translate-x-2' : 'opacity-40'
-                          }`}
-                        >
-                          <div className={`w-1 h-5 transition-colors duration-300 ${
-                            isActive ? 'bg-oe-yellow' : 'bg-transparent'
-                          }`}></div>
-                          <span className={`font-sans font-bold text-xs tracking-wider uppercase transition-colors duration-300 ${
-                            isActive ? 'text-oe-yellow' : 'text-white'
-                          }`}>
-                            {item.title}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                </motion.div>
-              </AnimatePresence>
+                  {SOLUTIONS_COMBINED.map((item, idx) => {
+                    const isActive = activeIndex === idx;
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex items-center gap-3 transition-all duration-300 ease-out ${
+                          isActive ? 'opacity-100 translate-x-2' : 'opacity-60'
+                        }`}
+                      >
+                        <div className={`w-1 h-5 transition-colors duration-300 ${
+                          isActive ? 'bg-oe-yellow' : 'bg-transparent'
+                        }`}></div>
+                        <span className={`font-sans font-bold text-xs tracking-wider uppercase transition-colors duration-300 ${
+                          isActive ? 'text-oe-yellow' : 'text-white'
+                        }`}>
+                          {item.title}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -238,28 +210,28 @@ function Solutions() {
                   className="flex items-center justify-center min-h-[40vh] w-full"
                 >
                   <motion.div
-                    animate={{ 
-                      opacity: isActive ? 1 : 0.15,
+                    animate={{
+                      opacity: isActive ? 1 : 0.45,
                       scale: isActive ? 1 : 0.9,
                       y: isActive ? 0 : 20
                     }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                     className={`group w-full max-w-xl flex flex-col items-start border p-8 md:p-10 transition-all duration-500 ${
-                      isActive ? 'border-oe-yellow/50 bg-white/10 shadow-2xl' : 'border-white/5 bg-white/5'
+                      isActive ? 'border-oe-yellow/50 bg-white/10 shadow-2xl' : 'border-white/10 bg-white/5'
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-6">
                       <img
                         src={item.icon}
                         alt=""
-                        className={`h-16 w-16 object-contain transition-all duration-500 ${isActive ? 'scale-110 opacity-100' : 'opacity-50 grayscale'}`}
+                        className={`h-16 w-16 object-contain transition-all duration-500 ${isActive ? 'scale-110 opacity-100' : 'opacity-70 grayscale'}`}
                       />
                     </div>
 
                     <h3 className={`font-display text-xl md:text-2xl uppercase tracking-wide transition-colors duration-500 ${isActive ? 'text-oe-yellow' : 'text-white'}`}>
                       {item.title}
                     </h3>
-                    <p className={`mt-3 font-sans text-sm md:text-base leading-relaxed transition-colors duration-500 ${isActive ? 'text-white/90' : 'text-white/50'}`}>
+                    <p className={`mt-3 font-sans text-sm md:text-base leading-relaxed transition-colors duration-500 ${isActive ? 'text-white/90' : 'text-white/65'}`}>
                       {item.description}
                     </p>
                   </motion.div>

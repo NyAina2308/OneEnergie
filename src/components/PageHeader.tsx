@@ -22,7 +22,7 @@ function PageHeader({
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
           {/* Overlay translucide bleuté (basé sur la couleur oe-navy) */}
-          <div className="absolute inset-0 bg-oe-navy/80 z-0" />
+          <div className="absolute inset-0 bg-oe-navy/55 z-0" />
         </>
       )}
 
