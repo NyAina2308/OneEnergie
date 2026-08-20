@@ -93,10 +93,10 @@
     "quoteAuthor": "— Pédagogie « café-cuisine »",
     "categoryAutonomie": "Autonomie",
     "categorySecurite": "Sécurité",
-    "autonomieEyebrow": "2.1 — Autonomie quotidienne",
+    "autonomieEyebrow": "2.3 — Autonomie quotidienne",
     "autonomieTitle": "Gérez votre confort, faites baisser la facture",
     "autonomieDesc": "On dimensionne votre installation sur vos usages réels, pas sur une moyenne : clim, cuisine, eau chaude, tout compte.",
-    "securiteEyebrow": "2.2 — Sécurité & continuité",
+    "securiteEyebrow": "2.4 — Sécurité & continuité",
     "securiteTitle": "Un système anti-coupure, prêt pour le cyclone",
     "securiteDesc": "Dormez tranquille : votre installation est pensée pour encaisser les aléas de l'île, pas seulement les beaux jours.",
     "card1Title": "La clim, sans remords",
@@ -115,7 +115,7 @@
     "qualityTitle": "Une qualité de service premium"
   },
   "dahsolar": {
-    "eyebrow": "2.3 — Le matériel",
+    "eyebrow": "2.1 — Le matériel",
     "title": "Équipés par DAH Solar",
     "description": "Nos installations reposent sur le matériel de DAH Solar, fabricant de panneaux et d'onduleurs présent dans plus de 100 pays. Voici les deux pièces maîtresses qu'on pose sur les toits mauriciens.",
     "partnerLabel": "Notre fournisseur",
@@ -148,7 +148,7 @@
     ]
   },
   "realtime": {
-    "eyebrow": "2.4 — Suivi en temps réel",
+    "eyebrow": "2.2 — Suivi en temps réel",
     "title": "Votre production, sous les yeux",
     "description": "Chaque installation One Énergie est suivie en temps réel : production du jour, niveau de batterie, consommation. Vous voyez, heure par heure, ce que le soleil vous rapporte.",
     "live": "EN DIRECT",
@@ -222,7 +222,7 @@
     "mapTitle": "Carte Île Maurice"
   },
   "garanties": {
-    "pageTitle": "Tranquille, du premier jour au vingtième",
+    "pageTitle": "Tranquille aujourd'hui. Tranquille dans 25 ans.",
     "pageDescription": "Chaque composant de votre installation est couvert. On vous montre quoi, combien de temps, et pourquoi.",
     "stat1Value": "30 ans",
     "stat1Label": "Garantie de production des panneaux",

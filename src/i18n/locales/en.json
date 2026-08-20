@@ -93,10 +93,10 @@
     "quoteAuthor": "— The “coffee-and-cooking” way of explaining it",
     "categoryAutonomie": "Independence",
     "categorySecurite": "Safety",
-    "autonomieEyebrow": "2.1 — Everyday independence",
+    "autonomieEyebrow": "2.3 — Everyday independence",
     "autonomieTitle": "Manage your comfort, lower your bill",
     "autonomieDesc": "We size your installation on your real usage, not an average: AC, cooking, hot water, it all counts.",
-    "securiteEyebrow": "2.2 — Safety & continuity",
+    "securiteEyebrow": "2.4 — Safety & continuity",
     "securiteTitle": "A backup system, ready for cyclone season",
     "securiteDesc": "Sleep easy: your installation is designed to handle the island's ups and downs, not just the sunny days.",
     "card1Title": "AC, no regrets",
@@ -115,7 +115,7 @@
     "qualityTitle": "Premium service quality"
   },
   "dahsolar": {
-    "eyebrow": "2.3 — The equipment",
+    "eyebrow": "2.1 — The equipment",
     "title": "Equipped by DAH Solar",
     "description": "Our installations are built on DAH Solar equipment, a panel and inverter manufacturer present in over 100 countries. Here are the two centrepieces we fit on Mauritian rooftops.",
     "partnerLabel": "Our supplier",
@@ -148,7 +148,7 @@
     ]
   },
   "realtime": {
-    "eyebrow": "2.4 — Real-time monitoring",
+    "eyebrow": "2.2 — Real-time monitoring",
     "title": "Your production, in plain sight",
     "description": "Every One Énergie installation is monitored in real time: daily production, battery level, consumption. You see, hour by hour, what the sun is earning you.",
     "live": "LIVE",
@@ -222,7 +222,7 @@
     "mapTitle": "Map of Mauritius"
   },
   "garanties": {
-    "pageTitle": "At ease, from day one to year twenty",
+    "pageTitle": "At ease today. At ease in 25 years.",
     "pageDescription": "Every component of your installation is covered. We show you what, for how long, and why.",
     "stat1Value": "30 years",
     "stat1Label": "Panel production warranty",
