@@ -234,15 +234,9 @@ function Garanties() {
                 {t('garanties.chartDesc')}
               </p>
 
-              <motion.div
-                variants={containerStagger}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-50px' }}
-                className="mt-8 flex flex-col gap-6"
-              >
+              <div className="mt-8 flex flex-col gap-6">
                 {COMPONENTS.map((item, index) => (
-                  <motion.div key={index} variants={fadeInUp}>
+                  <div key={index}>
                     <div className="mb-2 flex items-center justify-between">
                       <span className="font-sans text-sm font-medium text-white">{item.title}</span>
                       <span className="font-sans text-xs text-white/50">
@@ -250,30 +244,64 @@ function Garanties() {
                       </span>
                     </div>
                     <div className="relative h-2.5 overflow-hidden rounded-full bg-white/10">
-                      <motion.div
+                      <div
                         className="absolute inset-y-0 left-0 rounded-full bg-oe-yellow/25"
-                        variants={{
-                          hidden: { width: 0 },
-                          visible: {
-                            width: `${item.barLifespan}%`,
-                            transition: { duration: 1, ease: 'easeOut', delay: 0.15 },
-                          },
-                        }}
+                        style={{ width: `${item.barLifespan}%` }}
                       />
-                      <motion.div
+                      <div
                         className="absolute inset-y-0 left-0 rounded-full bg-oe-yellow"
-                        variants={{
-                          hidden: { width: 0 },
-                          visible: {
-                            width: `${item.barWarranty}%`,
-                            transition: { duration: 1, ease: 'easeOut', delay: 0.25 },
-                          },
-                        }}
+                        style={{ width: `${item.barWarranty}%` }}
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Vidéo du fournisseur DAH Solar */}
+        <section className="border-t border-white/10 py-20 md:py-28">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+              className="mx-auto max-w-2xl text-center"
+            >
+              <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
+                {t('garanties.videoEyebrow')}
+              </span>
+              <h2 className="font-display mt-4 text-3xl uppercase text-white sm:text-4xl">
+                {t('garanties.videoTitle')}
+              </h2>
+              <p className="mt-5 font-sans font-light leading-relaxed text-white/70">
+                {t('garanties.videoDesc')}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-12 overflow-hidden border border-white/10 bg-black shadow-2xl"
+            >
+              {/* muted est requis pour que les navigateurs acceptent l'autoplay ;
+                  les contrôles restent affichés pour pouvoir mettre en pause. */}
+              <video
+                src="/Dah_Solar.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="auto"
+                className="aspect-video w-full"
+              >
+                {t('common.videoUnsupported')}
+              </video>
             </motion.div>
           </div>
         </section>

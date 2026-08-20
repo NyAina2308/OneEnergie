@@ -138,7 +138,10 @@ function Hero() {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-oe-navy/25 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-oe-navy/85 via-oe-navy/15 to-transparent"></div>
+          {/* Fondu gauche renforcé : opaque au raccord avec la colonne de texte (0%),
+              pour que la limite de la photo se fonde entièrement dans le bleu de fond,
+              puis dégradé large et progressif jusqu'à transparent. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-oe-navy from-0% via-oe-navy/50 via-35% to-transparent to-75%"></div>
         </motion.div>
 
         {/* Bloc Texte */}

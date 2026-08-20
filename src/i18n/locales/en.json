@@ -268,7 +268,10 @@
     "calloutTitle": "Installation: decennial warranty",
     "calloutDesc": "The installation is covered for 10 years by our decennial insurance, carried out by trained, certified technicians.",
     "chartEyebrow": "Warranty vs. lifespan",
-    "chartDesc": "The solid bar = contractual warranty. The light bar = estimated lifespan."
+    "chartDesc": "The solid bar = contractual warranty. The light bar = estimated lifespan.",
+    "videoEyebrow": "Our supplier",
+    "videoTitle": "Backed by our supplier",
+    "videoDesc": "DAH Solar makes the panels and inverters we install. Here, in pictures, is the equipment that ends up on your roof — and the warranties that come with it."
   },
   "guide": {
     "pageTitle": "Plain talk & scam-proofing advice",
@@ -417,7 +420,21 @@
     "ctaGetStudy": "Get my personalised study",
     "restart": "Restart the simulation",
     "prefillMessage": "Online simulation: {{profile}} profile, current bill {{bill}} → recommended power {{kwc}} kWc, estimated savings over 20 years {{savings}}.",
-    "homeTiers": ["< €50", "€50 – 100", "€100 – 150", "€150 – 200", "€200 – 300", "€300 and up"],
-    "businessTiers": ["€150 – 300", "€300 – 500", "€500 – 800", "€800 – 1,200", "€1,200 – 2,000", "€2,000 and up"]
+    "homeTiers": [
+      "< €50",
+      "€50 – 100",
+      "€100 – 150",
+      "€150 – 200",
+      "€200 – 300",
+      "€300 and up"
+    ],
+    "businessTiers": [
+      "€150 – 300",
+      "€300 – 500",
+      "€500 – 800",
+      "€800 – 1,200",
+      "€1,200 – 2,000",
+      "€2,000 and up"
+    ]
   }
 }
