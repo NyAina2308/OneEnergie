@@ -1,8 +1,9 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
+import SimulatorEstimate, { type SimulatorResult } from '../components/SimulatorEstimate'
 import solar from '../assets/photos/solarcontact1.jpg'
 
 // Variantes pour les conteneurs et items en cascade (Stagger)
@@ -26,8 +27,11 @@ const itemVariants : Variants = {
 }
 
 export default function Contact() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
+  const formSectionRef = useRef<HTMLElement>(null)
+  const billInputRef = useRef<HTMLInputElement>(null)
+  const messageRef = useRef<HTMLTextAreaElement>(null)
 
   const APPAREILS = [
     t('contact.device1'),
@@ -43,6 +47,23 @@ export default function Contact() {
     setSubmitted(true)
   }
 
+  // Reprend le résultat du simulateur pour pré-remplir le formulaire de contact
+  // (facture + message récapitulatif), puis amène l'utilisateur jusqu'au formulaire.
+  const handleSimulatorComplete = (result: SimulatorResult) => {
+    if (billInputRef.current) {
+      billInputRef.current.value = result.billLabel
+    }
+    if (messageRef.current) {
+      messageRef.current.value = t('simulator.prefillMessage', {
+        profile: result.profileLabel,
+        bill: result.billLabel,
+        kwc: result.recommendedKwc,
+        savings: `${result.twentyYearSavings.toLocaleString(i18n.language)} €`,
+      })
+    }
+    formSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
@@ -54,13 +75,20 @@ export default function Contact() {
           backgroundImage={solar}
         />
 
-        {/* Section Principale */}
+        {/* Simulateur d'estimation, en amont du formulaire complet */}
         <section className="border-t border-white/10 py-16 md:py-24">
+          <div className="mx-auto max-w-5xl px-5 md:px-8">
+            <SimulatorEstimate onComplete={handleSimulatorComplete} />
+          </div>
+        </section>
+
+        {/* Section Principale */}
+        <section ref={formSectionRef} className="border-t border-white/10 py-16 md:py-24 scroll-mt-24">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
-              
+
               {/* Colonne Gauche : Formulaire (Fade-In latéral) */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -25 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -166,6 +194,7 @@ export default function Contact() {
                       <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
                         {t('contact.billLabel')}
                         <input
+                          ref={billInputRef}
                           type="text"
                           name="facture"
                           placeholder={t('contact.billPlaceholder')}
@@ -176,6 +205,7 @@ export default function Contact() {
                       <label className="flex flex-col gap-2 font-sans text-xs font-bold uppercase tracking-wider text-white/80">
                         {t('contact.messageLabel')}
                         <textarea
+                          ref={messageRef}
                           name="message"
                           rows={3}
                           placeholder={t('contact.messagePlaceholder')}
