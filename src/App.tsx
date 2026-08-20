@@ -8,6 +8,7 @@ import GuideArticle from './pages/GuideArticle'
 import Team from './pages/Team'
 import Contact from './pages/Contact'
 import Garanties from './pages/Garanties'
+import Faq from './pages/Faq'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/decrypter-et-prevenir/:slug" element={<GuideArticle />} />
         <Route path="/equipe" element={<Team />} />
         <Route path="/garantie-confiance" element={<Garanties />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

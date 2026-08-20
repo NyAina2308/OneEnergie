@@ -173,9 +173,12 @@ function Hero() {
             custom={0.6} initial="hidden" animate="visible" variants={fadeInVariants}
             className="mt-12 flex flex-col items-start gap-2"
           >
-            <p className="font-sans text-xs md:text-sm text-white/70 tracking-widest uppercase">
+            <Link
+              to="/faq"
+              className="font-sans text-xs md:text-sm text-white/70 tracking-widest uppercase transition-colors duration-300 hover:text-oe-yellow"
+            >
               {t('hero.question')}
-            </p>
+            </Link>
             <Link
               to="/contact"
               className="inline-flex items-center gap-4 md:gap-6 font-sans text-sm md:text-base font-bold tracking-widest text-white uppercase group"

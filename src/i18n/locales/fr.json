@@ -4,6 +4,7 @@
     "solutions": "Nos solutions",
     "blog": "Décrypter et prévenir",
     "warranty": "Garantie & Confiance",
+    "faq": "FAQ",
     "contactCta": "Contact & Simulation",
     "openMenu": "Ouvrir le menu",
     "language": "Langue"
@@ -359,6 +360,65 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "faq": {
+    "pageEyebrow": "Questions fréquentes",
+    "pageTitle": "Vos questions, sans langue de bois",
+    "pageDescription": "Cyclones, toiture, aides, revente : les réponses aux questions qu'on nous pose vraiment, avant de signer quoi que ce soit.",
+    "items": [
+      {
+        "question": "Pourquoi installer des panneaux solaires maintenant à l'Île Maurice ?",
+        "answer": "La facture d'électricité augmente d'année en année. Installer maintenant, c'est se protéger de ces hausses pour les 25 prochaines années, pendant que les aides actuellement en vigueur restent avantageuses — elles peuvent évoluer."
+      },
+      {
+        "question": "Combien peut-on vraiment économiser ?",
+        "answer": "Ça dépend de votre consommation, du type d'installation et de vos habitudes. Certains foyers mauriciens réduisent leur facture de plus de 80 %. L'économie est d'autant plus grande quand vous consommez directement l'électricité que vous produisez, contrairement à une facture classique qui, elle, augmente chaque année."
+      },
+      {
+        "question": "Et par temps couvert, ça produit quand même ?",
+        "answer": "Oui. Les panneaux captent aussi la lumière diffuse, même derrière les nuages. À l'Île Maurice, même en saison des pluies, l'ensoleillement reste largement suffisant pour maintenir une production significative. Une batterie de stockage devient utile pour les jours vraiment sans soleil."
+      },
+      {
+        "question": "Et en cas de cyclone, je fais comment ?",
+        "answer": "Pendant le passage d'un cyclone, le réseau électrique peut être coupé pendant plusieurs heures, parfois plusieurs jours. Couplée à une batterie de stockage, votre installation vous permet de garder votre autonomie pour l'essentiel."
+      },
+      {
+        "question": "Est-ce que je peux garder l'énergie que je produis ?",
+        "answer": "Oui. Une batterie de stockage conserve l'électricité produite le jour pour l'utiliser le soir ou la nuit. Le surplus peut être revendu selon les conditions en vigueur."
+      },
+      {
+        "question": "Ma toiture est petite, est-ce que c'est quand même possible ?",
+        "answer": "Le plus souvent, oui. Des panneaux à haut rendement permettent de maximiser la production sur une surface limitée. Les solutions sont pensées sur votre consommation réelle, pas sur la taille de votre toit."
+      },
+      {
+        "question": "L'installation va-t-elle abîmer ma toiture ?",
+        "answer": "Non. Nos équipes utilisent des systèmes de fixation certifiés, adaptés à chaque type de toiture. Une pose professionnelle évite les infiltrations et les dégâts."
+      },
+      {
+        "question": "Combien de temps ça prend, concrètement ?",
+        "answer": "L'installation elle-même se fait généralement en une journée. Les délais administratifs varient, mais on gère l'ensemble du processus pour vous."
+      },
+      {
+        "question": "Est-ce qu'une installation solaire valorise ma maison ?",
+        "answer": "Oui. Un logement équipé consomme moins et produit sa propre énergie, ce qui séduit les acheteurs. Vu le poids de la facture d'électricité dans le budget d'un foyer, c'est un argument de poids sur le marché."
+      },
+      {
+        "question": "Et si je produis plus que ce que je consomme ?",
+        "answer": "L'électricité excédentaire peut être revendue selon les conditions en vigueur, ce qui crée un revenu complémentaire en plus des économies sur votre facture."
+      },
+      {
+        "question": "Est-ce qu'il faut faire des démarches administratives ?",
+        "answer": "La déclaration auprès du fournisseur d'électricité fait partie des démarches que l'on gère entièrement pour vous."
+      },
+      {
+        "question": "Quelles aides peut-on obtenir à l'Île Maurice ?",
+        "answer": "Des aides locales existent pour soutenir les particuliers dans leur transition solaire. Elles évoluent régulièrement selon la réglementation en vigueur — on vous dit précisément ce qui s'applique à votre situation avant même de parler matériel."
+      },
+      {
+        "question": "J'ai déjà eu de mauvaises expériences, pourquoi vous faire confiance ?",
+        "answer": "One Énergie est une équipe locale, présente à vos côtés avant, pendant et après l'installation — sans démarchage agressif. Vous rencontrerez toujours un interlocuteur qui connaît l'île et ses spécificités, pas un inconnu de passage."
       }
     ]
   }

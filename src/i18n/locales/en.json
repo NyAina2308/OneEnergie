@@ -4,6 +4,7 @@
     "solutions": "Our solutions",
     "blog": "Decode & Prevent",
     "warranty": "Warranty & Trust",
+    "faq": "FAQ",
     "contactCta": "Contact & Simulation",
     "openMenu": "Open menu",
     "language": "Language"
@@ -359,6 +360,65 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "faq": {
+    "pageEyebrow": "Frequently asked questions",
+    "pageTitle": "Your questions, no spin",
+    "pageDescription": "Cyclones, your roof, incentives, resale: real answers to the questions we actually get asked, before you sign anything.",
+    "items": [
+      {
+        "question": "Why install solar panels now in Mauritius?",
+        "answer": "Your electricity bill keeps rising year after year. Installing now protects you from those increases for the next 25 years, while today's incentives remain advantageous — they can change."
+      },
+      {
+        "question": "How much can you really save?",
+        "answer": "It depends on your consumption, the type of installation and your habits. Some Mauritian households cut their bill by more than 80%. The savings are even greater when you consume the electricity you produce directly, unlike a standard bill that keeps rising every year."
+      },
+      {
+        "question": "Does it still produce on a cloudy day?",
+        "answer": "Yes. Panels also capture diffuse light, even behind clouds. In Mauritius, even during the rainy season, sunlight remains largely sufficient to keep meaningful production going. A storage battery becomes useful for the truly sunless days."
+      },
+      {
+        "question": "What happens during a cyclone?",
+        "answer": "During a cyclone, the power grid can go down for several hours, sometimes several days. Paired with a storage battery, your installation keeps the essentials running."
+      },
+      {
+        "question": "Can I keep the energy I produce?",
+        "answer": "Yes. A storage battery keeps the electricity produced during the day for use in the evening or at night. Any surplus can be resold under the terms in force."
+      },
+      {
+        "question": "My roof is small — is it still possible?",
+        "answer": "Usually, yes. High-efficiency panels maximise production on a limited surface. Solutions are sized around your real consumption, not your roof size."
+      },
+      {
+        "question": "Will the installation damage my roof?",
+        "answer": "No. Our teams use certified fixing systems, adapted to every type of roof. A professional installation prevents leaks and damage."
+      },
+      {
+        "question": "How long does it actually take?",
+        "answer": "The installation itself is usually done in a single day. Administrative timelines vary, but we handle the entire process for you."
+      },
+      {
+        "question": "Does a solar installation add value to my home?",
+        "answer": "Yes. An equipped home consumes less and produces its own energy, which appeals to buyers. Given how much electricity bills weigh on a household budget, that's a real selling point on the market."
+      },
+      {
+        "question": "What if I produce more than I consume?",
+        "answer": "The surplus electricity can be resold under the terms in force, creating extra income on top of your bill savings."
+      },
+      {
+        "question": "Do I need to handle any administrative steps?",
+        "answer": "Registering with the electricity provider is one of the administrative steps we handle entirely for you."
+      },
+      {
+        "question": "What incentives are available in Mauritius?",
+        "answer": "Local incentives exist to support residents in their solar transition. They change regularly depending on current regulations — we tell you exactly what applies to your situation before we ever talk about equipment."
+      },
+      {
+        "question": "I've had bad experiences before — why should I trust you?",
+        "answer": "One Énergie is a local team, by your side before, during and after the installation — with no pushy sales tactics. You'll always deal with someone who knows the island and its specifics, not a stranger passing through."
       }
     ]
   }
