@@ -135,10 +135,10 @@ function Hero() {
           <img
             src={heroPhoto}
             alt="Installation photovoltaïque"
-            className="w-full h-full object-cover grayscale-[20%]"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-oe-navy/60 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-oe-navy via-oe-navy/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-oe-navy/25 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-oe-navy/85 via-oe-navy/15 to-transparent"></div>
         </motion.div>
 
         {/* Bloc Texte */}
