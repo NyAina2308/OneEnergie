@@ -7,9 +7,11 @@ import iconBadge from '../assets/icons/icon-badge-eclair.svg'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 
 /**
- * ⚠️ Contenu FICTIF en attente des vraies données fournisseurs (marques, modèles,
- * durées de garantie réelles). À remplacer avant mise en ligne définitive —
- * voir la conversation avec le client pour le suivi de cette page.
+ * Durées de garantie réelles, reprises du devis client (One Énergie — Devis #1101,
+ * transmis par Sindy Lefevre le 19/08/2026) : panneaux, onduleurs, batterie, pose
+ * décennale, ainsi que les garanties légale / main d'œuvre / accessoires.
+ * ⚠️ Les intitulés génériques (« Modules monocristallins », « Lithium (LFP)», etc.)
+ * restent à confirmer avec les fiches produit exactes si besoin de plus de précision.
  */
 
 const fadeInUp: Variants = {
@@ -47,7 +49,7 @@ function Garanties() {
       warrantyLabel: t('garanties.comp1WarrantyLabel'),
       lifespan: t('garanties.comp1Lifespan'),
       lifespanLabel: t('garanties.comp1LifespanLabel'),
-      barWarranty: 80,
+      barWarranty: 83,
       barLifespan: 100,
     },
     {
@@ -80,6 +82,12 @@ function Garanties() {
       barWarranty: 40,
       barLifespan: 100,
     },
+  ]
+
+  const EXTRAS = [
+    { value: t('garanties.extra1Value'), label: t('garanties.extra1Label') },
+    { value: t('garanties.extra2Value'), label: t('garanties.extra2Label') },
+    { value: t('garanties.extra3Value'), label: t('garanties.extra3Label') },
   ]
 
   return (
@@ -167,6 +175,27 @@ function Garanties() {
                   </p>
                 </div>
               </motion.div>
+            </motion.div>
+
+            {/* Garanties complémentaires (conformité, main d'œuvre, accessoires) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+              className="mt-8"
+            >
+              <p className="font-sans text-xs font-bold uppercase tracking-widest text-white/40">
+                {t('garanties.otherLabel')}
+              </p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-3">
+                {EXTRAS.map((extra, index) => (
+                  <div key={index} className="border border-white/10 bg-white/5 p-5">
+                    <p className="font-display text-xl text-oe-yellow">{extra.value}</p>
+                    <p className="mt-1 font-sans text-xs leading-snug text-white/70">{extra.label}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </section>
