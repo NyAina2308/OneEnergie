@@ -38,7 +38,9 @@ function Footer() {
               <ul className="mt-3 flex flex-col gap-2 font-sans text-sm">
                 <li>+230 428 6063</li>
                 <li>info@oneenergie.mu</li>
-                <li>{t('footer.mauritius')}</li>
+                <li>18 Bank Street</li>
+                <li>Cybercity Ebene</li>
+                <li>72201 Maurice</li>
               </ul>
             </div>
 

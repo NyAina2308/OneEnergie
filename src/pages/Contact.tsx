@@ -310,7 +310,7 @@ export default function Contact() {
                 >
                   <iframe
                     title={t('contact.mapTitle')}
-                    src="https://www.google.com/maps?q=%C3%8Ele%20Maurice&output=embed"
+                    src="https://www.google.com/maps?q=-20.241879,57.4964196(18+Bank+St,+Quatre+Bornes)&z=16&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(120%)' }}
