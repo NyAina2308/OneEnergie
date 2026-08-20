@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import solarreal from '../assets/photos/solarreal.jpg'
 
 type Profile = 'home' | 'business'
 
@@ -80,8 +81,15 @@ function SimulatorEstimate({ onComplete }: { onComplete: (result: SimulatorResul
   }
 
   return (
-    <div className="border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm sm:p-10">
-      <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+    <div className="relative overflow-hidden border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm sm:p-10">
+      {/* Photo de fond du simulateur, assombrie pour rester lisible derrière le panneau vitré */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${solarreal})` }}
+      />
+      <div className="absolute inset-0 z-0 bg-oe-navy/85" />
+
+      <div className="relative z-10 flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
         <div>
           <span className="font-sans text-xs font-bold uppercase tracking-widest text-oe-yellow">
             {t('simulator.eyebrow')}
@@ -107,7 +115,7 @@ function SimulatorEstimate({ onComplete }: { onComplete: (result: SimulatorResul
         </div>
       </div>
 
-      <div className="relative mt-8 min-h-[220px] overflow-hidden">
+      <div className="relative z-10 mt-8 min-h-[220px] overflow-hidden">
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div

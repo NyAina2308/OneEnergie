@@ -234,15 +234,9 @@ function Garanties() {
                 {t('garanties.chartDesc')}
               </p>
 
-              <motion.div
-                variants={containerStagger}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-50px' }}
-                className="mt-8 flex flex-col gap-6"
-              >
+              <div className="mt-8 flex flex-col gap-6">
                 {COMPONENTS.map((item, index) => (
-                  <motion.div key={index} variants={fadeInUp}>
+                  <div key={index}>
                     <div className="mb-2 flex items-center justify-between">
                       <span className="font-sans text-sm font-medium text-white">{item.title}</span>
                       <span className="font-sans text-xs text-white/50">
@@ -250,30 +244,18 @@ function Garanties() {
                       </span>
                     </div>
                     <div className="relative h-2.5 overflow-hidden rounded-full bg-white/10">
-                      <motion.div
+                      <div
                         className="absolute inset-y-0 left-0 rounded-full bg-oe-yellow/25"
-                        variants={{
-                          hidden: { width: 0 },
-                          visible: {
-                            width: `${item.barLifespan}%`,
-                            transition: { duration: 1, ease: 'easeOut', delay: 0.15 },
-                          },
-                        }}
+                        style={{ width: `${item.barLifespan}%` }}
                       />
-                      <motion.div
+                      <div
                         className="absolute inset-y-0 left-0 rounded-full bg-oe-yellow"
-                        variants={{
-                          hidden: { width: 0 },
-                          visible: {
-                            width: `${item.barWarranty}%`,
-                            transition: { duration: 1, ease: 'easeOut', delay: 0.25 },
-                          },
-                        }}
+                        style={{ width: `${item.barWarranty}%` }}
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
