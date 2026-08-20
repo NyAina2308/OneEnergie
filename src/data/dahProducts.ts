@@ -9,7 +9,6 @@ export type DahProduct = {
   category: string
   name: string
   description: string
-  specs: { label: string; value: string }[]
   highlights: string[]
 }
 
@@ -17,7 +16,6 @@ type TranslatedProduct = {
   category: string
   name: string
   description: string
-  specs: { label: string; value: string }[]
   highlights: string[]
 }
 

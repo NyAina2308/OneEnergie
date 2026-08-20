@@ -122,63 +122,27 @@
     "partnerLinkLabel": "Lire l'article du Figaro ↗",
     "partnerLinkTitle": "DAH Solar dans Le Figaro (nouvel onglet)",
     "logoAlt": "Logo DAH Solar",
-    "viewSheet": "Voir la fiche produit",
-    "imageCredit": "Visuels produits : DAH Solar. Caractéristiques données à titre indicatif, confirmées lors de l'étude.",
+    "viewSheet": "Voir le produit chez DAH Solar",
+    "imageCredit": "Visuels produits : DAH Solar.",
     "products": [
       {
         "category": "Panneau photovoltaïque",
         "name": "V6 High Power PV Module",
         "description": "Le panneau double verre qui produit le plus par mètre carré de toiture : même surface, plus de kilowattheures, et une structure pensée pour durer sous le climat de l'île.",
-        "specs": [
-          {
-            "label": "Puissance",
-            "value": "640 – 660 Wc"
-          },
-          {
-            "label": "Cellules",
-            "value": "132 (6 × 22), double verre"
-          },
-          {
-            "label": "Dimensions",
-            "value": "2382 × 1134 × 30 mm"
-          },
-          {
-            "label": "Neige / vent",
-            "value": "5400 Pa / 2400 Pa"
-          }
-        ],
         "highlights": [
-          "Sans point de soudure",
-          "Triple étanchéité anti-humidité",
-          "Isolation renforcée PIB > 2000 V"
+          "Plus de courant par m² de toit",
+          "Pensé pour la saison cyclonique",
+          "Étanchéité renforcée contre l'humidité"
         ]
       },
       {
         "category": "Onduleur hybride",
         "name": "Onduleur hybride basse tension",
         "description": "Le cerveau de l'installation : il arbitre en permanence entre production, batterie et réseau, et bascule en secours en quelques millisecondes quand le courant saute.",
-        "specs": [
-          {
-            "label": "Puissance",
-            "value": "8 / 10 / 12 kW triphasé"
-          },
-          {
-            "label": "Rendement max.",
-            "value": "97,57 %"
-          },
-          {
-            "label": "Bascule secours",
-            "value": "≈ 4 ms"
-          },
-          {
-            "label": "Protection",
-            "value": "IP65, −40 à +60 °C"
-          }
-        ],
         "highlights": [
-          "2 MPPT indépendants",
-          "Jusqu'à 10 onduleurs en parallèle",
-          "Suivi Wi-Fi / Bluetooth"
+          "Bascule instantanée en cas de coupure",
+          "Pilote panneaux, batterie et réseau",
+          "Suivi depuis votre téléphone"
         ]
       }
     ]
