@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
-import iconBadge from '../assets/icons/icon-badge-eclair.svg'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 
 /**
