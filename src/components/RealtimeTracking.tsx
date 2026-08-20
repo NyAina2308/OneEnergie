@@ -35,11 +35,15 @@ function MonitorVisual() {
   ]
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 900 660"
       className="h-auto w-full"
       role="img"
       aria-label={t('realtime.visualAlt')}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-50px' }}
+      variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
     >
       <defs>
         <linearGradient id="rt-body" x1="0" y1="0" x2="0" y2="1">
@@ -69,7 +73,15 @@ function MonitorVisual() {
       </defs>
 
       {/* Halo et ombre portée : posent la tablette dans la page */}
-      <ellipse cx="450" cy="320" rx="440" ry="330" fill="url(#rt-halo)" />
+      <motion.ellipse
+        cx="450"
+        cy="320"
+        rx="440"
+        ry="330"
+        fill="url(#rt-halo)"
+        animate={{ opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      />
       <ellipse cx="450" cy="638" rx="330" ry="20" fill="url(#rt-shadow)" />
 
       {/* Châssis */}
@@ -115,7 +127,14 @@ function MonitorVisual() {
           stroke="#f5de19"
           strokeOpacity="0.4"
         />
-        <circle cx="747" cy="83" r="4" fill="#f5de19" />
+        <motion.circle
+          cx="747"
+          cy="83"
+          r="4"
+          fill="#f5de19"
+          animate={{ opacity: [1, 0.35, 1] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <text
           x="759"
           y="87"
@@ -163,7 +182,7 @@ function MonitorVisual() {
           strokeOpacity="0.1"
           strokeWidth="12"
         />
-        <circle
+        <motion.circle
           cx="772"
           cy="180"
           r={DONUT_R}
@@ -172,8 +191,14 @@ function MonitorVisual() {
           strokeWidth="12"
           strokeLinecap="round"
           strokeDasharray={DONUT_C}
-          strokeDashoffset={DONUT_C * (1 - SELF_USE)}
           transform="rotate(-90 772 180)"
+          variants={{
+            hidden: { strokeDashoffset: DONUT_C },
+            visible: {
+              strokeDashoffset: DONUT_C * (1 - SELF_USE),
+              transition: { duration: 1.2, ease: 'easeOut', delay: 0.3 },
+            },
+          }}
         />
         <text
           x="772"
@@ -216,24 +241,57 @@ function MonitorVisual() {
           <line key={y} x1="94" y1={y} x2="806" y2={y} stroke="#ffffff" strokeOpacity="0.06" />
         ))}
 
-        <path d={CURVE_AREA} fill="url(#rt-area)" />
-        <path d={CURVE} fill="none" stroke="#f5de19" strokeWidth="2.5" strokeLinecap="round" />
+        <motion.path
+          d={CURVE_AREA}
+          fill="url(#rt-area)"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.6, delay: 1.1 } },
+          }}
+        />
+        <motion.path
+          d={CURVE}
+          fill="none"
+          stroke="#f5de19"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          variants={{
+            hidden: { pathLength: 0 },
+            visible: { pathLength: 1, transition: { duration: 1.3, ease: 'easeOut', delay: 0.15 } },
+          }}
+        />
 
         {/* Pic de production */}
-        <line
-          x1="450"
-          y1="290"
-          x2="450"
-          y2="406"
-          stroke="#f5de19"
-          strokeOpacity="0.35"
-          strokeDasharray="3 4"
-        />
-        <rect x="412" y="250" width="76" height="24" fill="#f5de19" />
-        <text x="450" y="266" textAnchor="middle" fill="#0a1f3d" fontSize="11" fontWeight="700">
-          {t('realtime.peakValue')}
-        </text>
-        <circle cx="450" cy="284" r="5" fill="#f5de19" stroke="#0a1f3d" strokeWidth="3" />
+        <motion.g
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.4, delay: 1.3 } },
+          }}
+        >
+          <line
+            x1="450"
+            y1="290"
+            x2="450"
+            y2="406"
+            stroke="#f5de19"
+            strokeOpacity="0.35"
+            strokeDasharray="3 4"
+          />
+          <rect x="412" y="250" width="76" height="24" fill="#f5de19" />
+          <text x="450" y="266" textAnchor="middle" fill="#0a1f3d" fontSize="11" fontWeight="700">
+            {t('realtime.peakValue')}
+          </text>
+          <motion.circle
+            cx="450"
+            cy="284"
+            r="5"
+            fill="#f5de19"
+            fillOpacity="0.35"
+            animate={{ r: [5, 14, 5], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeOut', delay: 1.5 }}
+          />
+          <circle cx="450" cy="284" r="5" fill="#f5de19" stroke="#0a1f3d" strokeWidth="3" />
+        </motion.g>
 
         {HOURS.map((hour) => (
           <text
@@ -287,7 +345,19 @@ function MonitorVisual() {
                   fill="#ffffff"
                   fillOpacity="0.12"
                 />
-                <rect x={tile.x + 20} y="538" width={200 * tile.bar} height="5" fill="#f5de19" />
+                <motion.rect
+                  x={tile.x + 20}
+                  y="538"
+                  height="5"
+                  fill="#f5de19"
+                  variants={{
+                    hidden: { width: 0 },
+                    visible: {
+                      width: 200 * tile.bar,
+                      transition: { duration: 1, ease: 'easeOut', delay: 0.5 },
+                    },
+                  }}
+                />
               </>
             )}
           </g>
@@ -296,7 +366,7 @@ function MonitorVisual() {
 
       {/* Reflet de la dalle */}
       <path d="M44 44h812v230L44 596z" fill="url(#rt-glare)" pointerEvents="none" />
-    </svg>
+    </motion.svg>
   )
 }
 
