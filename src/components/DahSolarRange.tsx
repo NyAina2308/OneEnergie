@@ -3,6 +3,10 @@ import { useTranslation } from 'react-i18next'
 import { useDahProducts } from '../data/dahProducts'
 import dahLogo from '../assets/brand/logo-dahsolar-blanc.svg'
 
+// Portrait de DAH Solar dans Le Figaro, ouvert derrière le logo du fournisseur.
+const FIGARO_ARTICLE_URL =
+  'https://www.lefigaro.fr/economie/dah-solar-le-specialiste-des-modules-photovoltaiques-innovants-et-des-kits-solaires-tout-en-un-20250324'
+
 function DahSolarRange() {
   const { t } = useTranslation()
   const products = useDahProducts()
@@ -27,12 +31,21 @@ function DahSolarRange() {
             {t('dahsolar.description')}
           </p>
 
-          <div className="mt-10 inline-flex flex-col items-center gap-3 border border-white/10 bg-white/5 px-8 py-5">
+          <a
+            href={FIGARO_ARTICLE_URL}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={t('dahsolar.partnerLinkTitle')}
+            className="group/logo mt-10 inline-flex flex-col items-center gap-3 border border-white/10 bg-white/5 px-8 py-5 transition-colors duration-300 hover:border-oe-yellow/40 hover:bg-white/10"
+          >
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">
               {t('dahsolar.partnerLabel')}
             </span>
             <img src={dahLogo} alt={t('dahsolar.logoAlt')} className="h-7 w-auto" />
-          </div>
+            <span className="font-sans text-[10px] uppercase tracking-widest text-white/40 transition-colors duration-300 group-hover/logo:text-oe-yellow">
+              {t('dahsolar.partnerLinkLabel')}
+            </span>
+          </a>
         </motion.div>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
