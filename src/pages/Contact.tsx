@@ -322,10 +322,13 @@ export default function Contact() {
                 >
                   <iframe
                     title={t('contact.mapTitle')}
-                    src="https://www.google.com/maps?q=-20.241879,57.4964196(18+Bank+St,+Quatre+Bornes)&z=16&output=embed"
+                    src="https://www.google.com/maps?q=-20.241879,57.4964196(18+Bank+St,+Quatre+Bornes)&z=17&t=k&output=embed"
                     width="100%"
                     height="100%"
-                    style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(120%)' }}
+                    // Pas d'invert() ici : ça produit des couleurs très moches sur une photo
+                    // satellite (contrairement au plan vectoriel utilisé avant). On garde juste
+                    // un léger assombrissement pour rester dans l'esprit sombre du site.
+                    style={{ border: 0, filter: 'saturate(85%) brightness(85%) contrast(105%)' }}
                     allowFullScreen={false}
                     loading="lazy"
                   />
