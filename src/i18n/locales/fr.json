@@ -113,6 +113,93 @@
     "qualityEyebrow": "Nos solutions",
     "qualityTitle": "Une qualité de service premium"
   },
+  "dahsolar": {
+    "eyebrow": "2.3 — Le matériel",
+    "title": "Équipés par DAH Solar",
+    "description": "Nos installations reposent sur le matériel de DAH Solar, fabricant de panneaux et d'onduleurs présent dans plus de 100 pays. Voici les deux pièces maîtresses qu'on pose sur les toits mauriciens.",
+    "partnerLabel": "Notre fournisseur",
+    "logoAlt": "Logo DAH Solar",
+    "viewSheet": "Voir la fiche produit",
+    "imageCredit": "Visuels produits : DAH Solar. Caractéristiques données à titre indicatif, confirmées lors de l'étude.",
+    "products": [
+      {
+        "category": "Panneau photovoltaïque",
+        "name": "V6 High Power PV Module",
+        "description": "Le panneau double verre qui produit le plus par mètre carré de toiture : même surface, plus de kilowattheures, et une structure pensée pour durer sous le climat de l'île.",
+        "specs": [
+          {
+            "label": "Puissance",
+            "value": "640 – 660 Wc"
+          },
+          {
+            "label": "Cellules",
+            "value": "132 (6 × 22), double verre"
+          },
+          {
+            "label": "Dimensions",
+            "value": "2382 × 1134 × 30 mm"
+          },
+          {
+            "label": "Neige / vent",
+            "value": "5400 Pa / 2400 Pa"
+          }
+        ],
+        "highlights": [
+          "Sans point de soudure",
+          "Triple étanchéité anti-humidité",
+          "Isolation renforcée PIB > 2000 V"
+        ]
+      },
+      {
+        "category": "Onduleur hybride",
+        "name": "Onduleur hybride basse tension",
+        "description": "Le cerveau de l'installation : il arbitre en permanence entre production, batterie et réseau, et bascule en secours en quelques millisecondes quand le courant saute.",
+        "specs": [
+          {
+            "label": "Puissance",
+            "value": "8 / 10 / 12 kW triphasé"
+          },
+          {
+            "label": "Rendement max.",
+            "value": "97,57 %"
+          },
+          {
+            "label": "Bascule secours",
+            "value": "≈ 4 ms"
+          },
+          {
+            "label": "Protection",
+            "value": "IP65, −40 à +60 °C"
+          }
+        ],
+        "highlights": [
+          "2 MPPT indépendants",
+          "Jusqu'à 10 onduleurs en parallèle",
+          "Suivi Wi-Fi / Bluetooth"
+        ]
+      }
+    ]
+  },
+  "realtime": {
+    "eyebrow": "2.4 — Suivi en temps réel",
+    "title": "Votre production, sous les yeux",
+    "description": "Chaque installation One Énergie est suivie en temps réel : production du jour, niveau de batterie, consommation. Vous voyez, heure par heure, ce que le soleil vous rapporte.",
+    "live": "EN DIRECT",
+    "dashToday": "PRODUCTION DU JOUR",
+    "dashSelfUse": "AUTOCONSOMMATION",
+    "dashPower": "PUISSANCE ACTUELLE",
+    "dashBattery": "BATTERIE",
+    "dashMonth": "CE MOIS-CI",
+    "heroValue": "27,4",
+    "heroDelta": "12 % vs hier",
+    "selfUseValue": "78 %",
+    "peakValue": "6,1 kW",
+    "powerValue": "4,8 kW",
+    "batteryValue": "92 %",
+    "monthValue": "1 240 kWh",
+    "visualAlt": "Tablette affichant le tableau de bord de suivi de la production solaire en temps réel",
+    "caption": "Illustration — exemple d'un écran de suivi de production."
+  },
   "team": {
     "pageEyebrow": "L'équipe One Énergie",
     "pageTitle": "Des visages, pas un numéro de dossier",

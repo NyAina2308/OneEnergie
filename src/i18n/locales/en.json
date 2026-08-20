@@ -113,6 +113,93 @@
     "qualityEyebrow": "Our solutions",
     "qualityTitle": "Premium service quality"
   },
+  "dahsolar": {
+    "eyebrow": "2.3 — The equipment",
+    "title": "Equipped by DAH Solar",
+    "description": "Our installations are built on DAH Solar equipment, a panel and inverter manufacturer present in over 100 countries. Here are the two centrepieces we fit on Mauritian rooftops.",
+    "partnerLabel": "Our supplier",
+    "logoAlt": "DAH Solar logo",
+    "viewSheet": "View the product sheet",
+    "imageCredit": "Product visuals: DAH Solar. Specifications are indicative and confirmed during the survey.",
+    "products": [
+      {
+        "category": "Photovoltaic panel",
+        "name": "V6 High Power PV Module",
+        "description": "The double-glass panel that produces the most per square metre of roof: same surface, more kilowatt-hours, and a build designed to last in the island's climate.",
+        "specs": [
+          {
+            "label": "Power",
+            "value": "640 – 660 Wp"
+          },
+          {
+            "label": "Cells",
+            "value": "132 (6 × 22), double glass"
+          },
+          {
+            "label": "Dimensions",
+            "value": "2382 × 1134 × 30 mm"
+          },
+          {
+            "label": "Snow / wind",
+            "value": "5400 Pa / 2400 Pa"
+          }
+        ],
+        "highlights": [
+          "No solder points",
+          "Triple sealing against moisture",
+          "Reinforced PIB insulation > 2000 V"
+        ]
+      },
+      {
+        "category": "Hybrid inverter",
+        "name": "Low voltage hybrid inverter",
+        "description": "The brain of the installation: it constantly arbitrates between production, battery and grid, and switches to backup within milliseconds when the power goes out.",
+        "specs": [
+          {
+            "label": "Power",
+            "value": "8 / 10 / 12 kW three-phase"
+          },
+          {
+            "label": "Max. efficiency",
+            "value": "97.57%"
+          },
+          {
+            "label": "Backup switchover",
+            "value": "≈ 4 ms"
+          },
+          {
+            "label": "Protection",
+            "value": "IP65, −40 to +60 °C"
+          }
+        ],
+        "highlights": [
+          "2 independent MPPTs",
+          "Up to 10 inverters in parallel",
+          "Wi-Fi / Bluetooth monitoring"
+        ]
+      }
+    ]
+  },
+  "realtime": {
+    "eyebrow": "2.4 — Real-time monitoring",
+    "title": "Your production, in plain sight",
+    "description": "Every One Énergie installation is monitored in real time: daily production, battery level, consumption. You see, hour by hour, what the sun is earning you.",
+    "live": "LIVE",
+    "dashToday": "TODAY'S PRODUCTION",
+    "dashSelfUse": "SELF-CONSUMPTION",
+    "dashPower": "POWER RIGHT NOW",
+    "dashBattery": "BATTERY",
+    "dashMonth": "THIS MONTH",
+    "heroValue": "27.4",
+    "heroDelta": "12% vs yesterday",
+    "selfUseValue": "78%",
+    "peakValue": "6.1 kW",
+    "powerValue": "4.8 kW",
+    "batteryValue": "92%",
+    "monthValue": "1,240 kWh",
+    "visualAlt": "Tablet showing the real-time solar production monitoring dashboard",
+    "caption": "Illustration — example of a production monitoring screen."
+  },
   "team": {
     "pageEyebrow": "The One Énergie team",
     "pageTitle": "Faces, not a file number",

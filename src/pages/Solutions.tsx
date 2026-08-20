@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
+import DahSolarRange from '../components/DahSolarRange'
+import RealtimeTracking from '../components/RealtimeTracking'
 import iconSoleil from '../assets/icons/icon-soleil-lunettes.svg'
 import iconCuiseurRiz from '../assets/icons/icon-cuiseur-riz.svg'
 import iconLaveLinge from '../assets/icons/icon-lave-linge.svg'
@@ -260,6 +262,12 @@ function Solutions() {
             })}
           </div>
         </section>
+
+        {/* Le matériel installé : gamme DAH Solar */}
+        <DahSolarRange />
+
+        {/* Suivi de production en temps réel */}
+        <RealtimeTracking />
 
         {/* Preuve en image : Layout Bento Grid */}
         <section className="border-t border-white/10 py-20 md:py-28">
