@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
 
@@ -24,7 +23,10 @@ const fadeInVariants: Variants = {
 export default function ContactFoot() {
   return (
     // CONTENEUR GLOBAL : Fond bleu marine
-    <main className="relative w-full bg-oe-navy overflow-hidden font-sans">
+    // (div, pas <main> : ce composant est toujours imbriqué dans le <main> de la
+    // page qui l'utilise — deux <main> imbriqués seraient invalides en HTML et
+    // perturberaient la navigation par landmarks des lecteurs d'écran)
+    <div className="relative w-full bg-oe-navy overflow-hidden font-sans">
       
       {/* ==============================================================
           COUCHE 1 : HALO LUMINEUX
@@ -194,6 +196,6 @@ export default function ContactFoot() {
         </footer>
 
       </div>
-    </main>
+    </div>
   )
 }

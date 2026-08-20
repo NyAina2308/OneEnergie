@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import heroPhoto from '../assets/photos/solarroof1.jpg';
 import { motion, type Variants } from 'framer-motion';

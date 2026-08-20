@@ -121,7 +121,9 @@ export default function HomeMerged() {
 
   return (
     // CONTENEUR GLOBAL : Fond bleu marine
-    <main className="relative w-full bg-oe-navy overflow-hidden font-sans">
+    // (div, pas <main> : ce composant est toujours imbriqué dans le <main> de
+    // Home.tsx — deux <main> imbriqués seraient invalides en HTML)
+    <div className="relative w-full bg-oe-navy overflow-hidden font-sans">
 
       {/* ==============================================================
           COUCHE 1 : L'IMAGE DU HERO
@@ -540,6 +542,6 @@ export default function HomeMerged() {
         </section>
 
       </div>
-    </main>
+    </div>
   );
 }
