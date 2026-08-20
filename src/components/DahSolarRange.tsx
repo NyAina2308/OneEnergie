@@ -83,23 +83,7 @@ function DahSolarRange() {
                   {product.description}
                 </p>
 
-                <dl className="mt-8 border-t border-white/10">
-                  {product.specs.map((spec) => (
-                    <div
-                      key={spec.label}
-                      className="flex items-baseline justify-between gap-4 border-b border-white/10 py-3"
-                    >
-                      <dt className="font-sans text-xs uppercase tracking-wider text-white/50">
-                        {spec.label}
-                      </dt>
-                      <dd className="text-right font-sans text-sm font-semibold text-white">
-                        {spec.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <ul className="mt-6 flex flex-wrap gap-2">
+                <ul className="mt-8 flex flex-wrap gap-2">
                   {product.highlights.map((highlight) => (
                     <li
                       key={highlight}

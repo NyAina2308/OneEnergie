@@ -122,63 +122,27 @@
     "partnerLinkLabel": "Read the Figaro article ↗",
     "partnerLinkTitle": "DAH Solar in Le Figaro (new tab)",
     "logoAlt": "DAH Solar logo",
-    "viewSheet": "View the product sheet",
-    "imageCredit": "Product visuals: DAH Solar. Specifications are indicative and confirmed during the survey.",
+    "viewSheet": "See the product at DAH Solar",
+    "imageCredit": "Product visuals: DAH Solar.",
     "products": [
       {
         "category": "Photovoltaic panel",
         "name": "V6 High Power PV Module",
         "description": "The double-glass panel that produces the most per square metre of roof: same surface, more kilowatt-hours, and a build designed to last in the island's climate.",
-        "specs": [
-          {
-            "label": "Power",
-            "value": "640 – 660 Wp"
-          },
-          {
-            "label": "Cells",
-            "value": "132 (6 × 22), double glass"
-          },
-          {
-            "label": "Dimensions",
-            "value": "2382 × 1134 × 30 mm"
-          },
-          {
-            "label": "Snow / wind",
-            "value": "5400 Pa / 2400 Pa"
-          }
-        ],
         "highlights": [
-          "No solder points",
-          "Triple sealing against moisture",
-          "Reinforced PIB insulation > 2000 V"
+          "More power per m² of roof",
+          "Built for cyclone season",
+          "Reinforced sealing against damp"
         ]
       },
       {
         "category": "Hybrid inverter",
         "name": "Low voltage hybrid inverter",
         "description": "The brain of the installation: it constantly arbitrates between production, battery and grid, and switches to backup within milliseconds when the power goes out.",
-        "specs": [
-          {
-            "label": "Power",
-            "value": "8 / 10 / 12 kW three-phase"
-          },
-          {
-            "label": "Max. efficiency",
-            "value": "97.57%"
-          },
-          {
-            "label": "Backup switchover",
-            "value": "≈ 4 ms"
-          },
-          {
-            "label": "Protection",
-            "value": "IP65, −40 to +60 °C"
-          }
-        ],
         "highlights": [
-          "2 independent MPPTs",
-          "Up to 10 inverters in parallel",
-          "Wi-Fi / Bluetooth monitoring"
+          "Instant switchover during an outage",
+          "Manages panels, battery and grid",
+          "Monitored from your phone"
         ]
       }
     ]
