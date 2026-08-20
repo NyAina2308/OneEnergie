@@ -157,6 +157,12 @@ function Solutions() {
           </div>
         </section>
 
+        {/* Le matériel installé : gamme DAH Solar */}
+        <DahSolarRange />
+
+        {/* Suivi de production en temps réel */}
+        <RealtimeTracking />
+
         {/* --- BLOC PRINCIPAL AVEC SCROLL SPY --- */}
         <section id="autonomie-securite" className="relative flex flex-col lg:flex-row border-t border-white/10 bg-oe-navy">
           
@@ -262,12 +268,6 @@ function Solutions() {
             })}
           </div>
         </section>
-
-        {/* Le matériel installé : gamme DAH Solar */}
-        <DahSolarRange />
-
-        {/* Suivi de production en temps réel */}
-        <RealtimeTracking />
 
         {/* Preuve en image : Layout Bento Grid */}
         <section className="border-t border-white/10 py-20 md:py-28">

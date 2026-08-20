@@ -160,21 +160,7 @@ function Garanties() {
                 </motion.div>
               ))}
 
-              {/* Callout pose / garantie décennale */}
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-5 border border-oe-yellow/30 bg-white/5 p-6 sm:col-span-2"
-              >
-                <img src={iconBadge} alt="" className="h-14 w-14 shrink-0 object-contain" />
-                <div>
-                  <h3 className="font-display text-lg uppercase tracking-wide text-white">
-                    {t('garanties.calloutTitle')}
-                  </h3>
-                  <p className="mt-1 font-sans text-sm leading-relaxed text-white/70">
-                    {t('garanties.calloutDesc')}
-                  </p>
-                </div>
-              </motion.div>
+              
             </motion.div>
 
             {/* Garanties complémentaires (conformité, main d'œuvre, accessoires) */}
