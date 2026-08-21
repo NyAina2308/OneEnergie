@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import moduleImg from '../assets/products/dah-module-v6-dhn-66z20-dg.png'
-import inverterImg from '../assets/products/dah-onduleur-hybride-dhn-lveh3p.png'
+import inverterImg from '../assets/products/dah-onduleur-hybride-monophase.jpg'
 
 export type DahProduct = {
   imageUrl: string

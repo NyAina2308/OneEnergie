@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useDahProducts } from '../data/dahProducts'
 import dahLogo from '../assets/brand/logo-dahsolar-blanc.svg'
+import onduleurInstallationPhoto from '../assets/products/dah-solar-onduleur-installation.jpg'
 
 // Portrait de DAH Solar dans Le Figaro, ouvert derrière le logo du fournisseur.
 const FIGARO_ARTICLE_URL =
@@ -30,6 +31,12 @@ function DahSolarRange() {
           <p className="mt-5 font-sans font-light leading-relaxed text-white/70">
             {t('dahsolar.description')}
           </p>
+
+          <img
+            src={onduleurInstallationPhoto}
+            alt={t('dahsolar.installationPhotoAlt')}
+            className="mx-auto mt-8 w-full max-w-lg border border-white/10 object-cover shadow-2xl"
+          />
 
           <a
             href={FIGARO_ARTICLE_URL}

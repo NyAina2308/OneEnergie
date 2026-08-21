@@ -23,14 +23,10 @@
     "eyebrow": "Le solaire, entre nous",
     "title1": "Vivez l'énergie,",
     "title2": "en mieux.",
-    "subtitle1": "On transforme votre taxe en liberté financière — ",
-    "subtitle2": "avec un expert à votre table, pas un inconnu sur votre toit.",
+    "subtitle1": "Que le réseau coupe ou non, ",
+    "subtitle2": "chez vous rien ne s'arrête !",
     "question": "Posez-nous vos questions",
-    "cta": "Demander un devis",
-    "stat1": "d'économies sur la facture",
-    "stat2": "financés par les aides locales",
-    "stat3Value": "jusqu'à 100 % ",
-    "stat3": "d'autonomie"
+    "cta": "Demander un devis"
   },
   "process": {
     "eyebrow": "Comment ça marche",
@@ -93,14 +89,14 @@
     "quoteAuthor": "— Pédagogie « café-cuisine »",
     "categoryAutonomie": "Autonomie",
     "categorySecurite": "Sécurité",
-    "autonomieEyebrow": "2.3 — Autonomie quotidienne",
+    "autonomieEyebrow": "2.1 — Autonomie quotidienne",
     "autonomieTitle": "Alimentez votre maison en énergie. Jour et nuit.",
     "autonomieLead": "Notre ambition : rendre chaque foyer mauricien maître de son électricité.",
     "autonomieDesc": "Nous ne venons pas simplement vendre des panneaux solaires. Nous venons apporter une réponse concrète à une angoisse quotidienne : celle de ne plus subir la coupure, mais de la traverser sans même la remarquer.",
     "autonomiePhotoAlt": "Deux mains formant un cœur devant un coucher de soleil",
-    "securiteEyebrow": "2.4 — Sécurité & continuité",
+    "securiteEyebrow": "2.2 — Sécurité & continuité",
     "securiteTitle": "Un système anti-coupure, prêt pour le cyclone",
-    "securiteDesc": "Dormez tranquille : votre installation est pensée pour encaisser les aléas de l'île, pas seulement les beaux jours.",
+    "securiteDesc": "Quoi qu'il arrive sur le réseau électrique national, dormez tranquille, votre installation prend le relais et encaisse tous les aléas du réseau national.",
     "card4Title": "Résistance anti-cyclonique",
     "card4Desc": "Fixations et matériel certifiés pour tenir face aux vents de l’île, saison après saison.",
     "card5Title": "Système anti-coupure",
@@ -111,13 +107,14 @@
     "qualityTitle": "Une qualité de service premium"
   },
   "dahsolar": {
-    "eyebrow": "2.1 — Le matériel",
+    "eyebrow": "2.3 — Le matériel",
     "title": "Équipés par DAH Solar",
     "description": "Nos installations reposent sur le matériel de DAH Solar, fabricant de panneaux et d'onduleurs présent dans plus de 100 pays. Voici les deux pièces maîtresses qu'on pose sur les toits mauriciens.",
     "partnerLabel": "Notre fournisseur",
     "partnerLinkLabel": "Lire l'article du Figaro ↗",
     "partnerLinkTitle": "DAH Solar dans Le Figaro (nouvel onglet)",
     "logoAlt": "Logo DAH Solar",
+    "installationPhotoAlt": "Onduleur hybride DAH Solar installé sur une façade, avec batterie de stockage associée",
     "viewSheet": "Voir le produit chez DAH Solar",
     "imageCredit": "Visuels produits : DAH Solar.",
     "products": [
@@ -144,7 +141,7 @@
     ]
   },
   "realtime": {
-    "eyebrow": "2.2 — Suivi en temps réel",
+    "eyebrow": "2.4 — Suivi en temps réel",
     "title": "Votre production, sous les yeux",
     "description": "Chaque installation One Énergie est suivie en temps réel : production du jour, niveau de batterie, consommation. Vous voyez, heure par heure, ce que le soleil vous rapporte.",
     "live": "EN DIRECT",
@@ -415,6 +412,7 @@
     "resultDisclaimer": "Estimation indicative basée sur votre facture actuelle. Elle est affinée gratuitement lors d'une étude sur place, sans engagement.",
     "ctaGetStudy": "Recevoir mon étude personnalisée",
     "restart": "Recommencer la simulation",
+    "homeMoreLink": "Voir la page Contact & Simulation complète",
     "prefillMessage": "Simulation en ligne : profil {{profile}}, facture actuelle {{bill}} → puissance recommandée {{kwc}} kWc, économies estimées sur 20 ans {{savings}}.",
     "homeTiers": [
       "< 50 €",

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import Header from '../components/Header'
 import PageHeader from '../components/PageHeader'
 import ContactCta from '../components/ContactCta'
+import SolutionsTeaser from '../components/SolutionsTeaser'
 import techniciensSecurite from '../assets/photos/techniciens-securite.jpg'
 import solarfield from '../assets/garantie/solarfield.jpg'
 import solarsky from '../assets/garantie/solarsky.jpg'
@@ -119,6 +120,10 @@ function Garanties() {
             ))}
           </motion.div>
         </section>
+
+        {/* "Un écosystème d'autonomie, pas juste des panneaux" — déplacée depuis
+            l'accueil, où elle est remplacée par le simulateur (voir Home.tsx) */}
+        <SolutionsTeaser />
 
         {/* Chaque composant, couvert et durable */}
         <section className="relative overflow-hidden border-t border-white/10 py-20 md:py-28">

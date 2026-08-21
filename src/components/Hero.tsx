@@ -87,12 +87,6 @@ const fadeInVariants: Variants = {
 function Hero() {
   const { t } = useTranslation();
 
-  const STATS = [
-    { value: '85%', label: t('hero.stat1') },
-    { value: '81%', label: t('hero.stat2') },
-    { value: t('hero.stat3Value'), label: t('hero.stat3') },
-  ];
-
   return (
     <section className="relative min-h-[90vh] w-full bg-oe-navy overflow-hidden flex">
       {/* Lignes de construction d'arrière-plan globales */}
@@ -189,19 +183,6 @@ function Hero() {
               {t('hero.cta')}
               <span className="w-12 h-px bg-white group-hover:bg-oe-yellow group-hover:w-20 transition-all duration-300"></span>
             </Link>
-          </motion.div>
-
-          {/* Statistiques */}
-          <motion.div 
-            custom={0.7} initial="hidden" animate="visible" variants={fadeInVariants}
-            className="mt-16 flex flex-wrap gap-10 md:gap-16 text-white/80 font-sans text-sm uppercase tracking-widest border-t border-white/20 inline-flex"
-          >
-            {STATS.map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-2 pt-6">
-                <span className="text-oe-yellow font-display text-3xl">{stat.value}</span>
-                <span className="text-xs max-w-[140px] leading-snug">{stat.label}</span>
-              </div>
-            ))}
           </motion.div>
         </div>
       </div>

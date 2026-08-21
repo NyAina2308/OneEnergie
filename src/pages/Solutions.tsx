@@ -100,13 +100,8 @@ function Solutions() {
     <div className="min-h-screen bg-oe-navy font-sans text-white">
       <Header />
       <main>
-        {/* Le matériel installé : gamme DAH Solar */}
-        <DahSolarRange />
-
-        {/* Suivi de production en temps réel */}
-        <RealtimeTracking />
-
-        {/* Autonomie : bloc d'intro statique (message + photo), sans scroll-spy ni cartes */}
+        {/* Autonomie : bloc d'intro statique (message + photo), sans scroll-spy ni cartes
+            — placée en première position de la page (retours client) */}
         <section className="relative flex flex-col border-t border-white/10 bg-oe-navy lg:flex-row">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -240,6 +235,12 @@ function Solutions() {
             })}
           </div>
         </section>
+
+        {/* Le matériel installé : gamme DAH Solar */}
+        <DahSolarRange />
+
+        {/* Suivi de production en temps réel */}
+        <RealtimeTracking />
 
         {/* Preuve en image : Layout Bento Grid */}
         <section className="border-t border-white/10 py-20 md:py-28">

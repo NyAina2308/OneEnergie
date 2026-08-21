@@ -23,14 +23,10 @@
     "eyebrow": "Solar, between us",
     "title1": "Live energy,",
     "title2": "better.",
-    "subtitle1": "We turn your tax into financial freedom — ",
-    "subtitle2": "with an expert at your table, not a stranger on your roof.",
+    "subtitle1": "Whether the grid cuts out or not, ",
+    "subtitle2": "nothing stops at home!",
     "question": "Ask us anything",
-    "cta": "Get a quote",
-    "stat1": "saved on your bill",
-    "stat2": "funded by local incentives",
-    "stat3Value": "up to 100% ",
-    "stat3": "energy independence"
+    "cta": "Get a quote"
   },
   "process": {
     "eyebrow": "How it works",
@@ -93,14 +89,14 @@
     "quoteAuthor": "— The “coffee-and-cooking” way of explaining it",
     "categoryAutonomie": "Independence",
     "categorySecurite": "Safety",
-    "autonomieEyebrow": "2.3 — Everyday independence",
+    "autonomieEyebrow": "2.1 — Everyday independence",
     "autonomieTitle": "Power your home. Day and night.",
     "autonomieLead": "Our ambition: make every Mauritian home the master of its own electricity.",
     "autonomieDesc": "We're not just here to sell solar panels. We're here to answer a real everyday worry: not enduring the power cut, but getting through it without even noticing.",
     "autonomiePhotoAlt": "Two hands forming a heart shape against a sunset",
-    "securiteEyebrow": "2.4 — Safety & continuity",
+    "securiteEyebrow": "2.2 — Safety & continuity",
     "securiteTitle": "A backup system, ready for cyclone season",
-    "securiteDesc": "Sleep easy: your installation is designed to handle the island's ups and downs, not just the sunny days.",
+    "securiteDesc": "Whatever happens on the national grid, sleep easy — your installation takes over and absorbs every disruption from the national grid.",
     "card4Title": "Cyclone-proof resistance",
     "card4Desc": "Certified fixings and equipment to withstand the island's winds, season after season.",
     "card5Title": "Automatic backup system",
@@ -111,13 +107,14 @@
     "qualityTitle": "Premium service quality"
   },
   "dahsolar": {
-    "eyebrow": "2.1 — The equipment",
+    "eyebrow": "2.3 — The equipment",
     "title": "Equipped by DAH Solar",
     "description": "Our installations are built on DAH Solar equipment, a panel and inverter manufacturer present in over 100 countries. Here are the two centrepieces we fit on Mauritian rooftops.",
     "partnerLabel": "Our supplier",
     "partnerLinkLabel": "Read the Figaro article ↗",
     "partnerLinkTitle": "DAH Solar in Le Figaro (new tab)",
     "logoAlt": "DAH Solar logo",
+    "installationPhotoAlt": "DAH Solar hybrid inverter installed on a wall, with its storage battery",
     "viewSheet": "See the product at DAH Solar",
     "imageCredit": "Product visuals: DAH Solar.",
     "products": [
@@ -144,7 +141,7 @@
     ]
   },
   "realtime": {
-    "eyebrow": "2.2 — Real-time monitoring",
+    "eyebrow": "2.4 — Real-time monitoring",
     "title": "Your production, in plain sight",
     "description": "Every One Énergie installation is monitored in real time: daily production, battery level, consumption. You see, hour by hour, what the sun is earning you.",
     "live": "LIVE",
@@ -415,6 +412,7 @@
     "resultDisclaimer": "Indicative estimate based on your current bill. It's refined for free during an on-site study, with no obligation.",
     "ctaGetStudy": "Get my personalised study",
     "restart": "Restart the simulation",
+    "homeMoreLink": "View the full Contact & Simulation page",
     "prefillMessage": "Online simulation: {{profile}} profile, current bill {{bill}} → recommended power {{kwc}} kWc, estimated savings over 20 years {{savings}}.",
     "homeTiers": [
       "< €50",
